@@ -6,8 +6,21 @@
 <title>Comida Colombiana Popular</title>
 
 <style>
-    body {
+
+    /* 🔥 ARREGLO DE DESPLAZAMIENTO HORIZONTAL */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
         margin: 0;
+        padding: 0;
+    }
+
+    * {
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    body {
         font-family: 'Inter', Arial, sans-serif;
         background: #ffffff;
     }
@@ -130,68 +143,7 @@
     .legal a:hover {
         text-decoration: underline;
     }
-
-
-    /* ---------------- RESPONSIVE ---------------- */
-
-    /* Celulares iPhone / Android */
-    @media (max-width: 480px) {
-        .hero {
-            height: 65vh;
-        }
-        .hero h1 {
-            font-size: 30px;
-        }
-        .hero h2 {
-            font-size: 26px;
-        }
-        .hero button {
-            padding: 12px 30px;
-            font-size: 16px;
-        }
-        footer h3 {
-            font-size: 20px;
-        }
-        .footer-icon {
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-        }
-        footer .text {
-            font-size: 16px;
-        }
-    }
-
-    /* Tablets (iPad) */
-    @media (min-width: 481px) and (max-width: 900px) {
-        .hero h1 {
-            font-size: 36px;
-        }
-        .hero h2 {
-            font-size: 30px;
-        }
-    }
-
-    /* PC / Pantallas grandes */
-    @media (min-width: 901px) {
-        .hero {
-            height: 78vh;
-        }
-        .hero button {
-            padding: 16px 50px;
-            font-size: 20px;
-        }
-    }
 </style>
-
-<!-- Google tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ3CDCKPPF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-SQ3CDCKPPF');
-</script>
 
 </head>
 <body>
