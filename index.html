@@ -19,16 +19,11 @@
         padding: 15px 20px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
         color: white;
         position: sticky;
         top: 0;
         z-index: 99;
-    }
-
-    header .left {
-        display: flex;
-        align-items: center;
         gap: 12px;
     }
 
@@ -125,12 +120,8 @@
 
 <!-- ---------------- HEADER ---------------- -->
 <header>
-    <div class="left">
-        <span class="icon">&#9776;</span>
-        <span class="title">Popular</span>
-    </div>
-
-    <span class="icon">&#128269;</span>
+    <span class="icon">&#9776;</span>
+    <span class="title">Popular</span>
 </header>
 
 
@@ -139,7 +130,7 @@
     <h1>Comida Colombiana</h1>
     <h2>Popular</h2>
 
-    <button>Ingresa menú</button>
+    <button onclick="window.location.href='menu.html'">Ingresa menú</button>
 </section>
 
 
