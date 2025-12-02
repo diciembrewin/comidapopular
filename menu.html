@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Popular</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Inter', Arial, sans-serif;
+        background: #ffffff;
+    }
+
+    /* ---------------- HEADER ---------------- */
+    header {
+        width: 100%;
+        background: #00aa30;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+    }
+
+    header .left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    header .icon {
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    header .title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    /* ---------------- CONTENIDO ---------------- */
+    .container {
+        padding: 20px;
+    }
+
+    .titulo {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #00aa30;
+    }
+
+    .categoria {
+        font-size: 22px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #009a28;
+    }
+
+    .item {
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 6px solid #00aa30;
+    }
+
+    .nombre {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .precio {
+        font-size: 18px;
+        font-weight: 700;
+        color: #009b2f;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+    footer {
+        background: #00aa30;
+        padding: 25px 20px;
+        color: #000;
+        margin-top: 40px;
+    }
+
+    footer button {
+        width: 100%;
+        padding: 14px;
+        background: #008f29;
+        color: white;
+        border: none;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- ---------------- HEADER ---------------- -->
+<header>
+    <div class="left">
+        <span class="icon" onclick="history.back()">&#8592;</span>
+        <span class="title">Menú Popular</span>
+    </div>
+
+    <span class="icon">&#128269;</span>
+</header>
+
+
+<!-- ---------------- CONTENIDO ---------------- -->
+<div class="container">
+
+    <h1 class="titulo">Nuestro Menú</h1>
+
+    <!-- DESAYUNOS -->
+    <div class="categoria">Desayunos</div>
+
+    <div class="item">
+        <span class="nombre">Calentado con huevo</span>
+        <span class="precio">$12.000</span>
+    </div>
+
+    <div class="item">
+        <span class="nombre">Arepa con queso</span>
+        <span class="precio">$6.000</span>
+    </div>
+
+    <div class="item">
+        <span class="nombre">Huevos pericos</span>
+        <span class="precio">$10.000</span>
+    </div>
+
+    <!-- ALMUERZOS -->
+    <div class="categoria">Almuerzos</div>
+
+    <div class="item">
+        <span class="nombre">Bandeja paisa</span>
+        <span class="precio">$18.000</span>
+    </div>
+
+    <div class="item">
+        <span class="nombre">Sancocho trifásico</span>
+        <span class="precio">$20.000</span>
+    </div>
+
+    <div class="item">
+        <span class="nombre">Arroz con pollo</span>
+        <span class="precio">$14.000</span>
+    </div>
+
+    <!-- BEBIDAS -->
+    <div class="categoria">Bebidas</div>
+
+    <div class="item">
+        <span class="nombre">Jugo natural</span>
+        <span class="precio">$5.000</span>
+    </div>
+
+    <div class="item">
+        <span class="nombre">Gaseosa</span>
+        <span class="precio">$4.000</span>
+    </div>
+
+    <div class="item">
+        <span class="nombre">Agua en botella</span>
+        <span class="precio">$3.000</span>
+    </div>
+
+    <!-- POSTRES -->
+    <div class="categoria">Postres</div>
+
+    <div class="item">
+        <span class="nombre">Arroz con leche</span>
+        <span class="precio">$5.000</span>
+    </div>
+
+    <div class="item">
+        <span class="nombre">Gelatina de pata</span>
+        <span class="precio">$4.000</span>
+    </div>
+
+</div>
+
+
+<!-- ---------------- FOOTER ---------------- -->
+<footer>
+    <button onclick="window.location.href='index.html'">Volver al inicio</button>
+</footer>
+
+</body>
+</html>
