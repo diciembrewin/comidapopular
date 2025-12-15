@@ -6,147 +6,219 @@
 <title>Términos y Condiciones</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Inter', Arial, sans-serif;
-        background: #ffffff;
-        color: #222;
-        line-height: 1.6;
-    }
+/* ============ RESET ============ */
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  overflow-x:hidden;
+  font-family:'Inter',system-ui,Arial,sans-serif;
+  background:#050b0f;
+  color:#e6fff4;
+  line-height:1.7;
+}
 
-    /* ---------------- HEADER ---------------- */
-    header {
-        width: 100%;
-        background: #00aa30;
-        padding: 15px 20px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: white;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
+/* ============ HEADER ============ */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 20px;
+  background:rgba(0,255,153,.12);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,255,153,.25);
+}
 
-    header .icon {
-        font-size: 28px;
-        cursor: pointer;
-    }
+header .icon{
+  font-size:24px;
+  cursor:pointer;
+  color:#00ff99;
+}
 
-    header .title {
-        font-size: 20px;
-        font-weight: 600;
-    }
+header .title{
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.4px;
+}
 
-    /* ---------------- CONTENIDO ---------------- */
-    .container {
-        padding: 25px 20px;
-        max-width: 900px;
-        margin: auto;
-    }
+/* ============ CONTENIDO ============ */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:28px 20px 50px;
+}
 
-    h2 {
-        font-size: 28px;
-        color: #00aa30;
-        margin-bottom: 10px;
-    }
+h2{
+  font-size:30px;
+  color:#00ff99;
+  margin-bottom:10px;
+  text-shadow:0 0 15px rgba(0,255,153,.4);
+}
 
-    h3 {
-        font-size: 20px;
-        margin-top: 25px;
-        color: #009427;
-    }
+h3{
+  font-size:20px;
+  margin-top:30px;
+  color:#7affc9;
+  border-left:4px solid #00ff99;
+  padding-left:10px;
+}
 
-    p {
-        margin-top: 10px;
-        font-size: 16px;
-    }
+p{
+  margin-top:12px;
+  font-size:16px;
+  color:#d1fae5;
+}
 
-    /* ---------------- FOOTER ---------------- */
-    footer {
-        background: #00aa30;
-        padding: 30px 20px;
-        color: #000;
-        margin-top: 40px;
-    }
+/* BLOQUE DESTACADO */
+.notice{
+  margin-top:24px;
+  padding:18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(0,255,153,.15),rgba(0,255,153,.05));
+  border:1px solid rgba(0,255,153,.3);
+  box-shadow:0 0 20px rgba(0,255,153,.2);
+  font-weight:600;
+}
 
-    footer h3 {
-        font-size: 22px;
-        margin-bottom: 15px;
-        font-weight: 600;
-    }
+/* ============ FOOTER ============ */
+footer{
+  padding:28px 20px;
+  border-top:1px solid rgba(0,255,153,.25);
+  background:linear-gradient(180deg,#050b0f,#030709);
+  text-align:center;
+}
 
-    .footer-box {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
+footer h3{
+  margin:0 0 14px;
+  color:#00ff99;
+}
 
-    .footer-icon {
-        width: 60px;
-        height: 60px;
-        background: #ffffff90;
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-    }
+.footer-box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+}
 
-    footer .text {
-        font-size: 18px;
-    }
+.footer-icon{
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  background:rgba(0,255,153,.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  box-shadow:0 0 18px rgba(0,255,153,.4);
+}
+
+footer .text{
+  font-size:17px;
+  color:#d1fae5;
+}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:480px){
+  h2{font-size:26px}
+  h3{font-size:18px}
+}
 </style>
 
 </head>
 <body>
 
-<!-- ---------------- HEADER ---------------- -->
+<!-- HEADER -->
 <header>
-    <span class="icon" onclick="history.back()">&#8592;</span>
-    <span class="title">Términos y Condiciones</span>
+  <span class="icon" onclick="history.back()">&#8592;</span>
+  <span class="title">Términos y Condiciones</span>
 </header>
 
-<!-- ---------------- CONTENIDO ---------------- -->
+<!-- CONTENIDO -->
 <div class="container">
-    <h2>Términos y Condiciones</h2>
-    <p>Bienvenido a Comida Colombiana Popular. Al utilizar este sitio web, usted acepta los siguientes términos y condiciones. Si no está de acuerdo, le recomendamos no continuar navegando.</p>
 
-    <h3>1. Uso del sitio</h3>
-    <p>Este sitio tiene como propósito ofrecer información sobre nuestro menú, productos y servicios. El contenido puede cambiar sin previo aviso según disponibilidad o decisiones internas.</p>
+  <h2>Términos y Condiciones</h2>
 
-    <h3>2. Información de los productos</h3>
-    <p>Las imágenes, descripciones y precios de los platos son referenciales y pueden variar según temporada, disponibilidad o ubicación del establecimiento.</p>
+  <p>
+    Bienvenido a <strong>Comida Colombiana Popular</strong>. Al acceder y utilizar este sitio web,
+    usted acepta los presentes términos y condiciones. Si no está de acuerdo con alguno de ellos,
+    le recomendamos no continuar navegando.
+  </p>
 
-    <h3>3. Pedidos y tiempos de entrega</h3>
-    <p>Los tiempos de preparación y entrega pueden variar según la demanda y la ubicación del cliente. Nos reservamos el derecho a rechazar pedidos cuando no sea posible atenderlos.</p>
+  <div class="notice">
+    Este sitio es de carácter informativo. No se realizan ventas, cotizaciones ni pagos en línea
+    a través de esta plataforma.
+  </div>
 
-    <h3>4. Métodos de pago</h3>
-    <p>Los métodos de pago disponibles serán informados al momento de realizar el pedido. No almacenamos, guardamos ni procesamos información bancaria del cliente.</p>
+  <h3>1. Uso del sitio</h3>
+  <p>
+    El sitio tiene como finalidad brindar información sobre el menú, platos y servicios ofrecidos.
+    El contenido puede ser modificado, actualizado o eliminado sin previo aviso.
+  </p>
 
-    <h3>5. Privacidad de los datos</h3>
-    <p>La información suministrada por el usuario será utilizada exclusivamente para la prestación del servicio. No compartimos datos personales con terceros.</p>
+  <h3>2. Información de los productos</h3>
+  <p>
+    Las imágenes, descripciones y precios mostrados son referenciales. Pueden variar según
+    disponibilidad, temporada o ubicación del establecimiento.
+  </p>
 
-    <h3>6. Propiedad intelectual</h3>
-    <p>Todo el contenido del sitio (textos, imágenes, diseño y estructura) está protegido por derechos de autor. Queda prohibida su reproducción sin autorización.</p>
+  <h3>3. Pedidos y disponibilidad</h3>
+  <p>
+    Los pedidos, tiempos de preparación y entregas están sujetos a disponibilidad y capacidad operativa.
+    Nos reservamos el derecho de no atender solicitudes cuando no sea posible hacerlo.
+  </p>
 
-    <h3>7. Modificaciones</h3>
-    <p>Nos reservamos el derecho de actualizar estos términos y condiciones en cualquier momento. La versión vigente será siempre la publicada en este sitio web.</p>
+  <h3>4. Métodos de pago</h3>
+  <p>
+    Este sitio no procesa pagos ni almacena información financiera. Cualquier transacción se realiza
+    directamente en el establecimiento o por los canales autorizados.
+  </p>
 
-    <h3>8. Contacto</h3>
-    <p>Si tiene dudas, solicitudes o comentarios, puede comunicarse con nosotros a través de nuestros canales oficiales.</p>
+  <h3>5. Privacidad de los datos</h3>
+  <p>
+    La información suministrada por el usuario será utilizada únicamente para fines informativos o de contacto.
+    No compartimos datos personales con terceros.
+  </p>
 
-    <p style="margin-top:20px; font-weight:600;">Última actualización: Enero 2025</p>
+  <h3>6. Propiedad intelectual</h3>
+  <p>
+    Todo el contenido del sitio (textos, imágenes, diseño y estructura) está protegido por derechos
+    de autor. Queda prohibida su reproducción total o parcial sin autorización.
+  </p>
+
+  <h3>7. Limitación de responsabilidad</h3>
+  <p>
+    <strong>Este sitio no ofrece productos financieros, créditos, préstamos ni seguros.</strong>
+    No garantizamos exactitud absoluta del contenido ni nos responsabilizamos por decisiones tomadas
+    con base en la información aquí presentada.
+  </p>
+
+  <h3>8. Modificaciones</h3>
+  <p>
+    Nos reservamos el derecho de actualizar estos términos y condiciones en cualquier momento.
+    La versión vigente será siempre la publicada en este sitio web.
+  </p>
+
+  <h3>9. Contacto</h3>
+  <p>
+    Para dudas o consultas, puede comunicarse con nosotros a través de nuestros canales oficiales.
+  </p>
+
+  <p style="margin-top:26px;font-weight:600;color:#7affc9;">
+    Última actualización: Enero 2025
+  </p>
+
 </div>
 
-<!-- ---------------- FOOTER ---------------- -->
+<!-- FOOTER -->
 <footer>
-    <h3>Tu Popular</h3>
-
-    <div class="footer-box">
-        <div class="footer-icon">😊</div>
-        <span class="text">Personas colombianas</span>
-    </div>
+  <h3>Tu Popular</h3>
+  <div class="footer-box">
+    <div class="footer-icon">😊</div>
+    <span class="text">Personas colombianas</span>
+  </div>
 </footer>
 
 </body>
