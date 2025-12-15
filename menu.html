@@ -6,196 +6,180 @@
 <title>Menú Popular</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Inter', Arial, sans-serif;
-        background: #ffffff;
-    }
+/* ============ RESET ============ */
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  overflow-x:hidden;
+  font-family:'Inter',system-ui,Arial,sans-serif;
+  background:#050b0f;
+  color:#e6fff4;
+}
 
-    /* ---------------- HEADER ---------------- */
-    header {
-        width: 100%;
-        background: #00aa30;
-        padding: 15px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: white;
-        position: sticky;
-        top: 0;
-        z-index: 99;
-    }
+/* ============ HEADER ============ */
+header{
+  position:sticky;
+  top:0;
+  z-index:99;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  background:rgba(0,255,153,.12);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,255,153,.25);
+}
 
-    header .left {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
+header .left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-    header .icon {
-        font-size: 28px;
-        cursor: pointer;
-    }
+header .icon{
+  font-size:24px;
+  cursor:pointer;
+  color:#00ff99;
+}
 
-    header .title {
-        font-size: 20px;
-        font-weight: 600;
-    }
+header .title{
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.5px;
+}
 
-    /* ---------------- CONTENIDO ---------------- */
-    .container {
-        padding: 20px;
-    }
+/* ============ CONTENEDOR ============ */
+.container{
+  padding:24px 18px 40px;
+  max-width:720px;
+  margin:auto;
+}
 
-    .titulo {
-        font-size: 28px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #00aa30;
-    }
+.titulo{
+  font-size:30px;
+  font-weight:600;
+  margin-bottom:24px;
+  color:#00ff99;
+  text-align:center;
+  text-shadow:0 0 15px rgba(0,255,153,.4);
+}
 
-    .categoria {
-        font-size: 22px;
-        margin-top: 30px;
-        margin-bottom: 10px;
-        font-weight: 600;
-        color: #009a28;
-    }
+/* ============ CATEGORÍAS ============ */
+.categoria{
+  margin-top:34px;
+  margin-bottom:12px;
+  font-size:20px;
+  font-weight:600;
+  color:#7affc9;
+  border-left:4px solid #00ff99;
+  padding-left:10px;
+}
 
-    .item {
-        background: #f5f5f5;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-left: 6px solid #00aa30;
-    }
+/* ============ ITEMS ============ */
+.item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 18px;
+  margin-bottom:14px;
+  background:linear-gradient(135deg,rgba(0,255,153,.12),rgba(0,255,153,.05));
+  border-radius:14px;
+  border:1px solid rgba(0,255,153,.25);
+  box-shadow:0 0 18px rgba(0,255,153,.15);
+  transition:.2s;
+}
 
-    .nombre {
-        font-size: 18px;
-        font-weight: 500;
-    }
+.item:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 26px rgba(0,255,153,.4);
+}
 
-    .precio {
-        font-size: 18px;
-        font-weight: 700;
-        color: #009b2f;
-    }
+.nombre{
+  font-size:17px;
+  font-weight:500;
+}
 
-    /* ---------------- FOOTER ---------------- */
-    footer {
-        background: #00aa30;
-        padding: 25px 20px;
-        color: #000;
-        margin-top: 40px;
-    }
+.precio{
+  font-size:17px;
+  font-weight:700;
+  color:#00ff99;
+}
 
-    footer button {
-        width: 100%;
-        padding: 14px;
-        background: #008f29;
-        color: white;
-        border: none;
-        font-size: 18px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
+/* ============ FOOTER ============ */
+footer{
+  padding:26px 20px;
+  border-top:1px solid rgba(0,255,153,.25);
+  background:linear-gradient(180deg,#050b0f,#030709);
+}
+
+footer button{
+  width:100%;
+  padding:16px;
+  font-size:18px;
+  font-weight:700;
+  border-radius:14px;
+  border:1px solid #00ff99;
+  background:linear-gradient(135deg,#00ff99,#00cc77);
+  color:#022015;
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(0,255,153,.55);
+  transition:.25s;
+}
+
+footer button:hover{
+  transform:scale(1.04);
+  box-shadow:0 0 32px rgba(0,255,153,.9);
+}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:480px){
+  .titulo{font-size:26px}
+  .categoria{font-size:18px}
+}
 </style>
 
 </head>
 <body>
 
-<!-- ---------------- HEADER ---------------- -->
+<!-- HEADER -->
 <header>
-    <div class="left">
-        <span class="icon" onclick="history.back()">&#8592;</span>
-        <span class="title">Menú Popular</span>
-    </div>
-
-    <span class="icon">&#128269;</span>
+  <div class="left">
+    <span class="icon" onclick="history.back()">&#8592;</span>
+    <span class="title">Menú Popular</span>
+  </div>
+  <span class="icon">&#128269;</span>
 </header>
 
-
-<!-- ---------------- CONTENIDO ---------------- -->
+<!-- CONTENIDO -->
 <div class="container">
+  <h1 class="titulo">Nuestro Menú</h1>
 
-    <h1 class="titulo">Nuestro Menú</h1>
+  <div class="categoria">Desayunos</div>
+  <div class="item"><span class="nombre">Calentado con huevo</span><span class="precio">$12.000</span></div>
+  <div class="item"><span class="nombre">Arepa con queso</span><span class="precio">$6.000</span></div>
+  <div class="item"><span class="nombre">Huevos pericos</span><span class="precio">$10.000</span></div>
 
-    <!-- DESAYUNOS -->
-    <div class="categoria">Desayunos</div>
+  <div class="categoria">Almuerzos</div>
+  <div class="item"><span class="nombre">Bandeja paisa</span><span class="precio">$18.000</span></div>
+  <div class="item"><span class="nombre">Sancocho trifásico</span><span class="precio">$20.000</span></div>
+  <div class="item"><span class="nombre">Arroz con pollo</span><span class="precio">$14.000</span></div>
 
-    <div class="item">
-        <span class="nombre">Calentado con huevo</span>
-        <span class="precio">$12.000</span>
-    </div>
+  <div class="categoria">Bebidas</div>
+  <div class="item"><span class="nombre">Jugo natural</span><span class="precio">$5.000</span></div>
+  <div class="item"><span class="nombre">Gaseosa</span><span class="precio">$4.000</span></div>
+  <div class="item"><span class="nombre">Agua en botella</span><span class="precio">$3.000</span></div>
 
-    <div class="item">
-        <span class="nombre">Arepa con queso</span>
-        <span class="precio">$6.000</span>
-    </div>
-
-    <div class="item">
-        <span class="nombre">Huevos pericos</span>
-        <span class="precio">$10.000</span>
-    </div>
-
-    <!-- ALMUERZOS -->
-    <div class="categoria">Almuerzos</div>
-
-    <div class="item">
-        <span class="nombre">Bandeja paisa</span>
-        <span class="precio">$18.000</span>
-    </div>
-
-    <div class="item">
-        <span class="nombre">Sancocho trifásico</span>
-        <span class="precio">$20.000</span>
-    </div>
-
-    <div class="item">
-        <span class="nombre">Arroz con pollo</span>
-        <span class="precio">$14.000</span>
-    </div>
-
-    <!-- BEBIDAS -->
-    <div class="categoria">Bebidas</div>
-
-    <div class="item">
-        <span class="nombre">Jugo natural</span>
-        <span class="precio">$5.000</span>
-    </div>
-
-    <div class="item">
-        <span class="nombre">Gaseosa</span>
-        <span class="precio">$4.000</span>
-    </div>
-
-    <div class="item">
-        <span class="nombre">Agua en botella</span>
-        <span class="precio">$3.000</span>
-    </div>
-
-    <!-- POSTRES -->
-    <div class="categoria">Postres</div>
-
-    <div class="item">
-        <span class="nombre">Arroz con leche</span>
-        <span class="precio">$5.000</span>
-    </div>
-
-    <div class="item">
-        <span class="nombre">Gelatina de pata</span>
-        <span class="precio">$4.000</span>
-    </div>
-
+  <div class="categoria">Postres</div>
+  <div class="item"><span class="nombre">Arroz con leche</span><span class="precio">$5.000</span></div>
+  <div class="item"><span class="nombre">Gelatina de pata</span><span class="precio">$4.000</span></div>
 </div>
 
-
-<!-- ---------------- FOOTER ---------------- -->
+<!-- FOOTER -->
 <footer>
-    <button onclick="window.location.href='index.html'">Volver al inicio</button>
+  <button onclick="window.location.href='index.html'">
+    Volver al inicio
+  </button>
 </footer>
 
 </body>
