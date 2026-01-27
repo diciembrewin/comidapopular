@@ -6,7 +6,6 @@
 <title>Comida Colombiana Popular</title>
 
 <style>
-
     /* 🔥 ARREGLO DE DESPLAZAMIENTO HORIZONTAL */
     html, body {
         overflow-x: hidden !important;
@@ -23,21 +22,23 @@
     body {
         font-family: 'Inter', Arial, sans-serif;
         background: #ffffff;
+        color: #000;
     }
 
     /* ---------------- HEADER ---------------- */
     header {
         width: 100%;
-        background: #00aa30;
+        background: #ffffff;
         padding: 15px 20px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        color: white;
+        color: #000;
         position: sticky;
         top: 0;
         z-index: 99;
         gap: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     header .icon {
@@ -52,7 +53,7 @@
 
     /* ---------------- HERO ---------------- */
     .hero {
-        background: #00bd35;
+        background: #ffffff;
         height: 70vh;
         display: flex;
         flex-direction: column;
@@ -78,9 +79,9 @@
     .hero button {
         margin-top: 35px;
         padding: 14px 40px;
-        background: #009f2b;
+        background: #000000;
         border: none;
-        color: #fff;
+        color: #ffffff;
         font-size: 18px;
         border-radius: 10px;
         cursor: pointer;
@@ -89,15 +90,16 @@
     }
 
     .hero button:hover {
-        background: #00b233;
+        background: #222;
         transform: scale(1.03);
     }
 
     /* ---------------- FOOTER ---------------- */
     footer {
-        background: #00aa30;
+        background: #ffffff;
         padding: 30px 20px;
         color: #000;
+        border-top: 1px solid #eaeaea;
     }
 
     footer h3 {
@@ -115,7 +117,7 @@
     .footer-icon {
         width: 60px;
         height: 60px;
-        background: #ffffff90;
+        background: #f2f2f2;
         border-radius: 18px;
         display: flex;
         align-items: center;
@@ -134,7 +136,7 @@
     }
 
     .legal a {
-        color: #004d18;
+        color: #000;
         font-size: 15px;
         text-decoration: none;
         font-weight: 600;
@@ -144,9 +146,17 @@
         text-decoration: underline;
     }
 </style>
-    
-<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17891810793"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-17891810793'); </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17891810793"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17891810793');
+</script>
 </head>
+
 <body>
 
 <!-- ---------------- HEADER ---------------- -->
@@ -159,7 +169,6 @@
 <section class="hero">
     <h1>Comida Colombiana</h1>
     <h2>Popular</h2>
-
     <button onclick="window.location.href='menu.html'">Ingresa menú</button>
 </section>
 
