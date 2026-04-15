@@ -3,185 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comida Colombiana </title>
-
-
-
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18004518818"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18004518818'); </script>
-    <!-- Event snippet for Compra conversion page --> <script> gtag('event', 'conversion', { 'send_to': 'AW-18004518818/JjIRCIvR2YUcEKLPnIlD', 'transaction_id': '' }); </script>    
-
+<title>Comida Colombiana</title>
 
 <style>
+html, body {
+    overflow: hidden; /* 🔒 bloquea acceso hasta aceptar */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-    /* 🔥 ARREGLO DE DESPLAZAMIENTO HORIZONTAL */
-    html, body {
-        overflow-x: hidden !important;
-        width: 100% !important;
-        margin: 0;
-        padding: 0;
-    }
+header {
+    background: #00aa30;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
 
-    * {
-        max-width: 100% !important;
-        box-sizing: border-box;
-    }
+.hero {
+    background: #00bd35;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-    body {
-        font-family: 'Inter', Arial, sans-serif;
-        background: #ffffff;
-    }
+.hero button {
+    margin-top: 30px;
+    padding: 15px 35px;
+    background: #009f2b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
-    /* ---------------- HEADER ---------------- */
-    header {
-        width: 100%;
-        background: #00aa30;
-        padding: 15px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        color: white;
-        position: sticky;
-        top: 0;
-        z-index: 99;
-        gap: 12px;
-    }
+footer {
+    background: #00aa30;
+    padding: 20px;
+}
 
-    header .icon {
-        font-size: 28px;
-        cursor: pointer;
-    }
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
 
-    header .title {
-        font-size: 20px;
-        font-weight: 600;
-    }
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 420px;
+    text-align: center;
+}
 
-    /* ---------------- HERO ---------------- */
-    .hero {
-        background: #00bd35;
-        height: 70vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #000;
-        text-align: center;
-        padding: 20px;
-    }
+.btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-    .hero h1 {
-        font-size: 42px;
-        font-weight: 300;
-        margin: 0;
-    }
-
-    .hero h2 {
-        font-size: 35px;
-        font-weight: 300;
-        margin-top: 10px;
-    }
-
-    .hero button {
-        margin-top: 35px;
-        padding: 14px 40px;
-        background: #009f2b;
-        border: none;
-        color: #fff;
-        font-size: 18px;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-        transition: 0.2s;
-    }
-
-    .hero button:hover {
-        background: #00b233;
-        transform: scale(1.03);
-    }
-
-    /* ---------------- FOOTER ---------------- */
-    footer {
-        background: #00aa30;
-        padding: 30px 20px;
-        color: #000;
-    }
-
-    footer h3 {
-        font-size: 22px;
-        margin-bottom: 15px;
-        font-weight: 600;
-    }
-
-    .footer-box {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .footer-icon {
-        width: 60px;
-        height: 60px;
-        background: #ffffff90;
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-    }
-
-    footer .text {
-        font-size: 18px;
-    }
-
-    /* Enlace de términos */
-    .legal {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .legal a {
-        color: #004d18;
-        font-size: 15px;
-        text-decoration: none;
-        font-weight: 600;
-    }
-
-    .legal a:hover {
-        text-decoration: underline;
-    }
+.btn:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
 </style>
- 
-
 </head>
 <body>
 
-<!-- ---------------- HEADER ---------------- -->
+<!-- 🔒 MODAL OBLIGATORIO -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h2>Políticas y Términos</h2>
+    <p style="text-align:left; max-height:200px; overflow-y:auto; font-size:14px;">
+<strong>Términos y Condiciones:</strong><br><br>
+Al ingresar a este sitio web, aceptas que la información presentada tiene fines informativos y comerciales. Nos reservamos el derecho de modificar contenidos sin previo aviso.<br><br>
+<strong>Política de Privacidad:</strong><br>
+Los datos que proporciones (como nombre, teléfono o navegación) pueden ser utilizados para mejorar nuestros servicios y fines publicitarios, incluyendo Google Ads. No compartimos información personal con terceros sin consentimiento.<br><br>
+<strong>Uso de Cookies:</strong><br>
+Este sitio utiliza cookies para analizar el comportamiento del usuario y mejorar la experiencia. Al continuar, aceptas su uso.<br><br>
+<strong>Responsabilidad:</strong><br>
+No garantizamos disponibilidad continua del sitio ni resultados específicos derivados del uso de la información.
+</p>
+
+    <label>
+      <input type="checkbox" id="check" onchange="habilitarBoton()">
+      Acepto las políticas y condiciones
+    </label>
+
+    <br>
+
+    <button id="btnAceptar" class="btn" disabled onclick="aceptar()">Ingresar al sitio</button>
+  </div>
+</div>
+
 <header>
-    <span class="icon">&#9776;</span>
-    
+    <h2>Comida Colombiana</h2>
 </header>
 
-<!-- ---------------- HERO ---------------- -->
 <section class="hero">
-    <h1>colombiana</h1>
- 
-
-    <button onclick="window.location.href='menu.html'">Ingresa menú</button>
+    <h1>Comida Colombiana</h1>
+    <button onclick="window.location.href='menu.html'">Ingresar menú</button>
 </section>
 
-<!-- ---------------- FOOTER ---------------- -->
 <footer>
-    <h3>Tu Popular</h3>
-
-    <div class="footer-box">
-        <div class="footer-icon">😊</div>
-        <span class="text">Personas colombianas</span>
-    </div>
-
-    <div class="legal">
-        <a href="terminos.html">Términos y Condiciones</a>
-    </div>
+    📍 Medellín, Colombia Calle 45·45-98 esquina <br>
+    📞 +57 300 4583269
 </footer>
+
+<script>
+function habilitarBoton(){
+    const check = document.getElementById('check');
+    document.getElementById('btnAceptar').disabled = !check.checked;
+}
+
+function aceptar(){
+    document.getElementById('modal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // 🔓 desbloquea la página
+}
+</script>
 
 </body>
 </html>
