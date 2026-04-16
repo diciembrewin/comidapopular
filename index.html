@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comida Colombiana</title>
+
+<title>Comida Colombiana | Restaurante</title>
+<meta name="description" content="Disfruta la mejor comida colombiana con ingredientes frescos. Consulta nuestro menú.">
 
 <style>
-html, body {
-    overflow: hidden; /* 🔒 bloquea acceso hasta aceptar */
+body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
 }
 
@@ -22,115 +23,131 @@ header {
 
 .hero {
     background: #00bd35;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    color: white;
+    padding: 60px 20px;
     text-align: center;
 }
 
 .hero button {
-    margin-top: 30px;
-    padding: 15px 35px;
-    background: #009f2b;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #008f28;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-footer {
-    background: #00aa30;
-    padding: 20px;
-}
-
-.modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 420px;
+.section {
+    padding: 40px 20px;
     text-align: center;
 }
 
-.btn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: green;
+.footer {
+    background: #00aa30;
     color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+/* Cookies */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 999;
+}
+
+.cookie-banner button {
+    margin-left: 10px;
+    padding: 8px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.btn:disabled {
-    background: gray;
-    cursor: not-allowed;
-}
+.btn-accept { background: green; color: white; }
+.btn-close { background: gray; color: white; }
 </style>
 </head>
+
 <body>
 
-<!-- 🔒 MODAL OBLIGATORIO -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <h2>Políticas y Términos</h2>
-    <p style="text-align:left; max-height:200px; overflow-y:auto; font-size:14px;">
-<strong>Términos y Condiciones:</strong><br><br>
-Al ingresar a este sitio web, aceptas que la información presentada tiene fines informativos y comerciales. Nos reservamos el derecho de modificar contenidos sin previo aviso.<br><br>
-<strong>Política de Privacidad:</strong><br>
-Los datos que proporciones (como nombre, teléfono o navegación) pueden ser utilizados para mejorar nuestros servicios y fines publicitarios, incluyendo Google Ads. No compartimos información personal con terceros sin consentimiento.<br><br>
-<strong>Uso de Cookies:</strong><br>
-Este sitio utiliza cookies para analizar el comportamiento del usuario y mejorar la experiencia. Al continuar, aceptas su uso.<br><br>
-<strong>Responsabilidad:</strong><br>
-No garantizamos disponibilidad continua del sitio ni resultados específicos derivados del uso de la información.
-</p>
-
-    <label>
-      <input type="checkbox" id="check" onchange="habilitarBoton()">
-      Acepto las políticas y condiciones
-    </label>
-
-    <br>
-
-    <button id="btnAceptar" class="btn" disabled onclick="aceptar()">Ingresar al sitio</button>
-  </div>
-</div>
-
 <header>
-    <h2>Comida Colombiana</h2>
+    <h1>Comida Colombiana</h1>
 </header>
 
 <section class="hero">
-    <h1>Comida Colombiana</h1>
-    <button onclick="window.location.href='menu.html'">Ingresar menú</button>
+    <h2>Auténtica comida colombiana</h2>
+    <p>Platos tradicionales preparados con ingredientes frescos.</p>
+    <button onclick="window.location.href='menu.html'">Ver menú</button>
 </section>
 
-<footer>
-    📍 Medellín, Colombia Calle 45·45-98 esquina <br>
-    📞 +57 300 4583269
+<section class="section">
+    <h2>Sobre nosotros</h2>
+    <p>Somos un restaurante en Medellín enfocado en ofrecer comida típica colombiana con calidad y buen servicio.</p>
+</section>
+
+<section class="section">
+    <h2>Contacto</h2>
+    <p>📍 Medellín, Colombia - Calle 45 #45-98</p>
+    <p>📞 +57 300 4583269</p>
+    <p>✉ contacto@comidacolombiana.com</p>
+</section>
+
+<!-- ✅ POLÍTICA INTEGRADA -->
+<section class="section" id="privacidad">
+    <h2>Política de Privacidad</h2>
+    <p>
+        Recopilamos información básica como nombre, teléfono o correo cuando el usuario la proporciona voluntariamente.
+    </p>
+    <p>
+        Esta información se utiliza únicamente para contacto, mejora de nuestros servicios y fines publicitarios legítimos como Google Ads.
+    </p>
+    <p>
+        No compartimos información personal con terceros sin consentimiento, salvo obligación legal.
+    </p>
+    <p>
+        Este sitio puede utilizar cookies para analizar el comportamiento del usuario y mejorar la experiencia.
+    </p>
+</section>
+
+<!-- ✅ TÉRMINOS -->
+<section class="section" id="terminos">
+    <h2>Términos y Condiciones</h2>
+    <p>El uso de este sitio implica la aceptación de estos términos.</p>
+    <p>La información presentada es de carácter informativo y comercial.</p>
+    <p>Nos reservamos el derecho de modificar contenidos sin previo aviso.</p>
+    <p>No garantizamos disponibilidad continua del sitio.</p>
+</section>
+
+<footer class="footer">
+    <p>© 2026 Comida Colombiana</p>
+    <a href="#privacidad">Política de Privacidad</a> |
+    <a href="#terminos">Términos y Condiciones</a>
 </footer>
 
-<script>
-function habilitarBoton(){
-    const check = document.getElementById('check');
-    document.getElementById('btnAceptar').disabled = !check.checked;
-}
+<!-- ✅ Cookies -->
+<div id="cookieBanner" class="cookie-banner">
+    Usamos cookies para mejorar la experiencia del usuario.
+    <button class="btn-accept" onclick="aceptarCookies()">Aceptar</button>
+    <button class="btn-close" onclick="cerrarBanner()">Cerrar</button>
+</div>
 
-function aceptar(){
-    document.getElementById('modal').style.display = 'none';
-    document.body.style.overflow = 'auto'; // 🔓 desbloquea la página
+<script>
+function aceptarCookies() {
+    document.getElementById('cookieBanner').style.display = 'none';
+}
+function cerrarBanner() {
+    document.getElementById('cookieBanner').style.display = 'none';
 }
 </script>
 
