@@ -4,159 +4,172 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Comida Colombiana | Restaurante</title>
-<meta name="description" content="Disfruta la mejor comida colombiana con ingredientes frescos. Consulta nuestro menú.">
+<title>Comida Colombiana en Medellín | Domicilios Rápidos</title>
+<meta name="description" content="Pide comida colombiana en Medellín. Bandeja paisa, sancocho, arepas y más. Domicilios rápidos por WhatsApp.">
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
+body { margin:0; font-family: Arial; background:#f5f5f5; }
 
 header {
-    background: #0f5132;
-    padding: 15px;
-    color: white;
-    text-align: center;
+    background:#0f5132;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 
 .hero {
-    background: #0f5132;
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
+    background:#14532d;
+    color:white;
+    text-align:center;
+    padding:60px 20px;
 }
 
-.hero button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    background: #0f5132;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.btn {
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 25px;
+    background:#ffc107;
+    color:black;
+    font-weight:bold;
+    border-radius:8px;
+    text-decoration:none;
 }
 
 .section {
-    padding: 40px 20px;
-    text-align: center;
+    padding:40px 20px;
+    text-align:center;
+}
+
+.cards {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:250px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 .footer {
-    background: #0f5132;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    background:#0f5132;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 
-a {
-    color: white;
-}
-
-/* Cookies */
+/* cookies */
 .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.85);
-    color: white;
-    padding: 15px;
-    text-align: center;
-    z-index: 999;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:black;
+    color:white;
+    text-align:center;
+    padding:10px;
 }
-
-.cookie-banner button {
-    margin-left: 10px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-accept { background: green; color: white; }
-.btn-close { background: gray; color: white; }
 </style>
 
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18004668768"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18004668768');
+</script>
 
-
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18004668768"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18004668768'); </script>
-
-
-
-    <!-- Event snippet for Compra conversion page --> <script> gtag('event', 'conversion', { 'send_to': 'AW-18004668768/XizcCJSlzJwcEODipYlD', 'transaction_id': '' // 'new_customer': true /* calculate dynamically, populate with true/false */, }); </script>
-
-    
 </head>
 
 <body>
 
 <header>
-    <h1>Comida Colombiana</h1>
+<h1>Restaurante Comida Colombiana</h1>
 </header>
 
 <section class="hero">
-    <h2>Auténtica comida colombiana</h2>
-    <p>Platos tradicionales preparados con ingredientes frescos.</p>
-    <button onclick="window.location.href='menu.html'">Ver menú</button>
+<h2>🍽️ Comida Colombiana a Domicilio en Medellín</h2>
+<p>Platos tradicionales, preparados al momento y con ingredientes frescos</p>
+
+<a href="https://wa.me/573004583269" class="btn" onclick="conv()">📲 Pedir ahora</a>
 </section>
 
 <section class="section">
-    <h2>Sobre nosotros</h2>
-    <p>Somos un restaurante en Medellín enfocado en ofrecer comida típica colombiana con calidad y buen servicio.</p>
+<h2>🍛 Nuestros Platos</h2>
+
+<div class="cards">
+<div class="card">
+<h3>Bandeja Paisa</h3>
+<p>Plato típico con carne, frijoles, arroz, huevo y más.</p>
+</div>
+
+<div class="card">
+<h3>Sancocho</h3>
+<p>Caldo tradicional colombiano con carne y verduras.</p>
+</div>
+
+<div class="card">
+<h3>Arepas</h3>
+<p>Arepas rellenas preparadas al momento.</p>
+</div>
+</div>
 </section>
 
 <section class="section">
-    <h2>Contacto</h2>
-    <p>📍 Medellín, Colombia - Calle 45 #45-98</p>
-    <p>📞 +57 300 4583269</p>
-    <p>✉ contacto@comidacolombiana.com</p>
+<h2>⭐ Opiniones de Clientes</h2>
+<p>"Excelente comida, llegó rápido y muy deliciosa"</p>
+<p>"Muy recomendado, sabor auténtico colombiano"</p>
 </section>
 
-<!-- ✅ POLÍTICA INTEGRADA -->
+<section class="section">
+<h2>📍 Información del Negocio</h2>
+<p><strong>Nombre:</strong> Restaurante Comida Colombiana S.A.S</p>
+<p><strong>NIT:</strong> 900123456-7</p>
+<p>📍 Calle 45 #45-98, Medellín</p>
+<p>📞 +57 300 4583269</p>
+<p>🕒 11:00 AM - 10:00 PM</p>
+</section>
+
+<section class="section">
+<a href="https://wa.me/573004583269" class="btn" onclick="conv()">📲 Pedir por WhatsApp</a>
+</section>
+
 <section class="section" id="privacidad">
-    <h2>Política de Privacidad</h2>
-    <p>
-        Recopilamos información básica como nombre, teléfono o correo cuando el usuario la proporciona voluntariamente.
-    </p>
-    <p>
-        Esta información se utiliza únicamente para contacto, mejora de nuestros servicios y fines publicitarios legítimos como Google Ads.
-    </p>
-    <p>
-        No compartimos información personal con terceros sin consentimiento, salvo obligación legal.
-    </p>
-    <p>
-        Este sitio puede utilizar cookies para analizar el comportamiento del usuario y mejorar la experiencia.
-    </p>
-</section>
-
-<!-- ✅ TÉRMINOS -->
-<section class="section" id="terminos">
-    <h2>Términos y Condiciones</h2>
-    <p>El uso de este sitio implica la aceptación de estos términos.</p>
-    <p>La información presentada es de carácter informativo y comercial.</p>
-    <p>Nos reservamos el derecho de modificar contenidos sin previo aviso.</p>
-    <p>No garantizamos disponibilidad continua del sitio.</p>
+<h2>Privacidad</h2>
+<p>Respetamos tus datos y no los compartimos sin consentimiento.</p>
 </section>
 
 <footer class="footer">
-    <p>© 2026 Comida Colombiana</p>
-    <a href="#privacidad">Política de Privacidad</a> |
-    <a href="#terminos">Términos y Condiciones</a>
+<p>© 2026 Restaurante Comida Colombiana</p>
+<a href="#privacidad">Privacidad</a>
 </footer>
 
-<!-- ✅ Cookies -->
 <div id="cookieBanner" class="cookie-banner">
-    Usamos cookies para mejorar la experiencia del usuario.
-    <button class="btn-accept" onclick="aceptarCookies()">Aceptar</button>
-    <button class="btn-close" onclick="cerrarBanner()">Cerrar</button>
+Usamos cookies
+<button onclick="aceptar()">Aceptar</button>
 </div>
 
 <script>
-function aceptarCookies() {
-    document.getElementById('cookieBanner').style.display = 'none';
+function aceptar(){
+localStorage.setItem("cookies","ok");
+document.getElementById("cookieBanner").style.display="none";
 }
-function cerrarBanner() {
-    document.getElementById('cookieBanner').style.display = 'none';
+
+window.onload=function(){
+if(localStorage.getItem("cookies")){
+document.getElementById("cookieBanner").style.display="none";
+}
+}
+
+function conv(){
+gtag('event','conversion',{
+'send_to':'AW-18004668768/XizcCJSlzJwcEODipYlD',
+'transaction_id': Date.now()
+});
 }
 </script>
 
