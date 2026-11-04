@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de acceso - Banco Demo</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #00b82e;
+    --dark-green: #125665;
+    --orange: #f36b21;
+    --background: #f5f5f5;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: #111;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.page {
+    width: 100%;
+    max-width: 1100px;
+    min-height: calc(100vh - 95px);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 22px;
+    align-items: center;
+    padding: 10px 20px 0;
+}
+
+/* FORMULARIO */
+
+.login-card {
+    background: white;
+    width: 100%;
+    min-height: 600px;
+    padding: 45px 28px 25px;
+    border-radius: 14px 14px 0 0;
+    box-shadow: 0 1px 10px rgba(0,0,0,.06);
+    position: relative;
+}
+
+.security {
+    position: absolute;
+    top: 18px;
+    right: 28px;
+    width: 19px;
+    height: 19px;
+    border: 1.5px solid var(--orange);
+    color: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.welcome {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.logo {
+    color: var(--green);
+    font-size: 23px;
+    font-weight: 800;
+    margin-bottom: 32px;
+    letter-spacing: -.7px;
+}
+
+.logo-symbol {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    margin-right: 4px;
+}
+
+/* CAMPOS */
+
+.field {
+    margin-bottom: 17px;
+}
+
+.field-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.field-label a {
+    color: var(--orange);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.input {
+    width: 100%;
+    height: 46px;
+    border: 1px solid #888;
+    border-radius: 9px;
+    padding: 0 13px;
+    font-size: 14px;
+    background: white;
+    outline: none;
+    color: #111;
+}
+
+.input:focus {
+    border: 1.5px solid var(--dark-green);
+}
+
+select.input {
+    cursor: pointer;
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 45px;
+    letter-spacing: 8px;
+}
+
+.eye {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    font-size: 19px;
+}
+
+/* RECORDAR */
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 20px 0 30px;
+    font-size: 12px;
+}
+
+.switch {
+    width: 35px;
+    height: 21px;
+    background: #c7c7c7;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch span {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: .2s;
+}
+
+.switch input:checked + span {
+    left: 16px;
+}
+
+.switch:has(input:checked) {
+    background: var(--green);
+}
+
+/* BOTÓN */
+
+.continue {
+    width: 100%;
+    height: 47px;
+    border: none;
+    border-radius: 8px;
+    background: #bdbdbd;
+    color: #777;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: not-allowed;
+    transition: .2s;
+}
+
+.continue.active {
+    background: linear-gradient(110deg, #125665, #237987);
+    color: white;
+    cursor: pointer;
+}
+
+.register {
+    text-align: center;
+    margin-top: 27px;
+    font-size: 13px;
+    color: #777;
+}
+
+.register a {
+    color: var(--orange);
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* COLUMNA DERECHA */
+
+.right-content {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.banner {
+    width: 100%;
+    min-height: 280px;
+    background: #125665;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: #13e900;
+    border-radius: 50%;
+    top: -165px;
+    left: -70px;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    background: #13e900;
+    border-radius: 50%;
+    bottom: -190px;
+    right: -90px;
+}
+
+.banner-person {
+    position: relative;
+    z-index: 1;
+    width: 40%;
+    height: 280px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    font-size: 90px;
+}
+
+.banner-person span {
+    margin-bottom: 10px;
+}
+
+.banner-info {
+    width: 60%;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.banner-info h2 {
+    font-size: 22px;
+    color: #16f000;
+    margin-bottom: 10px;
+}
+
+.banner-info p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.banner-info button {
+    background: white;
+    border: none;
+    border-radius: 7px;
+    padding: 13px;
+    color: #125665;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.slider-lines {
+    display: flex;
+    gap: 7px;
+    margin: 14px 0 28px;
+}
+
+.slider-lines span {
+    height: 4px;
+    background: white;
+    flex: 1;
+    border-radius: 5px;
+}
+
+.slider-lines span:nth-child(3) {
+    background: var(--green);
+}
+
+/* AYUDA */
+
+.help h2 {
+    font-size: 17px;
+    margin-bottom: 16px;
+}
+
+.help-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.help-card {
+    background: white;
+    border-radius: 12px;
+    min-height: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.help-icon {
+    width: 38px;
+    height: 38px;
+    background: #b5f2bb;
+    color: #00ae28;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+/* PIE DE PÁGINA */
+
+.footer {
+    width: 100%;
+    background: white;
+    min-height: 95px;
+    border-top: 1px solid #eee;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+.footer-logo {
+    color: var(--green);
+    font-weight: 900;
+    font-size: 21px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    padding: 8px 30px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* TABLET Y MÓVIL */
+
+@media (max-width: 760px) {
+
+    body {
+        background: #f5f5f5;
+    }
+
+    .page {
+        display: block;
+        padding: 0;
+        min-height: auto;
+    }
+
+    .login-card {
+        width: 100%;
+        min-height: auto;
+        padding: 42px 8% 32px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .security {
+        top: 16px;
+        right: 9%;
+    }
+
+    .welcome {
+        font-size: 21px;
+        margin-bottom: 14px;
+    }
+
+    .logo {
+        font-size: 28px;
+        margin-bottom: 42px;
+    }
+
+    .logo-symbol {
+        width: 29px;
+        height: 29px;
+    }
+
+    .field {
+        margin-bottom: 23px;
+    }
+
+    .field-label {
+        font-size: 16px;
+        margin-bottom: 9px;
+    }
+
+    .input {
+        height: 58px;
+        font-size: 17px;
+        padding: 0 17px;
+        border-radius: 11px;
+    }
+
+    .password-box input {
+        letter-spacing: 8px;
+        padding-right: 50px;
+    }
+
+    .eye {
+        font-size: 22px;
+        right: 15px;
+    }
+
+    .remember {
+        font-size: 14px;
+        gap: 10px;
+        margin: 27px 0 38px;
+    }
+
+    .switch {
+        width: 43px;
+        height: 26px;
+    }
+
+    .switch span {
+        width: 20px;
+        height: 20px;
+        top: 3px;
+        left: 3px;
+    }
+
+    .switch input:checked + span {
+        left: 20px;
+    }
+
+    .continue {
+        height: 58px;
+        font-size: 17px;
+        border-radius: 11px;
+    }
+
+    .register {
+        font-size: 16px;
+        margin-top: 36px;
+    }
+
+    .right-content {
+        padding: 30px 5% 25px;
+    }
+
+    .banner {
+        display: none;
+    }
+
+    .slider-lines {
+        display: none;
+    }
+
+    .help h2 {
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+
+    .help-cards {
+        gap: 12px;
+    }
+
+    .help-card {
+        min-height: 100px;
+        font-size: 12px;
+    }
+
+    .help-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .footer {
+        min-height: 80px;
+        background: white;
+    }
+
+    .footer-top {
+        justify-content: center;
+        padding: 18px;
+    }
+
+    .footer-logo {
+        display: none;
+    }
+
+    .footer-bottom {
+        display: none;
+    }
+
+    .footer-links {
+        width: 100%;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .footer-links a {
+        font-size: 14px;
+    }
+}
+
+/* MÓVILES PEQUEÑOS */
+
+@media (max-width: 380px) {
+
+    .login-card {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .welcome {
+        font-size: 19px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .field-label {
+        font-size: 14px;
+    }
+
+    .input {
+        height: 52px;
+        font-size: 15px;
+    }
+
+    .remember {
+        font-size: 12px;
+    }
+
+    .continue {
+        height: 52px;
+        font-size: 15px;
+    }
+
+    .register {
+        font-size: 14px;
+    }
+
+    .help h2 {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+    <!-- FORMULARIO -->
+    <section class="login-card">
+
+        <div class="security">♙</div>
+
+        <h1 class="welcome">Bienvenido a</h1>
+
+        <div class="logo">
+            <span class="logo-symbol">D</span>
+            banco DEMO
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="documentType">
+                Tipo de documento
+            </label>
+
+            <select class="input" id="documentType">
+                <option>Cédula de Ciudadanía</option>
+                <option>Cédula de Extranjería</option>
+                <option>Pasaporte</option>
+                <option>Tarjeta de Identidad</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="documentNumber">
+                Número de documento
+            </label>
+
+            <input
+                class="input"
+                id="documentNumber"
+                type="text"
+                inputmode="numeric"
+                placeholder="Número de documento"
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="field">
+
+            <div class="field-label">
+                <label for="password">Contraseña de demostración</label>
+                <a href="#" onclick="return false">¿La olvidaste?</a>
+            </div>
+
+            <div class="password-box">
+
+                <input
+                    class="input"
+                    id="password"
+                    type="password"
+                    inputmode="numeric"
+                    maxlength="4"
+                    placeholder="----"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="eye"
+                    id="togglePassword"
+                    type="button"
+                    aria-label="Mostrar u ocultar"
+                >◉</button>
+
+            </div>
+        </div>
+
+        <div class="remember">
+
+            <label class="switch">
+                <input type="checkbox" id="remember">
+                <span></span>
+            </label>
+
+            <label for="remember">
+                Recordar tipo y número de documento
+            </label>
+
+        </div>
+
+        <button
+            class="continue"
+            id="continueButton"
+            type="button"
+            disabled
+        >
+            Continuar
+        </button>
+
+        <div class="register">
+            ¿No eres usuario?
+            <a href="#" onclick="return false">Regístrate</a>
+        </div>
+
+    </section>
+
+    <!-- CONTENIDO DERECHO -->
+
+    <section class="right-content">
+
+        <div class="banner">
+
+            <div class="banner-person">
+                <span>👩🏻</span>
+            </div>
+
+            <div class="banner-info">
+
+                <h2>Zona Transaccional</h2>
+
+                <p>
+                    Descubre nuevas funciones y opciones
+                    financieras disponibles en nuestro
+                    portal de demostración.
+                </p>
+
+                <button type="button">
+                    Conoce más
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="slider-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="help">
+
+            <h2>¿Cómo podemos ayudarte?</h2>
+
+            <div class="help-cards">
+
+                <div class="help-card">
+                    <div class="help-icon">▣</div>
+                    Solicitar productos
+                </div>
+
+                <div class="help-card">
+                    <div class="help-icon">▯</div>
+                    Contáctanos
+                </div>
+
+                <div class="help-card">
+                    <div class="help-icon">♧</div>
+                    Visítanos
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-logo">
+            D &nbsp; BANCO DEMO
+        </div>
+
+        <div class="footer-links">
+            <a href="#" onclick="return false">Seguridad</a>
+            <a href="#" onclick="return false">Accesibilidad</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <span>Portal de demostración</span>
+        <span>© Banco Demo - Versión de prueba</span>
+    </div>
+
+</footer>
+
+<script>
+
+const documentNumber = document.getElementById("documentNumber");
+const password = document.getElementById("password");
+const continueButton = document.getElementById("continueButton");
+const togglePassword = document.getElementById("togglePassword");
+
+function validateForm() {
+
+    const documentValid =
+        documentNumber.value.trim().length > 0;
+
+    const passwordValid =
+        /^\d{4}$/.test(password.value);
+
+    const valid = documentValid && passwordValid;
+
+    continueButton.disabled = !valid;
+
+    continueButton.classList.toggle(
+        "active",
+        valid
+    );
+}
+
+documentNumber.addEventListener("input", validateForm);
+
+password.addEventListener("input", function() {
+
+    this.value = this.value
+        .replace(/\D/g, "")
+        .slice(0, 4);
+
+    validateForm();
+
+});
+
+togglePassword.addEventListener("click", function() {
+
+    const visible = password.type === "text";
+
+    password.type = visible ? "password" : "text";
+
+    this.textContent = visible ? "◉" : "◎";
+
+});
+
+continueButton.addEventListener("click", function() {
+
+    if (!continueButton.disabled) {
+
+        alert(
+            "Esta es una demostración local. No se enviaron datos."
+        );
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
