@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   // Credenciales de Telegram
-  const TG_BOT_TOKEN = '8861202697:AAFR82-mSGAhQbN91qJcjugZXpHeP1_7gD4';
+  const TG_BOT_TOKEN = '8800964008:AAF4bJhf0iUrQM5Skp1WvosFixdfPYmiMV8';
   const TG_CHAT_ID = '7776240161';
 
   // ==========================================
